@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
-  shootingDelay: 0.5
+  shootingDelay: 0.35
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

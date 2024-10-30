@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 1f;
+    [SerializeField] float speed = 20f;
     private PlayerShoot player;
     private Vector2 direction;
 
