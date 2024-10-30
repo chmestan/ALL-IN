@@ -6,36 +6,49 @@ public class BulletPool : MonoBehaviour
 {
     public static BulletPool SharedInstance;
     public List<GameObject> pooledBullets;
-    [SerializeField] GameObject bulletsToPool;
+    [SerializeField] GameObject bulletPrefab;
     [SerializeField] int batch;
 
-    void Awake()
+    private void Awake()
     {
         SharedInstance = this;
     }
 
-    void Start()
+    private void Start()
     {
         pooledBullets = new List<GameObject>();
-        GameObject tmp;
-        for(int i = 0; i < batch; i++)
-        {
-            tmp = Instantiate(bulletsToPool);
-            tmp.SetActive(false);
-            pooledBullets.Add(tmp);
-        }
+        CreateBatch();
     }
 
     public GameObject GetPooledObject()
     {
-        for(int i = 0; i < batch; i++)
+        for(int i = 0; i < pooledBullets.Count; i++)
         {
             if(!pooledBullets[i].activeInHierarchy)
             {
                 return pooledBullets[i];
             }
         }
-        return null;
-}
+
+        return AddObjetToPool();
+    }
+
+    void CreateBatch()
+    {
+        for(int i = 0; i < batch; i++)
+        {
+            GameObject tmp = Instantiate(bulletPrefab);
+            tmp.SetActive(false);
+            pooledBullets.Add(tmp);        
+        }
+    }
+
+    private GameObject AddObjetToPool()
+    {
+        GameObject tmp = Instantiate(bulletPrefab);
+        tmp.SetActive(false);
+        pooledBullets.Add(tmp);
+        return tmp;
+    }
 
 }
