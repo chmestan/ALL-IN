@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Vector2 moveAmount = move.ReadValue<Vector2>();
-        Vector2 targetVelocity = moveAmount.normalized * speed;
+        Vector2 targetVelocity = moveAmount.normalized * speed ;
 
         bool isChangingDirection = Vector2.Dot(currentVelocity, targetVelocity) < 0;
         if (isChangingDirection) turnSpeed = turnSpeedCompensation;
