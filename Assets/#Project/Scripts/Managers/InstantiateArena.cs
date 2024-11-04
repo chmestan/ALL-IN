@@ -35,7 +35,7 @@ public class InstantiateArena : MonoBehaviour
         }
     }
 
-    private Vector3 GetRandomSpawnPosition()
+    private Vector3 GetRandomSpawnPosition() // temp -- get enemies to spawn on tiles, and from a certain distance of the player
     {
         float x = Random.Range(-10, 10);
         float y = Random.Range(-10, 10);

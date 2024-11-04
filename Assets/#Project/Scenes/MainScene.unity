@@ -807,8 +807,9 @@ GameObject:
   - component: {fileID: 2084806509}
   - component: {fileID: 2084806508}
   - component: {fileID: 2084806507}
+  - component: {fileID: 2084806510}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Arena Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -871,6 +872,18 @@ MonoBehaviour:
   pooledBullets: []
   bulletPrefab: {fileID: 276595243314985870, guid: 1174de9831ef88c4e8902d82f52e479c, type: 3}
   batch: 20
+--- !u!114 &2084806510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084806504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c347f77e8663a82489e8fcc26f955374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
