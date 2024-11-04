@@ -4,13 +4,13 @@ using UnityEngine;
 
 public enum EnemyTypeEnum
 {
+    Enemy0,
     Enemy1,
-    Enemy2,
-    Enemy3
+    Enemy2
 }
-public class EnemyPool : MonoBehaviour
+public class EnemyPools : MonoBehaviour
 {
-    public static EnemyPool SharedInstance;
+    public static EnemyPools SharedInstance;
     public Dictionary<EnemyTypeEnum, List<GameObject>> enemyPools; 
     // types of enemies (key) - batch
     [SerializeField] List<GameObject> enemyPrefabs; 

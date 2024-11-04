@@ -30,7 +30,7 @@ public class BulletPool : MonoBehaviour
             }
         }
 
-        return AddObjetToPool();
+        return AddObjectToPool();
     }
 
     void CreateBatch()
@@ -43,7 +43,7 @@ public class BulletPool : MonoBehaviour
         }
     }
 
-    private GameObject AddObjetToPool()
+    private GameObject AddObjectToPool()
     {
         GameObject tmp = Instantiate(bulletPrefab);
         tmp.SetActive(false);
