@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float diagonalBufferTime = 0.1f;
 
     public Vector2 lastDirection = new Vector2(1,0);
+    private Vector2 moveAmount;
 
     private float lastDirectionUpdateTime;
 
@@ -46,7 +47,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Vector2 moveAmount = move.ReadValue<Vector2>();
+        Move();
+        UpdateLastDirection();
+  
+    }
+
+    private void Move()
+    {
+        moveAmount = move.ReadValue<Vector2>();
         if (debug) Debug.Log($"[PlayerMovement] Move Amount = {moveAmount}");
         Vector2 targetVelocity = moveAmount.normalized * speed ;
 
@@ -58,7 +66,10 @@ public class PlayerMovement : MonoBehaviour
             (moveAmount.magnitude > 0 ? acceleration : deceleration) * Time.deltaTime * turnSpeed);
 
         transform.Translate(currentVelocity * Time.deltaTime);
+    }
 
+    private void UpdateLastDirection()
+    {
         if (moveAmount != Vector2.zero)
         {
             bool isDiagonal = Mathf.Abs(moveAmount.x) > 0 && Mathf.Abs(moveAmount.y) > 0;
@@ -67,9 +78,7 @@ public class PlayerMovement : MonoBehaviour
                 lastDirection = moveAmount;
                 lastDirectionUpdateTime = Time.time;
             }
-        }    
+        }   
     }
-
-
 
 }

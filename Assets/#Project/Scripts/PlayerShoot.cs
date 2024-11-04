@@ -45,6 +45,12 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
+        UpdateShoot();
+        if (debug) DebugLogs();
+    }
+
+    private void UpdateShoot()
+    {
         facingDirection = new Vector2(
             (LastDirection.x > 0)? 1 : ((LastDirection.x < 0)? -1 : 0),
             (LastDirection.y > 0)? 1 : ((LastDirection.y < 0)? -1 : 0)
@@ -59,17 +65,7 @@ public class PlayerShoot : MonoBehaviour
             lastShotTime = Time.time;
         }
 
-        if (debug) 
-        {
-            Debug.Log($"[PlayerShoot] Shoot direction input = {shootDirection.ReadValue<Vector2>()}");
-            Debug.Log($"[PlayerShoot] Facing direction = {facingDirection}");
-        }
-
     }
-
-    //Next step: have the last direction memorized or a default direction
-    //so that when there's no direction pressed the bullet still has a direction
-
     private void Shoot(Vector2 direction)
     {
         Vector2 bulletDirection = direction;
@@ -81,6 +77,15 @@ public class PlayerShoot : MonoBehaviour
             bullet.transform.rotation = transform.rotation;
             bullet.SetActive(true);
             bulletMvmt.SetDirection(bulletDirection);
+        }
+    }
+
+    private void DebugLogs()
+    {
+        if (debug) 
+        {
+            Debug.Log($"[PlayerShoot] Shoot direction input = {shootDirection.ReadValue<Vector2>()}");
+            Debug.Log($"[PlayerShoot] Facing direction = {facingDirection}");
         }
     }
 }
