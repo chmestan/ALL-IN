@@ -13,8 +13,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float deceleration = 80f;
     [SerializeField] float turnSpeed = 1f;
     [SerializeField] float turnSpeedCompensation = 9f;
+    public Vector2 lastDirection = new Vector2(1,0);
     private Vector2 currentVelocity = Vector2.zero;    
     private InputAction move;
+    [SerializeField] bool debug = false;
 
     private void Awake()
     {
@@ -39,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         Vector2 moveAmount = move.ReadValue<Vector2>();
+        if (debug) Debug.Log($"[PlayerMovement] Move Amount = {moveAmount}");
         Vector2 targetVelocity = moveAmount.normalized * speed ;
 
         bool isChangingDirection = Vector2.Dot(currentVelocity, targetVelocity) < 0;
@@ -49,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
             (moveAmount.magnitude > 0 ? acceleration : deceleration) * Time.deltaTime * turnSpeed);
 
         transform.Translate(currentVelocity * Time.deltaTime);
+
+        lastDirection = (moveAmount != Vector2.zero)? moveAmount : lastDirection;
     }
 
 
