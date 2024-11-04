@@ -2,12 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WaveState : MonoBehaviour
+public interface IDamageable
 {
-
-
-    void Update()
-    {
-        
-    }
+    void GetHit();
+    void Die();
 }

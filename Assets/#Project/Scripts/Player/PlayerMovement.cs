@@ -7,25 +7,25 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header ("Input Map")]
-    [SerializeField] InputActionAsset inputActions;
+        [SerializeField] InputActionAsset inputActions;
+        private InputAction move;
+        private Vector2 moveAmount;
 
     [Header ("Movement"), Space (10f)]
-    [SerializeField] float speed = 9f;
-    [SerializeField] float acceleration = 30f;
-    [SerializeField] float deceleration = 80f;
-    [SerializeField] float turnSpeed = 1f;
-    [SerializeField] float turnSpeedCompensation = 9f;
+        [SerializeField] float speed = 9f;
+        [SerializeField] float acceleration = 30f;
+        [SerializeField] float deceleration = 80f;
+        [SerializeField] float turnSpeed = 1f;
+        [SerializeField] float turnSpeedCompensation = 9f;
+        public Vector2 lastDirection = new Vector2(1,0);
+        private Vector2 currentVelocity = Vector2.zero;    
 
     [Header ("Technical"), Space (10f)]
-    [SerializeField] float diagonalBufferTime = 0.1f;
+        [SerializeField] float diagonalBufferTime = 0.1f;
+        private float lastDirectionUpdateTime;
 
-    public Vector2 lastDirection = new Vector2(1,0);
-    private Vector2 moveAmount;
 
-    private float lastDirectionUpdateTime;
-
-    private Vector2 currentVelocity = Vector2.zero;    
-    private InputAction move;
+    [SerializeField] private ArenaState manager;
 
 
     [SerializeField, Space (20) ] bool debug = false;
@@ -43,13 +43,11 @@ public class PlayerMovement : MonoBehaviour
         inputActions.FindActionMap("Player").Disable();
     }
 
-
-
     private void Update()
     {
+        if (manager.state == ArenaStateEnum.Paused) return;
         Move();
         UpdateLastDirection();
-  
     }
 
     private void Move()

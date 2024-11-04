@@ -58,7 +58,7 @@ public class PlayerShoot : MonoBehaviour
     
         Vector2 shootAmount = (shootDirection.ReadValue<Vector2>() != Vector2.zero)? shootDirection.ReadValue<Vector2>().normalized: facingDirection.normalized;
 
-        bool shootingInput = shoot.ReadValue<float>() == 1;
+        bool shootingInput = (shoot.ReadValue<float>() == 1);
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
         {
             Shoot(shootAmount);

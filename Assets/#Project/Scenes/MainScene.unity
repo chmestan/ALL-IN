@@ -164,9 +164,10 @@ MonoBehaviour:
   deceleration: 80
   turnSpeed: 1
   turnSpeedCompensation: 5
-  diagonalBufferTime: 0.1
   lastDirection: {x: 0, y: 0}
-  debug: 1
+  diagonalBufferTime: 0.1
+  manager: {fileID: 2084806507}
+  debug: 0
 --- !u!212 &273175375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -248,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
   shootingDelay: 0.35
-  debug: 1
+  debug: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,30 +804,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2084806506}
-  - component: {fileID: 2084806505}
+  - component: {fileID: 2084806509}
+  - component: {fileID: 2084806508}
   - component: {fileID: 2084806507}
   m_Layer: 0
-  m_Name: Game Controller
+  m_Name: Game Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2084806505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084806504}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae31514532aed454db865a3eed1fd723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pooledBullets: []
-  bulletPrefab: {fileID: 276595243314985870, guid: 1174de9831ef88c4e8902d82f52e479c, type: 3}
-  batch: 20
 --- !u!4 &2084806506
 Transform:
   m_ObjectHideFlags: 0
@@ -854,6 +841,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43a600f21836edf45833df11259e1809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  state: 1
+--- !u!114 &2084806508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084806504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d67b7d98e06ea947b2f757b2f476aa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
+  paused: 1
+--- !u!114 &2084806509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084806504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae31514532aed454db865a3eed1fd723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledBullets: []
+  bulletPrefab: {fileID: 276595243314985870, guid: 1174de9831ef88c4e8902d82f52e479c, type: 3}
+  batch: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
