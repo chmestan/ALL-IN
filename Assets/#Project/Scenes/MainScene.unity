@@ -807,6 +807,7 @@ GameObject:
   - component: {fileID: 2084806509}
   - component: {fileID: 2084806508}
   - component: {fileID: 2084806507}
+  - component: {fileID: 2084806511}
   - component: {fileID: 2084806510}
   m_Layer: 0
   m_Name: Arena Manager
@@ -884,6 +885,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c347f77e8663a82489e8fcc26f955374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2084806511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084806504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 560298565b9391142b8df09adfe5c971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+  - {fileID: 4240723409643395770, guid: 58fa63c848769ad44939ffccadffa5a2, type: 3}
+  - {fileID: 4710343163144651843, guid: a48ceae47924dae498bbfd9582648577, type: 3}
+  batchSize: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
