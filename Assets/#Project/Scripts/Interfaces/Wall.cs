@@ -4,17 +4,9 @@ using UnityEngine;
 
 public interface ILimit
 {
-
+    
 }
 
 public class Wall : MonoBehaviour, ILimit
 {
-    void Start()
-    {
-        
-    }
-    void Update()
-    {
-        
-    }
 }
