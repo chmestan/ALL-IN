@@ -164,6 +164,9 @@ MonoBehaviour:
   deceleration: 80
   turnSpeed: 1
   turnSpeedCompensation: 5
+  diagonalBufferTime: 0.1
+  lastDirection: {x: 0, y: 0}
+  debug: 1
 --- !u!212 &273175375
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -245,6 +248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
   shootingDelay: 0.35
+  debug: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

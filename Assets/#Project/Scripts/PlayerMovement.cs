@@ -60,14 +60,14 @@ public class PlayerMovement : MonoBehaviour
         transform.Translate(currentVelocity * Time.deltaTime);
 
         if (moveAmount != Vector2.zero)
-                {
-                    bool isDiagonal = Mathf.Abs(moveAmount.x) > 0 && Mathf.Abs(moveAmount.y) > 0;
-                    if (isDiagonal || Time.time - lastDirectionUpdateTime > diagonalBufferTime)
-                    {
-                        lastDirection = moveAmount;
-                        lastDirectionUpdateTime = Time.time;
-                    }
-                }    
+        {
+            bool isDiagonal = Mathf.Abs(moveAmount.x) > 0 && Mathf.Abs(moveAmount.y) > 0;
+            if (isDiagonal || Time.time - lastDirectionUpdateTime > diagonalBufferTime)
+            {
+                lastDirection = moveAmount;
+                lastDirectionUpdateTime = Time.time;
+            }
+        }    
     }
 
 
