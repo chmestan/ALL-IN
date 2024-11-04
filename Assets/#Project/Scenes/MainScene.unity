@@ -855,7 +855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
-  paused: 1
+  paused: 0
 --- !u!114 &2084806509
 MonoBehaviour:
   m_ObjectHideFlags: 0
