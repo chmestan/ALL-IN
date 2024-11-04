@@ -6,31 +6,37 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header ("Movement")]
+    [Header ("Input Map")]
     [SerializeField] InputActionAsset inputActions;
+
+    [Header ("Movement"), Space (10f)]
     [SerializeField] float speed = 9f;
     [SerializeField] float acceleration = 30f;
     [SerializeField] float deceleration = 80f;
     [SerializeField] float turnSpeed = 1f;
     [SerializeField] float turnSpeedCompensation = 9f;
+
+    [Header ("Technical"), Space (10f)]
+    [SerializeField] float diagonalBufferTime = 0.1f;
+
     public Vector2 lastDirection = new Vector2(1,0);
+
+    private float lastDirectionUpdateTime;
+
     private Vector2 currentVelocity = Vector2.zero;    
     private InputAction move;
-    [SerializeField] bool debug = false;
+
+
+    [SerializeField, Space (20) ] bool debug = false;
 
     private void Awake()
     {
         move = inputActions.FindActionMap("Player").FindAction("move");
     }
-
-
-
     private void OnEnable()
     {
         inputActions.FindActionMap("Player").Enable();
     }
-
-
     private void OnDisable()
     {
         inputActions.FindActionMap("Player").Disable();
@@ -53,7 +59,15 @@ public class PlayerMovement : MonoBehaviour
 
         transform.Translate(currentVelocity * Time.deltaTime);
 
-        lastDirection = (moveAmount != Vector2.zero)? moveAmount : lastDirection;
+        if (moveAmount != Vector2.zero)
+                {
+                    bool isDiagonal = Mathf.Abs(moveAmount.x) > 0 && Mathf.Abs(moveAmount.y) > 0;
+                    if (isDiagonal || Time.time - lastDirectionUpdateTime > diagonalBufferTime)
+                    {
+                        lastDirection = moveAmount;
+                        lastDirectionUpdateTime = Time.time;
+                    }
+                }    
     }
 
 

@@ -6,10 +6,15 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
+    [Header ("Input Map")]
     [SerializeField] InputActionAsset inputActions;
+
+    [Header ("Shooting"), Space (10f)]
+    [SerializeField] float shootingDelay = 0.5f;
+
+    
     private InputAction shoot;
     private InputAction shootDirection;
-    [SerializeField] float shootingDelay = 0.5f;
     private float lastShotTime;
     private Vector2 facingDirection;
     private PlayerMovement playerMovement;
@@ -19,7 +24,7 @@ public class PlayerShoot : MonoBehaviour
         set { playerMovement.lastDirection = value; } 
     }
 
-    [SerializeField] bool debug = false;
+    [SerializeField, Space (20f)] bool debug = false;
 
     private void Awake()
     {
