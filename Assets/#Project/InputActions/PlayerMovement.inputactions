@@ -231,6 +231,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "b2898807-aa21-4628-a7b3-f0f65a4cc8c0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "Arrows",
                     "id": "76d26b81-fb04-4e0e-ac00-ed7f09d2039d",
                     "path": "2DVector",

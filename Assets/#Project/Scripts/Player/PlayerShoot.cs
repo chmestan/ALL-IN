@@ -11,11 +11,11 @@ public class PlayerShoot : MonoBehaviour
 
     [Header ("Shooting"), Space (10f)]
     [SerializeField] float shootingDelay = 0.5f;
-
+    [SerializeField] Camera mainCamera;
     
     private InputAction shoot;
     private InputAction shootDirection;
-    private Vector2 shootAmount;
+    private Vector2 shootSnappedDir;
     private float lastShotTime;
     private PlayerMovement playerMovement;
     private Vector2 LastDirection
@@ -34,6 +34,9 @@ public class PlayerShoot : MonoBehaviour
         shootDirection = inputActions.FindActionMap("Player").FindAction("Shoot Direction");
         playerMovement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
+
+        if (mainCamera == null)
+            mainCamera = Camera.main;
     }
 
     private void OnEnable()
@@ -48,27 +51,34 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        UpdateShoot();
+        ShootingDirection();
         AnimPlayer();
         if (debug) DebugLogs();
     }
 
-    private void UpdateShoot()
+    private void ShootingDirection()
     {
-        if (shootDirection.ReadValue<Vector2>() != Vector2.zero) 
-        {
-            LastDirection = shootDirection.ReadValue<Vector2>();
-        }
-        shootAmount = LastDirection.normalized;
+        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Vector2 directionToMouse = (mousePos - (Vector2)transform.position).normalized;
+        shootSnappedDir = SnapToEightDirections(directionToMouse);
 
         bool shootingInput = (shoot.ReadValue<float>() == 1);
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
         {
-            Shoot(shootAmount);
+            Shoot(shootSnappedDir);
             lastShotTime = Time.time;
         }
 
+        LastDirection = shootSnappedDir;
     }
+
+    private Vector2 SnapToEightDirections(Vector2 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float snappedAngle = Mathf.Round(angle / 45f) * 45f;
+        return new Vector2(Mathf.Cos(snappedAngle * Mathf.Deg2Rad), Mathf.Sin(snappedAngle * Mathf.Deg2Rad)).normalized;
+    }
+
     private void Shoot(Vector2 direction)
     {
         Vector2 bulletDirection = direction;
@@ -85,8 +95,8 @@ public class PlayerShoot : MonoBehaviour
 
     private void AnimPlayer()
     {
-        anim.SetFloat("LastMoveX", shootAmount.x);
-        anim.SetFloat("LastMoveY", shootAmount.y);
+        anim.SetFloat("LastMoveX", shootSnappedDir.x);
+        anim.SetFloat("LastMoveY", shootSnappedDir.y);
     }
 
     private void DebugLogs()
