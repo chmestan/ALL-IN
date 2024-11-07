@@ -24,8 +24,10 @@ public class PlayerMovement : MonoBehaviour
         [SerializeField] float diagonalBufferTime = 0.1f;
         private float lastDirectionUpdateTime;
 
-
     [SerializeField] private ArenaState manager;
+
+    [SerializeField] private Animator anim;
+
 
 
     [SerializeField, Space (20) ] bool debug = false;
