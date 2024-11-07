@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [Header ("Input Map")]
         [SerializeField] InputActionAsset inputActions;
         private InputAction move;
-        private Vector2 moveAmount;
+        public Vector2 moveAmount;
 
     [Header ("Movement"), Space (10f)]
         [SerializeField] float speed = 9f;
@@ -80,8 +80,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 lastDirection = moveAmount;
                 lastDirectionUpdateTime = Time.time;
-                // anim.SetFloat("LastMoveX", lastDirection.x);
-                // anim.SetFloat("LastMoveY", lastDirection.y);
             }
         }   
     }

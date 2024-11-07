@@ -17,7 +17,6 @@ public class PlayerShoot : MonoBehaviour
     private InputAction shootDirection;
     private Vector2 shootAmount;
     private float lastShotTime;
-    private Vector2 facingDirection;
     private PlayerMovement playerMovement;
     private Vector2 LastDirection
     {
@@ -56,12 +55,11 @@ public class PlayerShoot : MonoBehaviour
 
     private void UpdateShoot()
     {
-        facingDirection = new Vector2(
-            (LastDirection.x > 0)? 1 : ((LastDirection.x < 0)? -1 : 0),
-            (LastDirection.y > 0)? 1 : ((LastDirection.y < 0)? -1 : 0)
-        );       
-    
-        shootAmount = (shootDirection.ReadValue<Vector2>() != Vector2.zero)? shootDirection.ReadValue<Vector2>().normalized: facingDirection.normalized;
+        if (shootDirection.ReadValue<Vector2>() != Vector2.zero) 
+        {
+            LastDirection = shootDirection.ReadValue<Vector2>();
+        }
+        shootAmount = LastDirection.normalized;
 
         bool shootingInput = (shoot.ReadValue<float>() == 1);
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
@@ -96,7 +94,7 @@ public class PlayerShoot : MonoBehaviour
         if (debug) 
         {
             Debug.Log($"[PlayerShoot] Shoot direction input = {shootDirection.ReadValue<Vector2>()}");
-            Debug.Log($"[PlayerShoot] Facing direction = {facingDirection}");
+            Debug.Log($"[PlayerShoot] Facing direction = {LastDirection}");
         }
     }
 }
