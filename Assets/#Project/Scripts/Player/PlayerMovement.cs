@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private ArenaState manager;
 
-    [SerializeField] private Animator anim;
+    private Animator anim;
 
 
 
@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         move = inputActions.FindActionMap("Player").FindAction("move");
+        anim = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -55,6 +56,13 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         moveAmount = move.ReadValue<Vector2>();
+        anim.SetFloat("MoveX", moveAmount.x);
+        anim.SetFloat("MoveY", moveAmount.y);
+
+        float magnitudeX = Math.Abs(moveAmount.x);
+        float magnitudeY = Math.Abs(moveAmount.y);
+        anim.SetFloat("MoveMagnitude", Math.Max(magnitudeX,magnitudeY));
+        
         if (debug) Debug.Log($"[PlayerMovement] Move Amount = {moveAmount}");
         Vector2 targetVelocity = moveAmount.normalized * speed ;
 
@@ -77,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 lastDirection = moveAmount;
                 lastDirectionUpdateTime = Time.time;
+                anim.SetFloat("LastMoveX", lastDirection.x);
+                anim.SetFloat("LastMoveY", lastDirection.y);
             }
         }   
     }

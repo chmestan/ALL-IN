@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
-  speed: 9
+  speed: 4.3
   acceleration: 50
   deceleration: 80
   turnSpeed: 1
@@ -168,7 +168,6 @@ MonoBehaviour:
   lastDirection: {x: 0, y: 0}
   diagonalBufferTime: 0.1
   manager: {fileID: 2084806507}
-  anim: {fileID: 0}
   debug: 0
 --- !u!212 &273175375
 SpriteRenderer:
