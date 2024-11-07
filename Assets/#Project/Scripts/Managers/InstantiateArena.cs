@@ -8,9 +8,9 @@ public class InstantiateArena : MonoBehaviour
 
     Dictionary<EnemyTypeEnum, int> enemiesToSpawn = new Dictionary<EnemyTypeEnum, int>
     {
-        { EnemyTypeEnum.Enemy0, 2 },
-        { EnemyTypeEnum.Enemy1, 3 },
-        { EnemyTypeEnum.Enemy2, 1 }
+        { EnemyTypeEnum.Enemy0, 1 },
+        { EnemyTypeEnum.Enemy1, 2 },
+        { EnemyTypeEnum.Enemy2, 3 }
     };
 
     private void Start()
