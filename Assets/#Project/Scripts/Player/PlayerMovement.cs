@@ -51,18 +51,13 @@ public class PlayerMovement : MonoBehaviour
         if (manager.state == ArenaStateEnum.Paused) return;
         Move();
         UpdateLastDirection();
+        AnimPlayer();
     }
 
     private void Move()
     {
         moveAmount = move.ReadValue<Vector2>();
-        anim.SetFloat("MoveX", moveAmount.x);
-        anim.SetFloat("MoveY", moveAmount.y);
 
-        float magnitudeX = Math.Abs(moveAmount.x);
-        float magnitudeY = Math.Abs(moveAmount.y);
-        anim.SetFloat("MoveMagnitude", Math.Max(magnitudeX,magnitudeY));
-        
         if (debug) Debug.Log($"[PlayerMovement] Move Amount = {moveAmount}");
         Vector2 targetVelocity = moveAmount.normalized * speed ;
 
@@ -85,10 +80,21 @@ public class PlayerMovement : MonoBehaviour
             {
                 lastDirection = moveAmount;
                 lastDirectionUpdateTime = Time.time;
-                anim.SetFloat("LastMoveX", lastDirection.x);
-                anim.SetFloat("LastMoveY", lastDirection.y);
+                // anim.SetFloat("LastMoveX", lastDirection.x);
+                // anim.SetFloat("LastMoveY", lastDirection.y);
             }
         }   
+    }
+
+    private void AnimPlayer()
+    {
+        anim.SetFloat("MoveX", moveAmount.x);
+        anim.SetFloat("MoveY", moveAmount.y);
+
+        float magnitudeX = Math.Abs(moveAmount.x);
+        float magnitudeY = Math.Abs(moveAmount.y);
+        anim.SetFloat("MoveMagnitude", Math.Max(magnitudeX,magnitudeY));
+
     }
 
 }

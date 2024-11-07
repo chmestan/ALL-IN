@@ -15,6 +15,7 @@ public class PlayerShoot : MonoBehaviour
     
     private InputAction shoot;
     private InputAction shootDirection;
+    private Vector2 shootAmount;
     private float lastShotTime;
     private Vector2 facingDirection;
     private PlayerMovement playerMovement;
@@ -24,6 +25,8 @@ public class PlayerShoot : MonoBehaviour
         set { playerMovement.lastDirection = value; } 
     }
 
+    private Animator anim;
+
     [SerializeField, Space (20f)] bool debug = false;
 
     private void Awake()
@@ -31,6 +34,7 @@ public class PlayerShoot : MonoBehaviour
         shoot = inputActions.FindActionMap("Player").FindAction("Shoot");
         shootDirection = inputActions.FindActionMap("Player").FindAction("Shoot Direction");
         playerMovement = GetComponent<PlayerMovement>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -46,6 +50,7 @@ public class PlayerShoot : MonoBehaviour
     private void Update()
     {
         UpdateShoot();
+        AnimPlayer();
         if (debug) DebugLogs();
     }
 
@@ -56,7 +61,7 @@ public class PlayerShoot : MonoBehaviour
             (LastDirection.y > 0)? 1 : ((LastDirection.y < 0)? -1 : 0)
         );       
     
-        Vector2 shootAmount = (shootDirection.ReadValue<Vector2>() != Vector2.zero)? shootDirection.ReadValue<Vector2>().normalized: facingDirection.normalized;
+        shootAmount = (shootDirection.ReadValue<Vector2>() != Vector2.zero)? shootDirection.ReadValue<Vector2>().normalized: facingDirection.normalized;
 
         bool shootingInput = (shoot.ReadValue<float>() == 1);
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
@@ -78,6 +83,12 @@ public class PlayerShoot : MonoBehaviour
             bullet.SetActive(true);
             bulletMvmt.SetDirection(bulletDirection);
         }
+    }
+
+    private void AnimPlayer()
+    {
+        anim.SetFloat("LastMoveX", shootAmount.x);
+        anim.SetFloat("LastMoveY", shootAmount.y);
     }
 
     private void DebugLogs()
