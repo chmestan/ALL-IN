@@ -75,8 +75,12 @@ public class PlayerShoot : MonoBehaviour
     private Vector2 SnapToEightDirections(Vector2 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Atan allows to find the angle between the positive X-axis and a(y,x) vector
+        // It returns an angle in radians and [ * Mathf.Rad2Deg ] converts it to degrees
         float snappedAngle = Mathf.Round(angle / 45f) * 45f;
+        // tells us which 45 degree angle we're closest to
         return new Vector2(Mathf.Cos(snappedAngle * Mathf.Deg2Rad), Mathf.Sin(snappedAngle * Mathf.Deg2Rad)).normalized;
+        // converts our angle to a directional vector
     }
 
     private void Shoot(Vector2 direction)
