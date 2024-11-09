@@ -7,11 +7,12 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
+    private InputDeviceHandler inputMgr;
 
     [Header("Input Map")]
-    [SerializeField] InputActionAsset inputActions;
-    private InputAction shootInput;
-    private InputAction shootDirectionInput;
+    // [SerializeField] InputActionAsset inputActions;
+    // private InputAction shootInput;
+    // private InputAction shootDirectionInput;
 
 
     [Header("Shooting"), Space(10f)]
@@ -40,68 +41,8 @@ public class PlayerShoot : MonoBehaviour
         if (mainCamera == null)
             mainCamera = Camera.main;
 
-        // Subscribe to device change events
-        InputSystem.onDeviceChange += OnDeviceChange;
+        inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
         
-        DetectCurrentInputMode();
-        SwitchInputMap();
-    }
-
-    private void OnEnable()
-    {
-        EnableInputMap();
-    }
-
-    private void OnDisable()
-    {
-        DisableInputMap();
-        InputSystem.onDeviceChange -= OnDeviceChange;
-    }
-
-    private void OnDeviceChange(InputDevice device, InputDeviceChange change)
-    {
-        if (change == InputDeviceChange.Added || change == InputDeviceChange.Removed)
-        {
-            DetectCurrentInputMode();
-            SwitchInputMap();
-        }
-    }
-
-    private void DetectCurrentInputMode()
-    {
-        useGamepad = (Gamepad.current != null); 
-    }
-
-    private void SwitchInputMap()
-    {
-        if (useGamepad)
-        {
-            inputActions.FindActionMap("PlayerKeyboard").Disable();
-            inputActions.FindActionMap("PlayerGamepad").Enable();
-            shootInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot");
-            shootDirectionInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot Direction");
-        }
-        else
-        {
-            inputActions.FindActionMap("PlayerGamepad").Disable();
-            inputActions.FindActionMap("PlayerKeyboard").Enable();
-            shootInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Shoot");
-            shootDirectionInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Shoot Direction");
-        }
-    }
-
-    private void EnableInputMap()
-    {
-        if (useGamepad)
-            inputActions.FindActionMap("PlayerGamepad").Enable();
-        else
-            inputActions.FindActionMap("PlayerKeyboard").Enable();
-    }
-
-    private void DisableInputMap()
-    {
-        inputActions.FindActionMap("PlayerKeyboard").Disable();
-        inputActions.FindActionMap("PlayerGamepad").Disable();
     }
 
     private void Update()
@@ -113,34 +54,35 @@ public class PlayerShoot : MonoBehaviour
 
     private void ShootingDirection()
     {
-        if (!useGamepad)
+        if (!inputMgr.useGamepad)
         {
             Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             shootDirection = (mousePos - (Vector2)transform.position).normalized; // direction to mouse
         }
         else
         {
-            shootDirection = shootDirectionInput.ReadValue<Vector2>().normalized;
+            shootDirection = inputMgr.shootDirectionInput.ReadValue<Vector2>().normalized;
             if (shootDirection != Vector2.zero)
             {
                 LastDirection = shootDirection;
             }
         }
 
-        bool shootingInput = (shootInput.ReadValue<float>() == 1);
+        bool shootingInput = (inputMgr.shootInput.ReadValue<float>() == 1);
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
         {
             Shoot(LastDirection);
             lastShotTime = Time.time;
         }
     }
+    
 
-    private Vector2 SnapToEightDirections(Vector2 direction)
-    {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        float snappedAngle = Mathf.Round(angle / 45f) * 45f;
-        return new Vector2(Mathf.Cos(snappedAngle * Mathf.Deg2Rad), Mathf.Sin(snappedAngle * Mathf.Deg2Rad)).normalized;
-    }
+    // private Vector2 SnapToEightDirections(Vector2 direction)
+    // {
+    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    //     float snappedAngle = Mathf.Round(angle / 45f) * 45f;
+    //     return new Vector2(Mathf.Cos(snappedAngle * Mathf.Deg2Rad), Mathf.Sin(snappedAngle * Mathf.Deg2Rad)).normalized;
+    // }
 
     private void Shoot(Vector2 direction)
     {
