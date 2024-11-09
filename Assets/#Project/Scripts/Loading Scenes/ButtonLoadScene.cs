@@ -6,13 +6,21 @@ public class ButtonLoadScene : MonoBehaviour
 {
     public void LoadShopScene(string scene)
     {
-        if (ChangeScene.Instance != null)
+        if (GlobalManager.Instance != null)
         {
-            ChangeScene.Instance.LoadScene(scene);
+            ChangeScene changeScene = GlobalManager.Instance.GetComponent<ChangeScene>();
+            if (changeScene != null)
+            {
+                changeScene.LoadScene(scene);
+            }
+            else
+            {
+                Debug.LogError("ChangeScene component not found on GlobalManager!");
+            }
         }
         else
         {
-            Debug.LogError("ChangeScene instance not found!");
+            Debug.LogError("GlobalManager instance not found!");
         }
     }
 }
