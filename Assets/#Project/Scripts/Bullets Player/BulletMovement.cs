@@ -9,18 +9,22 @@ public class BulletMovement : MonoBehaviour
     private PlayerShoot player;
     private Vector2 direction;
 
-    void Update()
+    void FixedUpdate()
     {
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-       if (other.gameObject.GetComponent<ILimit>() != null) gameObject.SetActive(false); 
+       if (other.gameObject.GetComponent<ILimit>() != null) 
+        {
+            gameObject.SetActive(false);
+            direction = Vector2.zero;
+        } 
     }
 
     public void SetDirection(Vector2 newDirection)
     {
-        direction = newDirection;
+        direction = newDirection.normalized;
     }
 }

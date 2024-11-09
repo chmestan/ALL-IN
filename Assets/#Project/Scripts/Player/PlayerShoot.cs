@@ -18,7 +18,7 @@ public class PlayerShoot : MonoBehaviour
         private float lastShotTime;
         private Vector2 LastDirection
         {
-            get { return playerMovement.lastDirection; }
+            get { return playerMovement.lastDirection.normalized; }
             set { playerMovement.lastDirection = value; }
         }
 
@@ -48,16 +48,15 @@ public class PlayerShoot : MonoBehaviour
         if (!inputMgr.useGamepad)
         {
             Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            shootDirection = (mousePos - (Vector2)transform.position).normalized; // direction to mouse
-            LastDirection = shootDirection;
+            shootDirection = (mousePos - (Vector2)transform.position); // direction to mouse
+            LastDirection = shootDirection.normalized;
         }
         else
         {
-            shootDirection = inputMgr.shootDirectionInput.ReadValue<Vector2>().normalized;
-            if (debug) Debug.Log($"[PlayerShoot] Shoot input: {shootDirection}");
-            if (shootDirection != Vector2.zero)
+            shootDirection = inputMgr.shootDirectionInput.ReadValue<Vector2>();
+            if (shootDirection.magnitude > 0)
             {
-                LastDirection = shootDirection;
+                LastDirection = shootDirection.normalized;
             }
         }
         return LastDirection;
@@ -91,6 +90,8 @@ public class PlayerShoot : MonoBehaviour
             bullet.SetActive(true);
             bulletMvmt.SetDirection(direction);
         }
+        if (debug) Debug.Log($"[BulletShot] Direction: {direction}, Magnitude: {direction.magnitude}");
+
     }
 
     private void AnimPlayer()

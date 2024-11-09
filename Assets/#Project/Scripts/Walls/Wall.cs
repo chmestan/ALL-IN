@@ -2,9 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDamageable
+public class Wall : MonoBehaviour, ILimit
 {
-    void GetHit();
-    void Die();
-}
 
+}

@@ -7,6 +7,3 @@ public interface ILimit
     
 }
 
-public class Wall : MonoBehaviour, ILimit
-{
-}
