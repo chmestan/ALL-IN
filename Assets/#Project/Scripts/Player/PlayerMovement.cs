@@ -6,10 +6,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header ("Input Map")]
-        [SerializeField] InputActionAsset inputActions;
-        private InputAction move;
-        public Vector2 moveAmount;
+    
+        [SerializeField] private ArenaState arenaMgr;
+        private InputDeviceHandler inputMgr;
+        private Vector2 moveAmount;
+        private Animator anim;
 
     [Header ("Movement"), Space (10f)]
         [SerializeField] float speed = 9f;
@@ -24,31 +25,19 @@ public class PlayerMovement : MonoBehaviour
         [SerializeField] float diagonalBufferTime = 0.1f;
         private float lastDirectionUpdateTime;
 
-    [SerializeField] private ArenaState manager;
-
-    private Animator anim;
-
-
 
     [SerializeField, Space (20) ] bool debug = false;
 
+
     private void Awake()
     {
-        move = inputActions.FindActionMap("Player").FindAction("move");
+        inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
         anim = GetComponent<Animator>();
-    }
-    private void OnEnable()
-    {
-        inputActions.FindActionMap("Player").Enable();
-    }
-    private void OnDisable()
-    {
-        inputActions.FindActionMap("Player").Disable();
     }
 
     private void Update()
     {
-        if (manager.state == ArenaStateEnum.Paused) return;
+        if (arenaMgr.state == ArenaStateEnum.Paused) return;
         Move();
         UpdateLastDirection();
         AnimPlayer();
@@ -56,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        moveAmount = move.ReadValue<Vector2>();
+        moveAmount = inputMgr.moveInput.ReadValue<Vector2>();
 
         if (debug) Debug.Log($"[PlayerMovement] Move Amount = {moveAmount}");
         Vector2 targetVelocity = moveAmount.normalized * speed ;

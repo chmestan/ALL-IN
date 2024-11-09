@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-
-public class ChangeScene : MonoBehaviour
+public class GlobalManager : MonoBehaviour
 {
-    public static ChangeScene Instance { get; private set; }
+    public static GlobalManager Instance { get; private set; }
 
     private void Awake()
     {
@@ -21,12 +19,4 @@ public class ChangeScene : MonoBehaviour
             Destroy(gameObject); 
         }
     }
-
-    public void LoadScene(string scene)
-    {
-        scene = scene.Trim();
-        Debug.Log("sceneName to load: " + scene);
-        SceneManager.LoadScene(scene);
-    }
-
 }

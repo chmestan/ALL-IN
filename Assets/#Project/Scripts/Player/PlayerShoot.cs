@@ -6,109 +6,104 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [Header ("Input Map")]
-    [SerializeField] InputActionAsset inputActions;
-
-    [Header ("Shooting"), Space (10f)]
-    [SerializeField] float shootingDelay = 0.5f;
     [SerializeField] Camera mainCamera;
-    
-    private InputAction shoot;
-    private InputAction shootDirection;
-    private Vector2 shootSnappedDir;
-    private float lastShotTime;
+    [SerializeField] private ArenaState arenaMgr;
+    private InputDeviceHandler inputMgr;
     private PlayerMovement playerMovement;
-    private Vector2 LastDirection
-    {
-        get { return playerMovement.lastDirection; } 
-        set { playerMovement.lastDirection = value; } 
-    }
-
     private Animator anim;
 
-    [SerializeField, Space (20f)] bool debug = false;
+    [Header("Shooting"), Space(10f)]
+        [SerializeField] float shootingDelay = 0.5f;
+        private Vector2 shootDirection;
+        private float lastShotTime;
+        private Vector2 LastDirection
+        {
+            get { return playerMovement.lastDirection; }
+            set { playerMovement.lastDirection = value; }
+        }
+
+    [SerializeField, Space(20f)] bool debug = false;
 
     private void Awake()
     {
-        shoot = inputActions.FindActionMap("Player").FindAction("Shoot");
-        shootDirection = inputActions.FindActionMap("Player").FindAction("Shoot Direction");
+        inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
         playerMovement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
 
         if (mainCamera == null)
             mainCamera = Camera.main;
-    }
 
-    private void OnEnable()
-    {
-        inputActions.FindActionMap("Player").Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.FindActionMap("Player").Disable();
     }
 
     private void Update()
     {
-        ShootingDirection();
+        if (arenaMgr.state == ArenaStateEnum.Paused) return;
+        Shoot(FacingDirection());
         AnimPlayer();
         if (debug) DebugLogs();
     }
 
-    private void ShootingDirection()
+    private Vector2 FacingDirection()
     {
-        Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        Vector2 directionToMouse = (mousePos - (Vector2)transform.position).normalized;
-        shootSnappedDir = SnapToEightDirections(directionToMouse);
-
-        bool shootingInput = (shoot.ReadValue<float>() == 1);
+        if (!inputMgr.useGamepad)
+        {
+            Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            shootDirection = (mousePos - (Vector2)transform.position).normalized; // direction to mouse
+            LastDirection = shootDirection;
+        }
+        else
+        {
+            shootDirection = inputMgr.shootDirectionInput.ReadValue<Vector2>().normalized;
+            if (debug) Debug.Log($"[PlayerShoot] Shoot input: {shootDirection}");
+            if (shootDirection != Vector2.zero)
+            {
+                LastDirection = shootDirection;
+            }
+        }
+        return LastDirection;
+    }
+    
+    private void Shoot(Vector2 facingDir)
+    {
+        bool shootingInput = (inputMgr.shootInput.ReadValue<float>() == 1);
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
         {
-            Shoot(shootSnappedDir);
+            BulletShot(facingDir);
             lastShotTime = Time.time;
         }
 
-        LastDirection = shootSnappedDir;
     }
 
-    private Vector2 SnapToEightDirections(Vector2 direction)
-    {
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        // Atan allows to find the angle between the positive X-axis and a(y,x) vector
-        // It returns an angle in radians and [ * Mathf.Rad2Deg ] converts it to degrees
-        float snappedAngle = Mathf.Round(angle / 45f) * 45f;
-        // tells us which 45 degree angle we're closest to
-        return new Vector2(Mathf.Cos(snappedAngle * Mathf.Deg2Rad), Mathf.Sin(snappedAngle * Mathf.Deg2Rad)).normalized;
-        // converts our angle to a directional vector
-    }
+    // private Vector2 SnapToEightDirections(Vector2 direction)
+    // {
+    //     float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+    //     float snappedAngle = Mathf.Round(angle / 45f) * 45f;
+    //     return new Vector2(Mathf.Cos(snappedAngle * Mathf.Deg2Rad), Mathf.Sin(snappedAngle * Mathf.Deg2Rad)).normalized;
+    // }
 
-    private void Shoot(Vector2 direction)
+    private void BulletShot(Vector2 direction)
     {
-        Vector2 bulletDirection = direction;
-        GameObject bullet = BulletPool.SharedInstance.GetPooledObject(); 
-        if (bullet != null) 
+        GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
+        if (bullet != null)
         {
             BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
             bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
             bullet.SetActive(true);
-            bulletMvmt.SetDirection(bulletDirection);
+            bulletMvmt.SetDirection(direction);
         }
     }
 
     private void AnimPlayer()
     {
-        anim.SetFloat("LastMoveX", shootSnappedDir.x);
-        anim.SetFloat("LastMoveY", shootSnappedDir.y);
+        anim.SetFloat("LastMoveX", LastDirection.x);
+        anim.SetFloat("LastMoveY", LastDirection.y);
     }
 
     private void DebugLogs()
     {
-        if (debug) 
+        if (debug)
         {
-            Debug.Log($"[PlayerShoot] Shoot direction input = {shootDirection.ReadValue<Vector2>()}");
-            Debug.Log($"[PlayerShoot] Facing direction = {LastDirection}");
+            // Debug.Log($"[PlayerShoot] Input mode: {(useGamepad ? "Gamepad" : "Keyboard/Mouse")}");
         }
     }
 }
