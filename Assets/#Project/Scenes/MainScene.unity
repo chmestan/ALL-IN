@@ -161,8 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33001c26a6367384cb779662e7c9d2c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
-  moveAmount: {x: 0, y: 0}
+  arenaMgr: {fileID: 2084806507}
   speed: 4.3
   acceleration: 50
   deceleration: 80
@@ -170,7 +169,6 @@ MonoBehaviour:
   turnSpeedCompensation: 5
   lastDirection: {x: 0, y: 0}
   diagonalBufferTime: 0.1
-  manager: {fileID: 2084806507}
   debug: 0
 --- !u!212 &273175375
 SpriteRenderer:
@@ -252,8 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
+  arenaMgr: {fileID: 2084806507}
   shootingDelay: 0.35
-  useGamepad: 0
   debug: 0
 --- !u!95 &273175378
 Animator:
@@ -704,6 +702,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
+  moveInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9f685df7-01e1-4019-bf55-d3ec87c25389
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  pauseInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 78e6ba3a-1963-4285-9908-1fbb16013484
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  shootInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 641f8169-4854-4390-86d4-f3ed7e74bc48
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  shootDirectionInput:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0ecd7475-7683-4a42-93eb-dace36a8115f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   useGamepad: 0
   debug: 0
 --- !u!4 &935208345 stripped
@@ -978,7 +1012,7 @@ GameObject:
   - component: {fileID: 2084806511}
   - component: {fileID: 2084806510}
   m_Layer: 0
-  m_Name: Arena Manager
+  m_Name: ARENA MANAGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1024,7 +1058,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d67b7d98e06ea947b2f757b2f476aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
   paused: 0
 --- !u!114 &2084806509
 MonoBehaviour:

@@ -6,12 +6,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [Header ("Input Map")]
     
+        [SerializeField] private ArenaState arenaMgr;
         private InputDeviceHandler inputMgr;
-
-        [SerializeField] InputActionAsset inputActions;
-        public Vector2 moveAmount;
+        private Vector2 moveAmount;
+        private Animator anim;
 
     [Header ("Movement"), Space (10f)]
         [SerializeField] float speed = 9f;
@@ -26,24 +25,19 @@ public class PlayerMovement : MonoBehaviour
         [SerializeField] float diagonalBufferTime = 0.1f;
         private float lastDirectionUpdateTime;
 
-    [SerializeField] private ArenaState manager;
-
-    private Animator anim;
-
-
 
     [SerializeField, Space (20) ] bool debug = false;
+
 
     private void Awake()
     {
         inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
-
         anim = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (manager.state == ArenaStateEnum.Paused) return;
+        if (arenaMgr.state == ArenaStateEnum.Paused) return;
         Move();
         UpdateLastDirection();
         AnimPlayer();

@@ -7,30 +7,21 @@ using UnityEngine.InputSystem;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
+    [SerializeField] private ArenaState arenaMgr;
     private InputDeviceHandler inputMgr;
-
-    [Header("Input Map")]
-    // [SerializeField] InputActionAsset inputActions;
-    // private InputAction shootInput;
-    // private InputAction shootDirectionInput;
-
-
-    [Header("Shooting"), Space(10f)]
-    [SerializeField] float shootingDelay = 0.5f;
-    private Vector2 shootDirection;
-    private float lastShotTime;
-    private Vector2 LastDirection
-    {
-        get { return playerMovement.lastDirection; }
-        set { playerMovement.lastDirection = value; }
-    }
-
-
     private PlayerMovement playerMovement;
     private Animator anim;
 
-    [Header("Gamepad?"), Space(10f)]
-    [SerializeField] bool useGamepad = false;
+    [Header("Shooting"), Space(10f)]
+        [SerializeField] float shootingDelay = 0.5f;
+        private Vector2 shootDirection;
+        private float lastShotTime;
+        private Vector2 LastDirection
+        {
+            get { return playerMovement.lastDirection; }
+            set { playerMovement.lastDirection = value; }
+        }
+
     [SerializeField, Space(20f)] bool debug = false;
 
     private void Awake()
@@ -46,6 +37,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
+        if (arenaMgr.state == ArenaStateEnum.Paused) return;
         Shoot(FacingDirection());
         AnimPlayer();
         if (debug) DebugLogs();
