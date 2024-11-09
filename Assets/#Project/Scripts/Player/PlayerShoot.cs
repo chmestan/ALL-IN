@@ -35,14 +35,13 @@ public class PlayerShoot : MonoBehaviour
 
     private void Awake()
     {
+        inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
         playerMovement = GetComponent<PlayerMovement>();
         anim = GetComponent<Animator>();
 
         if (mainCamera == null)
             mainCamera = Camera.main;
 
-        inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
-        
     }
 
     private void Update()

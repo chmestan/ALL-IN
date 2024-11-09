@@ -7,8 +7,10 @@ public class InputDeviceHandler : MonoBehaviour
 
     [Header("Input Map")]
     [SerializeField] InputActionAsset inputActions;
-    public InputAction shootInput { get; private set; }
-    public InputAction shootDirectionInput { get; private set; }
+    public InputAction moveInput;
+    public InputAction pauseInput;
+    public InputAction shootInput;
+    public InputAction shootDirectionInput;
 
     public bool useGamepad;
 
@@ -49,6 +51,8 @@ public class InputDeviceHandler : MonoBehaviour
             inputActions.FindActionMap("PlayerKeyboard").Disable();
             inputActions.FindActionMap("PlayerGamepad").Enable();
             if (debug) Debug.Log("[InputDeviceHandler] PlayerGamepad Input Map enabled");
+            moveInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Move");
+            pauseInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Pause");
             shootInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot");
             shootDirectionInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot Direction");
         }
@@ -57,6 +61,8 @@ public class InputDeviceHandler : MonoBehaviour
             inputActions.FindActionMap("PlayerGamepad").Disable();
             inputActions.FindActionMap("PlayerKeyboard").Enable();
             if (debug) Debug.Log("[InputDeviceHandler] PlayerKeyboard Input Map enabled");
+            moveInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Move");
+            pauseInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Pause");
             shootInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Shoot");
             // shootDirectionInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Shoot Direction");
         }

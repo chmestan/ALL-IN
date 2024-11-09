@@ -7,8 +7,10 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [Header ("Input Map")]
+    
+        private InputDeviceHandler inputMgr;
+
         [SerializeField] InputActionAsset inputActions;
-        private InputAction move;
         public Vector2 moveAmount;
 
     [Header ("Movement"), Space (10f)]
@@ -34,16 +36,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        move = inputActions.FindActionMap("Player").FindAction("move");
+        inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
+
         anim = GetComponent<Animator>();
-    }
-    private void OnEnable()
-    {
-        inputActions.FindActionMap("Player").Enable();
-    }
-    private void OnDisable()
-    {
-        inputActions.FindActionMap("Player").Disable();
     }
 
     private void Update()
@@ -56,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        moveAmount = move.ReadValue<Vector2>();
+        moveAmount = inputMgr.moveInput.ReadValue<Vector2>();
 
         if (debug) Debug.Log($"[PlayerMovement] Move Amount = {moveAmount}");
         Vector2 targetVelocity = moveAmount.normalized * speed ;
