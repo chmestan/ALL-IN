@@ -99,61 +99,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Controller Arrows",
-                    "id": "5108def5-1f07-4314-ba76-44a6e9d74dd1",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "860a8c3c-fcf7-4840-a54d-c210739806ea",
-                    "path": "<Gamepad>/dpad/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "4f1e307c-aef8-4189-acbc-9cc00f174d23",
-                    "path": "<Gamepad>/dpad/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "b1d59312-8d8a-4437-b8b0-9f262d41a458",
-                    "path": "<Gamepad>/dpad/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "2c11c354-f3b4-4b90-b825-b05022e7ea51",
-                    "path": "<Gamepad>/dpad/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "2802f5fb-a2e7-402e-92fa-522891ca9672",
                     "path": "<Keyboard>/space",
@@ -286,7 +231,7 @@
             ],
             "bindings": [
                 {
-                    "name": "Joystick",
+                    "name": "Controller Arrows",
                     "id": "7f381c2b-ee49-4ee1-88d2-eaf58b56d19e",
                     "path": "2DVector",
                     "interactions": "",
@@ -299,7 +244,7 @@
                 {
                     "name": "up",
                     "id": "6310abfd-40aa-41ec-85cd-341ae5600f95",
-                    "path": "<Gamepad>/leftStick/up",
+                    "path": "<Gamepad>/dpad/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -310,7 +255,7 @@
                 {
                     "name": "down",
                     "id": "99d4b88c-106b-47f8-9d84-931c40e323cb",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -321,7 +266,7 @@
                 {
                     "name": "left",
                     "id": "b8d8f21a-2286-4333-821c-147d2e8dad93",
-                    "path": "<Gamepad>/leftStick/left",
+                    "path": "<Gamepad>/dpad/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -332,13 +277,24 @@
                 {
                     "name": "right",
                     "id": "604071c6-257b-400d-a9cc-4fe83a0aeb8e",
-                    "path": "<Gamepad>/leftStick/right",
+                    "path": "<Gamepad>/dpad/right",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "e3c16332-3dc6-48ed-9fc8-7932214ef50a",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -352,59 +308,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Joystick",
-                    "id": "093d6629-71fa-4b16-9b35-e9660e6bd3d9",
-                    "path": "2DVector",
+                    "name": "",
+                    "id": "71254d77-c3e4-45ac-a45f-037543e8a65a",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Shoot Direction",
-                    "isComposite": true,
+                    "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "fb1d8c37-0b28-40b9-a96e-750a0c3e9d09",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot Direction",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "97b8cca3-87fe-428e-bc9e-7e3e8d1f9f23",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot Direction",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "978b6f98-b39b-4d7b-a964-bbd39d16a33c",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot Direction",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "16aefb20-1c69-4b4f-ac62-a405b766aca0",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot Direction",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
