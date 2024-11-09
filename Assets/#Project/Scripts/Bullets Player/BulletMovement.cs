@@ -14,9 +14,9 @@ public class BulletMovement : MonoBehaviour
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-       if (collision.gameObject.GetComponent<ILimit>() != null) gameObject.SetActive(false); 
+       if (other.gameObject.GetComponent<ILimit>() != null) gameObject.SetActive(false); 
     }
 
     public void SetDirection(Vector2 newDirection)

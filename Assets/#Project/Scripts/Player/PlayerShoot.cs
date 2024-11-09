@@ -47,35 +47,41 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        ShootingDirection();
+        Shoot(FacingDirection());
         AnimPlayer();
         if (debug) DebugLogs();
     }
 
-    private void ShootingDirection()
+    private Vector2 FacingDirection()
     {
         if (!inputMgr.useGamepad)
         {
             Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             shootDirection = (mousePos - (Vector2)transform.position).normalized; // direction to mouse
+            LastDirection = shootDirection;
         }
         else
         {
             shootDirection = inputMgr.shootDirectionInput.ReadValue<Vector2>().normalized;
+            if (debug) Debug.Log($"[PlayerShoot] Shoot input: {shootDirection}");
             if (shootDirection != Vector2.zero)
             {
                 LastDirection = shootDirection;
             }
         }
-
+        return LastDirection;
+    }
+    
+    private void Shoot(Vector2 facingDir)
+    {
         bool shootingInput = (inputMgr.shootInput.ReadValue<float>() == 1);
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
         {
-            Shoot(LastDirection);
+            BulletShot(facingDir);
             lastShotTime = Time.time;
         }
+
     }
-    
 
     // private Vector2 SnapToEightDirections(Vector2 direction)
     // {
@@ -84,7 +90,7 @@ public class PlayerShoot : MonoBehaviour
     //     return new Vector2(Mathf.Cos(snappedAngle * Mathf.Deg2Rad), Mathf.Sin(snappedAngle * Mathf.Deg2Rad)).normalized;
     // }
 
-    private void Shoot(Vector2 direction)
+    private void BulletShot(Vector2 direction)
     {
         GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
         if (bullet != null)
@@ -106,7 +112,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (debug)
         {
-            Debug.Log($"[PlayerShoot] Input mode: {(useGamepad ? "Gamepad" : "Keyboard/Mouse")}");
+            // Debug.Log($"[PlayerShoot] Input mode: {(useGamepad ? "Gamepad" : "Keyboard/Mouse")}");
         }
     }
 }

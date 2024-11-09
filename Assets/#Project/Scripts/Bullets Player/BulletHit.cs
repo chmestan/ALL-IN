@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class BulletHit : MonoBehaviour
 {
+
+    [SerializeField] private bool debug = false; 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log($"{collider.name}");
+        if (debug) Debug.Log($"{collider.name}");
     }
 }
