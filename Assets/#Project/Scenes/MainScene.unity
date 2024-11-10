@@ -252,7 +252,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   arenaMgr: {fileID: 2084806507}
   shootingDelay: 0.35
-  debug: 1
+  debug: 0
 --- !u!95 &273175378
 Animator:
   serializedVersion: 5
