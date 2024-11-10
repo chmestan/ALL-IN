@@ -17,6 +17,8 @@ The game also includes roguelite elements as :
 * Both keyboard/mouse and controller support; auto detection of device;
 * Walking and 360 degrees shooting for both setups;
 * Placeholder animations for walking and idle;
-* Draft of enemies' pooling.
+* Draft of enemies' pooling;
+* Enemy class, prefabs, and scriptable objects for stats;
+* Placeholder tileset with rule tiles.
 
 [^1]: Temporary name.
