@@ -5,15 +5,19 @@ using UnityEngine;
 
 public class BulletHit : MonoBehaviour
 {
+
+    [SerializeField] private int damage = 5;
+
     [SerializeField] private bool debug = false; 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        IDamageable damageable = collider.gameObject.GetComponent<IDamageable>();
+        IEnemy enemy = collider.gameObject.GetComponent<IEnemy>();
         ILimit limit = collider.gameObject.GetComponent<ILimit>();
 
-        if (damageable != null)
+        if (enemy != null)
         {
-            if (debug) Debug.Log($"[BulletHit] A bullet has damaged {collider.gameObject}");
+            if (debug) Debug.Log($"[BulletHit] A bullet has damaged {collider.gameObject} for {damage} damage.");
+            enemy.GetHit(damage);
         }
 
         if (limit != null) 
