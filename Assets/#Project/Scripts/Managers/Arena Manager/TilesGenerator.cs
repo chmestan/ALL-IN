@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -7,9 +8,9 @@ public class TilesGenerator : MonoBehaviour
 {
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private Tile[] groundTiles;
-    [SerializeField] private Tile[] holeTiles;
+    [SerializeField] private Tile neutralTile;
     [SerializeField] private Vector2Int size = new Vector2Int(28, 14);
-    [SerializeField] private int numberOfHoles = 3;
+    [SerializeField] private int numberOfObstacles = 3;
     [SerializeField] private bool debug = false;
 
     private Vector2Int offset;
@@ -32,23 +33,29 @@ public class TilesGenerator : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < numberOfHoles; i++)
+        for (int i = 0; i < numberOfObstacles; i++)
         {
-            CreateHole();
+            CreateObstacles();
         }
 
     }
 
-    private void CreateHole()
+    private void CreateObstacles()
     {
         int x = Random.Range(1, size.x - 1);
         int y = Random.Range(1, size.y - 1);
 
-        Vector3Int holePosition = new Vector3Int(x + offset.x, y + offset.y, 0);
+        Vector3Int obstaclePos = new Vector3Int(x + offset.x, y + offset.y, 0);
 
-        Tile holeTile = holeTiles[Random.Range(0, holeTiles.Length)];
-        tilemap.SetTile(holePosition, holeTile);
+        tilemap.SetTile(obstaclePos, neutralTile);
 
-        if (debug) Debug.Log($"[TilesGenerator] Creating a hole at position ({holePosition.x}, {holePosition.y})");
+        GameObject pit = PitPool.SharedInstance.GetPooledObject();
+        if (pit != null)
+        {
+            pit.transform.position = obstaclePos + tilemap.cellSize/2;
+            pit.SetActive(true);
+        }
+
+        if (debug) Debug.Log($"[TilesGenerator] Creating obstacle at position ({obstaclePos.x}, {obstaclePos.y})");
     }
 }
