@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (arenaMgr.state == ArenaStateEnum.Paused) return;
         Move();
