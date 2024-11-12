@@ -9,6 +9,14 @@ public class EnemyBase : MonoBehaviour, IEnemy
         [SerializeField] private EnemyStats stats;
         protected int currentHealth;
 
+    protected NavMeshAgent agent;
+
+    private void Start()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+    }
 
     private void OnEnable()
     {
