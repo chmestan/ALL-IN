@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: EnemyType0Stats
   m_EditorClassIdentifier: 
   type: 0
-  maxHealth: 5
+  maxHealth: 30
   moveSpeed: 1
   attackCooldown: 1
