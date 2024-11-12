@@ -5540,6 +5540,7 @@ GameObject:
   - component: {fileID: 253144949}
   - component: {fileID: 253144948}
   - component: {fileID: 253144947}
+  - component: {fileID: 253144950}
   m_Layer: 0
   m_Name: Pools
   m_TagString: Untagged
@@ -5606,9 +5607,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae31514532aed454db865a3eed1fd723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pooledBullets: []
-  bulletPrefab: {fileID: 276595243314985870, guid: 1174de9831ef88c4e8902d82f52e479c, type: 3}
+  pooledPlayerBullets: []
+  playerBulletPrefab: {fileID: 276595243314985870, guid: 1174de9831ef88c4e8902d82f52e479c, type: 3}
   batch: 20
+--- !u!114 &253144950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253144945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e169d63f90fdedb4eaf2f2c290671b49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPooledBullets: []
+  enemyBulletPrefab: {fileID: 276595243314985870, guid: 180d0a5573dc7e04f8f4e358bb12355e, type: 3}
+  batch: 0
 --- !u!1 &273175373
 GameObject:
   m_ObjectHideFlags: 0

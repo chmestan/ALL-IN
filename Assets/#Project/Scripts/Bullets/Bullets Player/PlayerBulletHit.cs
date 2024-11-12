@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletHit : MonoBehaviour
+public class PlayerBulletHit : MonoBehaviour
 {
 
     [SerializeField] private int damage = 5;

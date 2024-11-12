@@ -82,7 +82,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void BulletShot(Vector2 direction)
     {
-        GameObject bullet = BulletPool.SharedInstance.GetPooledObject();
+        GameObject bullet = PlayerBulletsPool.SharedInstance.GetPooledObject();
         if (bullet != null)
         {
             BulletMovement bulletMvmt = bullet.GetComponent<BulletMovement>();
