@@ -7,6 +7,7 @@ public class PitPool : MonoBehaviour
     public static PitPool SharedInstance;
     public List<GameObject> pooledPits;
     [SerializeField] GameObject pitPrefab;
+    [SerializeField] private Transform pitsParent;
     [SerializeField] int batch;
 
     private void Awake()
@@ -37,7 +38,7 @@ public class PitPool : MonoBehaviour
     {
         for(int i = 0; i < batch; i++)
         {
-            GameObject tmp = Instantiate(pitPrefab);
+            GameObject tmp = Instantiate(pitPrefab, pitsParent);
             tmp.SetActive(false);
             pooledPits.Add(tmp);        
         }
@@ -45,7 +46,7 @@ public class PitPool : MonoBehaviour
 
     private GameObject AddObjectToPool()
     {
-        GameObject tmp = Instantiate(pitPrefab);
+        GameObject tmp = Instantiate(pitPrefab, pitsParent);
         tmp.SetActive(false);
         pooledPits.Add(tmp);
         return tmp;
