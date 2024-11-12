@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3684722451207004767}
   - component: {fileID: 4419190529942340485}
   - component: {fileID: 3789018275707868687}
+  - component: {fileID: 4943951379739650493}
   m_Layer: 0
   m_Name: GLOBAL GAME MANAGER
   m_TagString: Untagged
@@ -57,3 +58,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7672cd676efbd3a4d8254b536b18ef8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4943951379739650493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523165654241456479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bf1826a35f5f5458a470ad21599e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: 6c2fc84d2ccce134aa1aa7fcd5ab58c2, type: 3}
+  moveInput:
+    m_Name: Move Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 9739eb6c-200d-4c73-a128-40c78c1708a3
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  pauseInput:
+    m_Name: Pause Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 2b2eb7e6-121f-4e75-bb13-1cee53f1ceed
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  shootInput:
+    m_Name: Shoot Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 0ad7ed59-503c-4b0c-a12e-9fdb6e0f3756
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  shootDirectionInput:
+    m_Name: Shoot Direction Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cd98bd74-5f67-4c59-bb73-db28f71bfe97
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  useGamepad: 0
+  debug: 0
