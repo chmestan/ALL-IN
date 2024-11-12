@@ -18,6 +18,7 @@ public class PlayerBulletHit : MonoBehaviour
         {
             if (debug) Debug.Log($"[BulletHit] A bullet has damaged {collider.gameObject} for {damage} damage.");
             enemy.GetHit(damage);
+            gameObject.SetActive(false); 
         }
 
         if (limit != null) 
