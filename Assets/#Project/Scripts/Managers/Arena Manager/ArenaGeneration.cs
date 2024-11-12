@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class TilesGenerator : MonoBehaviour
+public class ArenaGeneration : MonoBehaviour
 {
     [SerializeField] private Tilemap tilemap;
     [SerializeField] private Tile[] groundTiles;
