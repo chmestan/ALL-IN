@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NavMeshPlus.Components;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -12,6 +13,7 @@ public class TilesGenerator : MonoBehaviour
     [SerializeField] private Vector2Int size = new Vector2Int(28, 14);
     [SerializeField] private int numberOfObstacles = 3;
     [SerializeField] private bool debug = false;
+    [SerializeField] private NavMeshSurface navMeshSurface; 
 
     private Vector2Int offset;
 
@@ -19,6 +21,7 @@ public class TilesGenerator : MonoBehaviour
     {
         offset = new Vector2Int(-size.x / 2, -size.y / 2);
         GenerateArena();
+        navMeshSurface.BuildNavMesh();
     }
 
     private void GenerateArena()
