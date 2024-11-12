@@ -16,9 +16,11 @@ The game also includes roguelite elements as :
 ### Features implemented so far:
 * Both keyboard/mouse and controller support; auto detection of device;
 * Walking and 360 degrees shooting for both setups;
+* Pause;
 * Placeholder animations for walking and idle;
 * Draft of enemies' pooling;
 * Enemy class, prefabs, and scriptable objects for stats;
-* Placeholder tileset with rule tiles.
+* Placeholder tileset with rule tiles;
+* Generation of pits.
 
 [^1]: Temporary name.
