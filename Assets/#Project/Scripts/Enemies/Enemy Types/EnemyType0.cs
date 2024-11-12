@@ -6,7 +6,6 @@ using UnityEngine.AI;
 
 public class EnemyType0 : EnemyBase
 {
-    [SerializeField] private GameObject target;
     private NavMeshAgent agent;
 
     private void Start()
@@ -18,7 +17,10 @@ public class EnemyType0 : EnemyBase
 
     private void Update()
     {
-        agent.SetDestination(target.transform.position);
+        if (Player.Instance != null)
+        {
+            agent.SetDestination(Player.Instance.transform.position);
+        }
     }
-
 }
+
