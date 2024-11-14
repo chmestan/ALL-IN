@@ -21,6 +21,7 @@ The game also includes roguelite elements as :
 * Draft of enemies' pooling;
 * Enemy class, prefabs, and scriptable objects for stats;
 * Placeholder tileset with rule tiles;
-* Generation of pits.
+* Generation of pits;
+* Navmesh2D generated accordingly.
 
 [^1]: Temporary name.
