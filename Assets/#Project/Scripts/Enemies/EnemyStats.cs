@@ -7,4 +7,5 @@ public class EnemyStats : ScriptableObject
     public int maxHealth;
     public float moveSpeed;
     public float attackCooldown;
+    public EnemyStateENum startingState;
 }
