@@ -6,7 +6,7 @@ public class EnemyPools : MonoBehaviour
 {
     public static EnemyPools SharedInstance;
     private Dictionary<EnemyBase, List<GameObject>> enemyPools = new Dictionary<EnemyBase, List<GameObject>>();    
-    public List<EnemyBase> enemyPrefabs; 
+    public List<EnemyBase> enemyTypes; 
     [SerializeField] int batchSize = 3; 
 
     private void Awake()
@@ -21,7 +21,7 @@ public class EnemyPools : MonoBehaviour
 
     private void InitializePools()
     {
-        foreach (EnemyBase prefab in enemyPrefabs)
+        foreach (EnemyBase prefab in enemyTypes)
         {
             enemyPools[prefab] = new List<GameObject>();
             CreateBatch(prefab);
