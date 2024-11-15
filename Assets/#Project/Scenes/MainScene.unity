@@ -6090,9 +6090,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 5370264235505042904, guid: ab6eb6145a47a3446a03aebf1dca27fb, type: 3}
-  - {fileID: 3044215155158425754, guid: 58fa63c848769ad44939ffccadffa5a2, type: 3}
-  - {fileID: 1103854047708690806, guid: a48ceae47924dae498bbfd9582648577, type: 3}
+  - {fileID: 8553506279114480813, guid: ab6eb6145a47a3446a03aebf1dca27fb, type: 3}
+  - {fileID: -7651385526578291147, guid: 58fa63c848769ad44939ffccadffa5a2, type: 3}
+  - {fileID: 1576605113499556747, guid: a48ceae47924dae498bbfd9582648577, type: 3}
   batchSize: 1
 --- !u!114 &876826626
 MonoBehaviour:

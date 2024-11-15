@@ -1,30 +1,28 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InstantiateArena : MonoBehaviour
 {
-
-    Dictionary<EnemyTypeEnum, int> enemiesToSpawn = new Dictionary<EnemyTypeEnum, int>
-    {
-        { EnemyTypeEnum.Enemy0, 5 },
-        { EnemyTypeEnum.Enemy1, 2 },
-        { EnemyTypeEnum.Enemy2, 3 }
-    };
+    private List<EnemyBase> enemyPrefabs; 
+    [SerializeField] Dictionary<EnemyBase, int> enemiesToSpawn;
 
     private void Start()
     {
+        enemyPrefabs = EnemyPools.SharedInstance.enemyPrefabs;
+
         InstantiateEnemies(enemiesToSpawn);
     }
 
-    private void InstantiateEnemies(Dictionary<EnemyTypeEnum, int> enemiesToSpawn)
+    private void InstantiateEnemies(Dictionary<EnemyBase, int> enemiesToSpawn)
     {
-        foreach (KeyValuePair<EnemyTypeEnum, int> entry in enemiesToSpawn)
+        foreach (KeyValuePair<EnemyBase, int> entry in enemiesToSpawn)
         {
-            for (int _ = 0 ; _ < entry.Value ; _++)
+            EnemyBase enemyPrefab = entry.Key;
+            int count = entry.Value;
+
+            for (int i = 0; i < count; i++)
             {
-                GameObject enemy = EnemyPools.SharedInstance.GetPooledEnemy(entry.Key); 
+                GameObject enemy = EnemyPools.SharedInstance.GetPooledEnemy(enemyPrefab);
                 if (enemy != null)
                 {
                     Vector3 spawnPosition = GetRandomSpawnPosition();
@@ -35,13 +33,10 @@ public class InstantiateArena : MonoBehaviour
         }
     }
 
-    private Vector3 GetRandomSpawnPosition() // temp -- get enemies to spawn on tiles, and from a certain distance of the player
+    private Vector3 GetRandomSpawnPosition()
     {
         float x = Random.Range(-10, 10);
         float y = Random.Range(-10, 10);
-        float z = 0;
-        return new Vector3(x, y, z);
+        return new Vector3(x, y, 0);
     }
-
-
 }

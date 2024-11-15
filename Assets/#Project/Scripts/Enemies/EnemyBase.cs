@@ -34,7 +34,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
     public void GetHit(int damage)
     {
         currentHealth -= damage;
-        Debug.Log($"{stats.type} took {damage} damage! Current Health: {currentHealth}");
+        Debug.Log($"{stats.name} took {damage} damage! Current Health: {currentHealth}");
 
         if (currentHealth <= 0)
         {
@@ -44,7 +44,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     public void Die()
     {
-        Debug.Log($"{stats.type} died.");
+        Debug.Log($"{stats.name} died.");
         gameObject.SetActive(false);
     }
 
