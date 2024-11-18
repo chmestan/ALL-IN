@@ -9,11 +9,11 @@ public class InstantiateArena : MonoBehaviour
     private void Awake()
     {
         waveConfig = GlobalManager.Instance.GetComponent<WaveConfig>();
-        enemiesToSpawn = waveConfig.enemiesToSpawn;
     }
 
     private void Start()
     {
+        enemiesToSpawn = waveConfig.enemiesToSpawn;
         InstantiateEnemies(enemiesToSpawn);
     }
 

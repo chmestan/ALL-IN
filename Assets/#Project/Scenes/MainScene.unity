@@ -6681,9 +6681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ea08228faaf7ba41bf37042693d605f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nbTypesAvailable1stWave: 3
+  nbAvailableTypes1stWave: 3
   nbEnemies1stWave: 4
-  availableEnemies: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
