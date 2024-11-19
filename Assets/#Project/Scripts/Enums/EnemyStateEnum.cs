@@ -4,9 +4,9 @@ using UnityEngine;
 
 public enum EnemyStateEnum
 {
-    Idle,
-    Shoot,
-    Follow,
+    Roam,
+    Attack,
+    Chase,
     Retreat
 }
 

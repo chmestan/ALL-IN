@@ -24,10 +24,10 @@ public class Enemy : MonoBehaviour, IEnemy
 
     #region State Machine
     public EnemyStateMachine StateMachine {get; set;}
-    public EnemyIdleState IdleState {get; set;}
+    public EnemyRoamState RoamState {get; set;}
     public EnemyRetreatState RetreatState {get; set;}
-    public EnemyFollowState FollowState {get; set;}
-    public EnemyShootState ShootState {get; set;}
+    public EnemyChaseState ChaseState {get; set;}
+    public EnemyAttackState AttackState {get; set;}
     #endregion
 
     private void Awake() 
@@ -39,10 +39,10 @@ public class Enemy : MonoBehaviour, IEnemy
         GetScriptableObject();
 
         StateMachine = new EnemyStateMachine();
-        IdleState = new EnemyIdleState(this, StateMachine);
+        RoamState = new EnemyRoamState(this, StateMachine);
         RetreatState = new EnemyRetreatState(this, StateMachine);
-        FollowState = new EnemyFollowState(this, StateMachine);
-        ShootState = new EnemyShootState(this, StateMachine);
+        ChaseState = new EnemyChaseState(this, StateMachine);
+        AttackState = new EnemyAttackState(this, StateMachine);
 
     }
 
@@ -103,17 +103,17 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         switch (stateEnum)
         {
-            case EnemyStateEnum.Idle:
-                return IdleState;
+            case EnemyStateEnum.Roam:
+                return RoamState;
             case EnemyStateEnum.Retreat:
                 return RetreatState;
-            case EnemyStateEnum.Follow:
-                return FollowState;
-            case EnemyStateEnum.Shoot:
-                return ShootState;
+            case EnemyStateEnum.Chase:
+                return ChaseState;
+            case EnemyStateEnum.Attack:
+                return AttackState;
             default:
                 Debug.LogError("Invalid state enum provided.");
-                return IdleState; 
+                return RoamState; 
         }
     }
 }

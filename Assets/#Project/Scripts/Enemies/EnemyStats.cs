@@ -8,8 +8,7 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private float attackCooldown;
 
     [SerializeField] private EnemyStateEnum startingStateValue;
-    [SerializeField] private float retreatDistance; // = too close
-    [SerializeField] private float followDistance; // = too far
+    [SerializeField] private float chaseDistance;
 
     public int MaxHealth // read only atm
     {
