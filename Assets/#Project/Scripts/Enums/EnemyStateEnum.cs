@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum EnemyTypeEnum
+
+public enum EnemyStateEnum
 {
-    Enemy0,
-    Enemy1,
-    Enemy2
+    Roam,
+    Attack,
+    Chase,
+    Retreat
 }
+

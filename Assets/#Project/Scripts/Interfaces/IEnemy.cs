@@ -5,8 +5,12 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    void GetHit(int damage);
-    void Die();
-    void Attack();
+    public void GetHit(int damage);
+    private void Die()
+    {
+
+    }
+
+
 }
 

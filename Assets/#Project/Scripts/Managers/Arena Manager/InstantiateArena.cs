@@ -1,33 +1,36 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class InstantiateArena : MonoBehaviour
 {
+    private WaveConfig waveConfig;
+    private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
 
-    Dictionary<EnemyTypeEnum, int> enemiesToSpawn = new Dictionary<EnemyTypeEnum, int>
+    private void Awake()
     {
-        { EnemyTypeEnum.Enemy0, 5 },
-        { EnemyTypeEnum.Enemy1, 2 },
-        { EnemyTypeEnum.Enemy2, 3 }
-    };
+        waveConfig = GlobalManager.Instance.GetComponent<WaveConfig>();
+        enemiesToSpawn = waveConfig.EnemiesToSpawn;
+    }
 
     private void Start()
     {
+        enemiesToSpawn = waveConfig.EnemiesToSpawn;
         InstantiateEnemies(enemiesToSpawn);
     }
 
-    private void InstantiateEnemies(Dictionary<EnemyTypeEnum, int> enemiesToSpawn)
+    private void InstantiateEnemies(Dictionary<Enemy, int> enemiesToSpawn)
     {
-        foreach (KeyValuePair<EnemyTypeEnum, int> entry in enemiesToSpawn)
+        foreach (KeyValuePair<Enemy, int> entry in enemiesToSpawn)
         {
-            for (int _ = 0 ; _ < entry.Value ; _++)
+            Enemy enemyPrefab = entry.Key;
+            int count = entry.Value;
+
+            for (int i = 0; i < count; i++)
             {
-                GameObject enemy = EnemyPools.SharedInstance.GetPooledEnemy(entry.Key); 
+                GameObject enemy = EnemyPools.SharedInstance.GetPooledEnemy(enemyPrefab);
                 if (enemy != null)
                 {
-                    Vector3 spawnPosition = GetRandomSpawnPosition();
+                    Vector3 spawnPosition = GetSpawnPosition(); // temporary
                     enemy.transform.position = spawnPosition;
                     enemy.SetActive(true);
                 }
@@ -35,13 +38,10 @@ public class InstantiateArena : MonoBehaviour
         }
     }
 
-    private Vector3 GetRandomSpawnPosition() // temp -- get enemies to spawn on tiles, and from a certain distance of the player
+    private Vector3 GetSpawnPosition()
     {
         float x = Random.Range(-10, 10);
         float y = Random.Range(-10, 10);
-        float z = 0;
-        return new Vector3(x, y, z);
+        return new Vector3(x, y, 0);
     }
-
-
 }

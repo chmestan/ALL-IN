@@ -5,39 +5,35 @@ using UnityEngine;
 public class EnemyPools : MonoBehaviour
 {
     public static EnemyPools SharedInstance;
-    public Dictionary<EnemyTypeEnum, List<GameObject>> enemyPools; 
-    // types of enemies (key) - batch
-    [SerializeField] List<GameObject> enemyPrefabs; 
-    // THE ORDER OF PREFABS NEEDS TO MATCH THE ENEMY TYPES
-    [SerializeField] int batchSize = 3; // in the future maybe I can make the batch size dependent to the type (class?)
+    private Dictionary<Enemy, List<GameObject>> enemyPools = new Dictionary<Enemy, List<GameObject>>();    
+    [SerializeField] List<Enemy> enemyTypes; 
+    [SerializeField] int batchSize = 3; 
 
     private void Awake()
     {
         SharedInstance = this;
-        enemyPools = new Dictionary<EnemyTypeEnum, List<GameObject>>();
     }
 
     private void Start()
     {
+        enemyTypes = GlobalManager.Instance.WaveConfig.EnemyTypes;
         InitializePools();
     }
 
     private void InitializePools()
     {
-        for (int i = 0; i < enemyPrefabs.Count; i++) // for each type of enemy
+        foreach (Enemy prefab in enemyTypes)
         {
-            EnemyTypeEnum type = (EnemyTypeEnum)i; // equivalence between the type and its integer value 
-            enemyPools[type] = new List<GameObject>(); // we create the entries in the dictionary: for each type its list of enemies (empty atm)
-            CreateBatch(type, enemyPrefabs[i]); // we then go fill that list with prefabs of the corresponding index
-            // which is why the prefabs list has to be in the correct order
+            enemyPools[prefab] = new List<GameObject>();
+            CreateBatch(prefab);
         }
     }
 
-    public GameObject GetPooledEnemy(EnemyTypeEnum type)
+    public GameObject GetPooledEnemy(Enemy prefab)
     {
-        if (enemyPools.ContainsKey(type))
+        if (enemyPools.ContainsKey(prefab))
         {
-            foreach (GameObject enemy in enemyPools[type])
+            foreach (GameObject enemy in enemyPools[prefab])
             {
                 if (!enemy.activeInHierarchy)
                 {
@@ -45,28 +41,27 @@ public class EnemyPools : MonoBehaviour
                 }
             }
 
-            return AddEnemyToPool(type);
+            return AddEnemyToPool(prefab);
         }
-        Debug.LogWarning($"No pool found for enemy type {type}");
+        Debug.LogWarning($"No pool found for enemy type {prefab.name}");
         return null;
     }
 
-    private void CreateBatch(EnemyTypeEnum type, GameObject prefab)
+    private void CreateBatch(Enemy prefab)
     {
         for (int i = 0; i < batchSize; i++) 
         {
-            GameObject enemy = Instantiate(prefab);
+            GameObject enemy = Instantiate(prefab.gameObject);
             enemy.SetActive(false);
-            enemyPools[type].Add(enemy); 
+            enemyPools[prefab].Add(enemy); 
         }
     }
 
-    private GameObject AddEnemyToPool(EnemyTypeEnum type) // if pool needs to be extended
+    private GameObject AddEnemyToPool(Enemy prefab) // if pool needs to be extended
     {
-        GameObject prefab = enemyPrefabs[(int)type]; // get the prefab from the list with the type's int value
-        GameObject enemy = Instantiate(prefab);
+        GameObject enemy = Instantiate(prefab.gameObject);
         enemy.SetActive(false);
-        enemyPools[type].Add(enemy);
+        enemyPools[prefab].Add(enemy);
         return enemy;
     }
 }

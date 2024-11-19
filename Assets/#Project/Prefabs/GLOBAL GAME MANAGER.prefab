@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4419190529942340485}
   - component: {fileID: 3789018275707868687}
   - component: {fileID: 3706619196429692175}
+  - component: {fileID: 2394277852267514062}
   m_Layer: 0
   m_Name: GLOBAL GAME MANAGER
   m_TagString: Untagged
@@ -46,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29bb2f14aaa60e84b94210bc28573819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _WaveConfig: {fileID: 0}
 --- !u!114 &3789018275707868687
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,3 +111,20 @@ MonoBehaviour:
     m_Flags: 0
   useGamepad: 0
   debug: 0
+--- !u!114 &2394277852267514062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523165654241456479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea08228faaf7ba41bf37042693d605f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nbEnemies1stWave: 4
+  _EnemyTypes:
+  - {fileID: -3676654556655091467, guid: ab6eb6145a47a3446a03aebf1dca27fb, type: 3}
+  - {fileID: -7651385526578291147, guid: 58fa63c848769ad44939ffccadffa5a2, type: 3}
+  - {fileID: 1576605113499556747, guid: a48ceae47924dae498bbfd9582648577, type: 3}

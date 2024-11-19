@@ -4,23 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class EnemyType0 : EnemyBase
+public class EnemyType0 : Enemy
 {
-    private NavMeshAgent agent;
-
-    private void Start()
-    {
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-    }
-
-    private void Update()
-    {
-        if (Player.Instance != null)
-        {
-            agent.SetDestination(Player.Instance.transform.position);
-        }
-    }
+    
 }
 
