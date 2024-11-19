@@ -7,6 +7,13 @@ public class PlayerBulletMvmt : BulletMovement
     [SerializeField] private int damage = 5;
     [SerializeField] private bool debug = false; 
 
+    public int Damage
+    {
+        get => damage;
+        set => damage = value;
+    }
+
+
     // protected override void FixedUpdate()
     // {
 
