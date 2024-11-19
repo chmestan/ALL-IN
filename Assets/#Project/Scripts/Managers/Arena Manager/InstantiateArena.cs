@@ -9,11 +9,12 @@ public class InstantiateArena : MonoBehaviour
     private void Awake()
     {
         waveConfig = GlobalManager.Instance.GetComponent<WaveConfig>();
+        enemiesToSpawn = waveConfig.EnemiesToSpawn;
     }
 
     private void Start()
     {
-        enemiesToSpawn = waveConfig.enemiesToSpawn;
+        enemiesToSpawn = waveConfig.EnemiesToSpawn;
         InstantiateEnemies(enemiesToSpawn);
     }
 
@@ -29,7 +30,7 @@ public class InstantiateArena : MonoBehaviour
                 GameObject enemy = EnemyPools.SharedInstance.GetPooledEnemy(enemyPrefab);
                 if (enemy != null)
                 {
-                    Vector3 spawnPosition = GetRandomSpawnPosition(); // temporary
+                    Vector3 spawnPosition = GetSpawnPosition(); // temporary
                     enemy.transform.position = spawnPosition;
                     enemy.SetActive(true);
                 }
@@ -37,7 +38,7 @@ public class InstantiateArena : MonoBehaviour
         }
     }
 
-    private Vector3 GetRandomSpawnPosition()
+    private Vector3 GetSpawnPosition()
     {
         float x = Random.Range(-10, 10);
         float y = Random.Range(-10, 10);

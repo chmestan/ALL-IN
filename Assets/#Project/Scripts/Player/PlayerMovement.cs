@@ -37,7 +37,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (arenaMgr.state == ArenaStateEnum.Paused) return;
+        // STATE MACHINE
+        switch (arenaMgr.state)
+        {
+            case ArenaStateEnum.Paused:
+                Pause();
+                break;
+            case ArenaStateEnum.Live:
+                Live();
+                break;
+        }
+    }
+
+    private void Pause()
+    {
+        return;
+    }
+
+    private void Live()
+    {
         Move();
         UpdateLastDirection();
         AnimPlayer();

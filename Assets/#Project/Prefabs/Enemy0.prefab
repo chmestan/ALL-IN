@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
       propertyPath: m_Name
-      value: Enemy0
+      value: EnemyType0
       objectReference: {fileID: 0}
     - target: {fileID: 4928965588691982762, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
       propertyPath: m_SortingOrder
@@ -61,15 +61,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8553506279114480813}
+      insertIndex: 1
+      addedObject: {fileID: -3676654556655091467}
   m_SourcePrefab: {fileID: 100100000, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
 --- !u!1 &5370264235505042904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
   m_PrefabInstance: {fileID: 8096647116408561506}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8553506279114480813
+--- !u!114 &-3676654556655091467
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

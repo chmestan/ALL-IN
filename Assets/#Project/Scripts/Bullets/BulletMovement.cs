@@ -6,15 +6,14 @@ using UnityEngine;
 public class BulletMovement : MonoBehaviour
 {
     [SerializeField] float speed = 20f;
-    private PlayerShoot player;
     private Vector2 direction;
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         transform.Translate(direction * speed * Time.deltaTime);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
        if (other.gameObject.GetComponent<ILimit>() != null) 
         {
@@ -23,7 +22,7 @@ public class BulletMovement : MonoBehaviour
         } 
     }
 
-    public void SetDirection(Vector2 newDirection)
+    public virtual void SetDirection(Vector2 newDirection)
     {
         direction = newDirection.normalized;
     }

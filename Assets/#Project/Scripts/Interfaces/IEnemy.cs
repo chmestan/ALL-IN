@@ -5,8 +5,28 @@ using UnityEngine;
 
 public interface IEnemy
 {
-    void GetHit(int damage);
-    void Die();
-    void Attack();
+    public void GetHit(int damage);
+    private void Die()
+    {
+
+    }
+
+    protected virtual void Attack()
+    {
+
+    }
+    protected virtual void Idle()
+    {
+
+    }
+    protected virtual void Follow()
+    {
+        
+    }
+    protected virtual void Retreat()
+    {
+
+    }
+
 }
 
