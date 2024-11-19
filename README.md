@@ -14,14 +14,15 @@ The game also includes roguelite elements as :
 * Permanent upgrades can be purchased in between runs.
 
 ### Features implemented so far:
-* Both keyboard/mouse and controller support; auto detection of device;
+* Both keyboard/mouse and controller support + hot plug;
 * Walking and 360 degrees shooting for both setups;
 * Pause;
 * Placeholder animations for walking and idle;
-* Draft of enemies' pooling;
+* Enemies' pooling;
 * Enemy class, prefabs, and scriptable objects for stats;
 * Placeholder tileset with rule tiles;
 * Generation of pits;
-* Navmesh2D generated accordingly.
+* Navmesh2D generated accordingly;
+* Enemies' state machine and two states (roam & chase).
 
 [^1]: Temporary name.
