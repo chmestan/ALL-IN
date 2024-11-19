@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyFollowState : EnemyState
 {
+
+
     public EnemyFollowState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         agent = enemy.Agent;
@@ -22,7 +24,7 @@ public class EnemyFollowState : EnemyState
     public override void FrameUpdate()
     {
         base.FrameUpdate();
-        if (Player.Instance != null)
+        if (playerTransform != null)
         {
             agent.speed = stats.MoveSpeed;
             agent.SetDestination(Player.Instance.transform.position);

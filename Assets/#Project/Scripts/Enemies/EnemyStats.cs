@@ -7,6 +7,10 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private float moveSpeed;
     [SerializeField] private float attackCooldown;
 
+    [SerializeField] private EnemyStateEnum startingStateValue;
+    [SerializeField] private float retreatDistance; // = too close
+    [SerializeField] private float followDistance; // = too far
+
     public int MaxHealth // read only atm
     {
         get => maxHealth;
@@ -24,5 +28,12 @@ public class EnemyStats : ScriptableObject
         get => attackCooldown;
         // set => attackCooldown = value;
     }
+    public EnemyStateEnum StartingStateValue // read only atm
+    {
+        get => startingStateValue;
+        // set => attackCooldown = value;
+    }
+
+
 
 }

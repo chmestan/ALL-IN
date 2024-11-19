@@ -10,10 +10,14 @@ public class EnemyState
     protected NavMeshAgent agent;
     protected EnemyStats stats;
 
+    protected Transform playerTransform;
+
+
     public EnemyState(Enemy enemy, EnemyStateMachine enemyStateMachine)
     {
         this.enemy = enemy;
         this.enemyStateMachine = enemyStateMachine;
+        playerTransform = Player.Instance.transform;
     }
 
     public virtual void EnterState()

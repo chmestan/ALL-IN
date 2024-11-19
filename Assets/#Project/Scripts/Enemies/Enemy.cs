@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.IO.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
@@ -47,7 +48,8 @@ public class Enemy : MonoBehaviour, IEnemy
 
     private void Start()
     {
-        StateMachine.Initialize(FollowState); // to be potentially overridden 
+        EnemyState startingState = GetStartingState(stats.StartingStateValue);
+        StateMachine.Initialize(startingState); // to be potentially overridden 
     }
 
     private void OnEnable()
@@ -59,6 +61,12 @@ public class Enemy : MonoBehaviour, IEnemy
     {
         currentHealth = stats.MaxHealth;
     }
+
+    private void Update()
+    {
+        StateMachine.Update();
+    }
+
 
     public void GetHit(int damage)
     {
@@ -90,10 +98,23 @@ public class Enemy : MonoBehaviour, IEnemy
         }
     }
 
-    private void Update()
-    {
-        StateMachine.Update();
-    }
 
+    private EnemyState GetStartingState(EnemyStateEnum stateEnum)
+    {
+        switch (stateEnum)
+        {
+            case EnemyStateEnum.Idle:
+                return IdleState;
+            case EnemyStateEnum.Retreat:
+                return RetreatState;
+            case EnemyStateEnum.Follow:
+                return FollowState;
+            case EnemyStateEnum.Shoot:
+                return ShootState;
+            default:
+                Debug.LogError("Invalid state enum provided.");
+                return IdleState; 
+        }
+    }
 }
 
