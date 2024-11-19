@@ -23,7 +23,7 @@ public class PlayerBulletMvmt : BulletMovement
     {
         base.OnTriggerEnter2D(collider);
 
-        IEnemy enemy = collider.gameObject.GetComponent<IEnemy>();
+        Enemy enemy = collider.gameObject.GetComponent<Enemy>();
 
         if (enemy != null)
         {

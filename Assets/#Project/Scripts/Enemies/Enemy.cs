@@ -7,7 +7,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour, IEnemy
+public class Enemy : MonoBehaviour
 {
     private EnemyStats stats;
     public EnemyStats Stats
