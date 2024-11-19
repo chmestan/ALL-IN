@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e30cca3920fc24da8a2d04aa9c7dc0, type: 3}
   m_Name: Enemy0Stats
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  moveSpeed: 3
-  attackCooldown: 0
-  startingStateValue: 0
+  _MaxHealth: 20
+  _MoveSpeed: 3
+  _AttackCooldown: 2
+  _StartingStateValue: 0
   _RoamingDistance: 3
+  _ChaseRadius: 4

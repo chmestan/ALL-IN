@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
         get => stats;
     }
     protected int currentHealth;
+    
 
     protected NavMeshAgent agent;
     public NavMeshAgent Agent
@@ -30,6 +31,8 @@ public class Enemy : MonoBehaviour
     public EnemyAttackState AttackState {get; set;}
     #endregion
 
+    private ChaseStateCollider chaseStateCollider;
+
 
     private void Awake() 
     {
@@ -44,23 +47,24 @@ public class Enemy : MonoBehaviour
         RetreatState = new EnemyRetreatState(this, StateMachine);
         ChaseState = new EnemyChaseState(this, StateMachine);
         AttackState = new EnemyAttackState(this, StateMachine);
+
     }
 
     private void Start()
     {
         EnemyState startingState = GetStartingState(stats.StartingStateValue);
         StateMachine.Initialize(startingState); // to be potentially overridden 
+
+        chaseStateCollider = GetComponentInChildren<ChaseStateCollider>();
+        if (chaseStateCollider != null) chaseStateCollider.SetColliderRadius(stats.ChaseRadius); 
+        else Debug.LogError($"(Enemy) ChaseCollider not found on {gameObject.name}.");
     }
 
     private void OnEnable()
     {
-        InitializeEnemy();
-    }
-
-    private void InitializeEnemy()
-    {
         currentHealth = stats.MaxHealth;
     }
+
 
     private void Update()
     {
