@@ -2,26 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyShootState : IEnemyState
+public class EnemyShootState : EnemyState
 {
-    private EnemyBase enemy;
-
-    public EnemyShootState(EnemyBase enemy)
+    public EnemyShootState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
-        this.enemy = enemy;
+        
     }
-
-    public void Enter()
+    public override void EnterState()
     {
-
+        base.EnterState();
     }
-    public void Update()
+    public override void ExitState()
     {
-
+        base.ExitState();
     }
-    public void Exit()
+    public override void FrameUpdate()
     {
-
+        base.FrameUpdate();
     }
 
 

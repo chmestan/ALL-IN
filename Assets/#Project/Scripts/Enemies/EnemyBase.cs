@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyBase : MonoBehaviour, IEnemy
+public class Enemy : MonoBehaviour, IEnemy
 {
     [Header("Enemy Stats")]
         private EnemyStats stats;
@@ -14,8 +15,22 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     protected NavMeshAgent agent;
 
+    #region State Machine
+    public EnemyStateMachine StateMachine {get; set;}
+    public EnemyIdleState IdleState {get; set;}
+    public EnemyRetreatState RetreatState {get; set;}
+    public EnemyFollowState FollowState {get; set;}
+    public EnemyShootState ShootState {get; set;}
+    #endregion
+
     private void Awake() 
     {
+        StateMachine = new EnemyStateMachine();
+        IdleState = new EnemyIdleState(this, StateMachine);
+        RetreatState = new EnemyRetreatState(this, StateMachine);
+        FollowState = new EnemyFollowState(this, StateMachine);
+        ShootState = new EnemyShootState(this, StateMachine);
+
         GetScriptableObject();
     }
 
@@ -26,7 +41,8 @@ public class EnemyBase : MonoBehaviour, IEnemy
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        state = stats.StartingState;
+        StateMachine.Initialize(IdleState); // to be potentially overridden 
+
     }
 
     private void OnEnable()
@@ -54,47 +70,6 @@ public class EnemyBase : MonoBehaviour, IEnemy
     {
         Debug.Log($"{stats.name} died.");
         gameObject.SetActive(false);
-    }
-
-    public void Update()
-    {
-        switch(state)
-        {
-            case EnemyStateEnum.Idle:
-                Idle();
-                break;
-            case EnemyStateEnum.Shoot:
-                Shoot();
-                break;
-            case EnemyStateEnum.Follow:
-                Follow();
-                break;
-            case EnemyStateEnum.Retreat:
-                Retreat();
-                break;
-
-        }
-    }
-
-    protected virtual void Idle()
-    {
-        
-    }
-    protected virtual void Shoot()
-    {
-
-    }
-    protected virtual void Follow()
-    {
-        if (Player.Instance != null)
-        {
-            agent.speed = stats.MoveSpeed;
-            agent.SetDestination(Player.Instance.transform.position);
-        }
-    }
-    protected virtual void Retreat()
-    {
-
     }
 
     private void GetScriptableObject()

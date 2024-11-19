@@ -11,22 +11,6 @@ public interface IEnemy
 
     }
 
-    protected virtual void Attack()
-    {
-
-    }
-    protected virtual void Idle()
-    {
-
-    }
-    protected virtual void Follow()
-    {
-        
-    }
-    protected virtual void Retreat()
-    {
-
-    }
 
 }
 

@@ -2,27 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRetreatState : IEnemyState
+public class EnemyRetreatState : EnemyState
 {
-    private EnemyBase enemy;
-
-    public EnemyRetreatState(EnemyBase enemy)
+    public EnemyRetreatState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
-        this.enemy = enemy;
+        
+    }
+    public override void EnterState()
+    {
+        base.EnterState();
+    }
+    public override void ExitState()
+    {
+        base.ExitState();
+    }
+    public override void FrameUpdate()
+    {
+        base.FrameUpdate();
     }
 
-    public void Enter()
-    {
-
-    }
-    public void Update()
-    {
-
-    }
-    public void Exit()
-    {
-
-    }
 
 
 

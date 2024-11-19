@@ -3,11 +3,11 @@ using UnityEngine;
 
 public static class FirstWave
 {
-    private static List<EnemyBase> availableEnemies = new List<EnemyBase>();
-    private static Dictionary<EnemyBase, int> enemiesToSpawn1stWave = new Dictionary<EnemyBase, int>();
-    private static List<EnemyBase> enemyTypes;
+    private static List<Enemy> availableEnemies = new List<Enemy>();
+    private static Dictionary<Enemy, int> enemiesToSpawn1stWave = new Dictionary<Enemy, int>();
+    private static List<Enemy> enemyTypes;
 
-    public static Dictionary<EnemyBase, int> Init(int nbAvailableTypes, int nbEnemiesToGenerate)
+    public static Dictionary<Enemy, int> Init(int nbAvailableTypes, int nbEnemiesToGenerate)
     {
         AvailableEnemies1stWave(nbAvailableTypes);
         return EnemiesToGenerate1stWave(nbEnemiesToGenerate);
@@ -25,7 +25,7 @@ public static class FirstWave
         }
     }
 
-    public static Dictionary<EnemyBase, int> EnemiesToGenerate1stWave(int nbEnemiesToGenerate)
+    public static Dictionary<Enemy, int> EnemiesToGenerate1stWave(int nbEnemiesToGenerate)
     {
         List<(int a, int b, int c)> combinations = Combinations(nbEnemiesToGenerate);
 

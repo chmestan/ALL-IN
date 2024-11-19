@@ -5,11 +5,11 @@ using UnityEngine;
 public class EnemyPools : MonoBehaviour
 {
     public static EnemyPools SharedInstance;
-    private Dictionary<EnemyBase, List<GameObject>> enemyPools = new Dictionary<EnemyBase, List<GameObject>>();    
-    private List<EnemyBase> enemyTypes; 
+    private Dictionary<Enemy, List<GameObject>> enemyPools = new Dictionary<Enemy, List<GameObject>>();    
+    private List<Enemy> enemyTypes; 
     [SerializeField] int batchSize = 3; 
 
-    public List<EnemyBase> EnemyTypes
+    public List<Enemy> EnemyTypes
     {
         get => enemyTypes;
     }
@@ -26,14 +26,14 @@ public class EnemyPools : MonoBehaviour
 
     private void InitializePools()
     {
-        foreach (EnemyBase prefab in enemyTypes)
+        foreach (Enemy prefab in enemyTypes)
         {
             enemyPools[prefab] = new List<GameObject>();
             CreateBatch(prefab);
         }
     }
 
-    public GameObject GetPooledEnemy(EnemyBase prefab)
+    public GameObject GetPooledEnemy(Enemy prefab)
     {
         if (enemyPools.ContainsKey(prefab))
         {
@@ -51,7 +51,7 @@ public class EnemyPools : MonoBehaviour
         return null;
     }
 
-    private void CreateBatch(EnemyBase prefab)
+    private void CreateBatch(Enemy prefab)
     {
         for (int i = 0; i < batchSize; i++) 
         {
@@ -61,7 +61,7 @@ public class EnemyPools : MonoBehaviour
         }
     }
 
-    private GameObject AddEnemyToPool(EnemyBase prefab) // if pool needs to be extended
+    private GameObject AddEnemyToPool(Enemy prefab) // if pool needs to be extended
     {
         GameObject enemy = Instantiate(prefab.gameObject);
         enemy.SetActive(false);

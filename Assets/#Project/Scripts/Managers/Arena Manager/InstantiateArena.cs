@@ -4,7 +4,7 @@ using UnityEngine;
 public class InstantiateArena : MonoBehaviour
 {
     private WaveConfig waveConfig;
-    private Dictionary<EnemyBase, int> enemiesToSpawn = new Dictionary<EnemyBase, int>();
+    private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
 
     private void Awake()
     {
@@ -18,11 +18,11 @@ public class InstantiateArena : MonoBehaviour
         InstantiateEnemies(enemiesToSpawn);
     }
 
-    private void InstantiateEnemies(Dictionary<EnemyBase, int> enemiesToSpawn)
+    private void InstantiateEnemies(Dictionary<Enemy, int> enemiesToSpawn)
     {
-        foreach (KeyValuePair<EnemyBase, int> entry in enemiesToSpawn)
+        foreach (KeyValuePair<Enemy, int> entry in enemiesToSpawn)
         {
-            EnemyBase enemyPrefab = entry.Key;
+            Enemy enemyPrefab = entry.Key;
             int count = entry.Value;
 
             for (int i = 0; i < count; i++)

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 
-public class EnemyType0 : EnemyBase
+public class EnemyType0 : Enemy
 {
     
 }

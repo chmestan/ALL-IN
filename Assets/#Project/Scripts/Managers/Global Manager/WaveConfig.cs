@@ -9,9 +9,9 @@ public class WaveConfig : MonoBehaviour
     
     // [SerializeField] private bool debug = false;
 
-    private Dictionary<EnemyBase, int> enemiesToSpawn = new Dictionary<EnemyBase, int>();
+    private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
     private int waveCount;
-    public Dictionary<EnemyBase, int> EnemiesToSpawn
+    public Dictionary<Enemy, int> EnemiesToSpawn
     {
         get => enemiesToSpawn;
         // set => enemiesToSpawn = value; 

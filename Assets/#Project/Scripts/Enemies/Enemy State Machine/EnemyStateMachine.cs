@@ -1,51 +1,37 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 [Serializable]
 public class EnemyStateMachine 
 {
 
-    public IEnemyState CurrentState 
-    { 
+    public EnemyState CurrentEnemyState 
+    {
         get;
-        private set;
+        set;
     }
 
-    public EnemyIdleState idleState;
-    public EnemyShootState shootState;
-    public EnemyFollowState followState;
-    public EnemyRetreatState retreatState;
-
-    public EnemyStateMachine(EnemyBase enemy) // we need the constructors since we don't inherit from MonoBehavior
+    public void Initialize(EnemyState startingState)
     {
-        idleState = new EnemyIdleState(enemy);
-        followState = new EnemyFollowState(enemy);
-        retreatState = new EnemyRetreatState(enemy);
-        shootState = new EnemyShootState(enemy);
+        CurrentEnemyState = startingState;
+        CurrentEnemyState.EnterState();
     }
 
-
-    public void Initialize (IEnemyState startingState)
+    public void ChangeState(EnemyState nextState)
     {
-        CurrentState = startingState;
-        startingState.Enter();
+        CurrentEnemyState.ExitState();
+        CurrentEnemyState = nextState;
+        CurrentEnemyState.EnterState();
     }
-
-    public void TransitionTo(IEnemyState nextState)
-    {
-        CurrentState.Exit();
-        CurrentState = nextState;
-        nextState.Enter();
-    }
-
 
     public void Update()
     {
-        if (CurrentState != null)
+        if (CurrentEnemyState != null)
         {
-            CurrentState.Update();
+            CurrentEnemyState.FrameUpdate();
         }
     }
 
