@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     public EnemyAttackState AttackState {get; set;}
     #endregion
 
+
     private void Awake() 
     {
         agent = GetComponent<NavMeshAgent>();
@@ -43,7 +44,6 @@ public class Enemy : MonoBehaviour
         RetreatState = new EnemyRetreatState(this, StateMachine);
         ChaseState = new EnemyChaseState(this, StateMachine);
         AttackState = new EnemyAttackState(this, StateMachine);
-
     }
 
     private void Start()
@@ -67,22 +67,14 @@ public class Enemy : MonoBehaviour
         StateMachine.Update();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnPlayerDetected()
     {
-        if (other.CompareTag("player"))
-        {
-            Debug.Log($"{gameObject.name} detected the player.");
-            StateMachine.ChangeState(ChaseState);
-        }
+        StateMachine.ChangeState(ChaseState);
     }
 
-    private void OnTriggerExit2D(Collider2D other)
+    public void OnPlayerLost()
     {
-        if (other.CompareTag("player"))
-        {
-            Debug.Log($"{gameObject.name} lost sight of the player.");
-            StateMachine.ChangeState(RoamState);
-        }
+        StateMachine.ChangeState(RoamState);
     }
 
     public void GetHit(int damage)
@@ -137,7 +129,7 @@ public class Enemy : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, GetComponent<CircleCollider2D>().radius);
+        Gizmos.DrawWireSphere(transform.position, GetComponentInChildren<CircleCollider2D>().radius);
     }
 
 }
