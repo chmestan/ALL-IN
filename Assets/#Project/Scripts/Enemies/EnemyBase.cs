@@ -14,6 +14,11 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     protected NavMeshAgent agent;
 
+    private void Awake() 
+    {
+        GetScriptableObject();
+    }
+
     private void Start()
     {
         // nav mesh
@@ -92,7 +97,18 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     }
 
+    private void GetScriptableObject()
+    {
+        string enemyName = gameObject.name.Replace("(Clone)", "").Trim();
+        stats = Resources.Load<EnemyStats>($"ScriptableObjects/Enemy Types Stats/{enemyName}Stats");
+        
+        Debug.Log($"Looking for EnemyStats: {enemyName}");
 
+        if (stats == null)
+        {
+            Debug.LogError($"No EnemyStats found for {enemyName}. Ensure it exists in Resources/EnemyStats.");
+        }
+    }
 
 }
 
