@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 
-[Serializable]
 public class EnemyStateMachine 
 {
 
