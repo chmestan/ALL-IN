@@ -8,12 +8,18 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour, IEnemy
 {
-    [Header("Enemy Stats")]
-        private EnemyStats stats;
-        protected int currentHealth;
-        protected EnemyStateEnum state;
+    private EnemyStats stats;
+    public EnemyStats Stats
+    { 
+        get => stats;
+    }
+    protected int currentHealth;
 
     protected NavMeshAgent agent;
+    public NavMeshAgent Agent
+    { 
+        get => agent;
+    }
 
     #region State Machine
     public EnemyStateMachine StateMachine {get; set;}
@@ -25,24 +31,23 @@ public class Enemy : MonoBehaviour, IEnemy
 
     private void Awake() 
     {
+        agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        GetScriptableObject();
+
         StateMachine = new EnemyStateMachine();
         IdleState = new EnemyIdleState(this, StateMachine);
         RetreatState = new EnemyRetreatState(this, StateMachine);
         FollowState = new EnemyFollowState(this, StateMachine);
         ShootState = new EnemyShootState(this, StateMachine);
 
-        GetScriptableObject();
     }
 
     private void Start()
     {
-        // nav mesh
-        agent = GetComponent<NavMeshAgent>();
-        agent.updateRotation = false;
-        agent.updateUpAxis = false;
-
-        StateMachine.Initialize(IdleState); // to be potentially overridden 
-
+        StateMachine.Initialize(FollowState); // to be potentially overridden 
     }
 
     private void OnEnable()
@@ -58,7 +63,7 @@ public class Enemy : MonoBehaviour, IEnemy
     public void GetHit(int damage)
     {
         currentHealth -= damage;
-        Debug.Log($"{stats.name} took {damage} damage! Current Health: {currentHealth}");
+        // Debug.Log($"(Enemy) {gameObject.name} took {damage} damage! Current Health: {currentHealth}");
 
         if (currentHealth <= 0)
         {
@@ -68,7 +73,7 @@ public class Enemy : MonoBehaviour, IEnemy
 
     public void Die()
     {
-        Debug.Log($"{stats.name} died.");
+        Debug.Log($"{gameObject.name} died.");
         gameObject.SetActive(false);
     }
 
@@ -77,12 +82,17 @@ public class Enemy : MonoBehaviour, IEnemy
         string enemyName = gameObject.name.Replace("(Clone)", "").Trim();
         stats = Resources.Load<EnemyStats>($"ScriptableObjects/Enemy Types Stats/{enemyName}Stats");
         
-        Debug.Log($"Looking for EnemyStats: {enemyName}");
+        // Debug.Log($"(Enemy) Looking for EnemyStats: {enemyName}");
 
         if (stats == null)
         {
-            Debug.LogError($"No EnemyStats found for {enemyName}. Ensure it exists in Resources/EnemyStats.");
+            Debug.LogError($"(Enemy) No EnemyStats found for {enemyName}. Ensure it exists in Resources/EnemyStats.");
         }
+    }
+
+    private void Update()
+    {
+        StateMachine.Update();
     }
 
 }

@@ -6,7 +6,7 @@ public class EnemyPools : MonoBehaviour
 {
     public static EnemyPools SharedInstance;
     private Dictionary<Enemy, List<GameObject>> enemyPools = new Dictionary<Enemy, List<GameObject>>();    
-    private List<Enemy> enemyTypes; 
+    [SerializeField] List<Enemy> enemyTypes; 
     [SerializeField] int batchSize = 3; 
 
     public List<Enemy> EnemyTypes
