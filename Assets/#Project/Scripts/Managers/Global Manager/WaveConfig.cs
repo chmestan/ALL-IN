@@ -10,8 +10,13 @@ public class WaveConfig : MonoBehaviour
         [SerializeField] protected List<EnemyBase> availableEnemies = new List<EnemyBase>();
     private int waveCount;
     private List<EnemyBase> enemyTypes;
-    public Dictionary<EnemyBase, int> enemiesToSpawn = new Dictionary<EnemyBase, int>();
+    private Dictionary<EnemyBase, int> enemiesToSpawn = new Dictionary<EnemyBase, int>();
 
+    public Dictionary<EnemyBase, int> EnemiesToSpawn
+    {
+        get => enemiesToSpawn;
+        // set => enemiesToSpawn = value; 
+    }
 
     private void Start()
     {

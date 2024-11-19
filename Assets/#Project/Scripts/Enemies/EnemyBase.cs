@@ -8,9 +8,9 @@ using UnityEngine.AI;
 public class EnemyBase : MonoBehaviour, IEnemy
 {
     [Header("Enemy Stats")]
-        [SerializeField] private EnemyStats stats;
+        private EnemyStats stats;
         protected int currentHealth;
-        protected EnemyStateENum state;
+        protected EnemyStateEnum state;
 
     protected NavMeshAgent agent;
 
@@ -26,7 +26,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
         agent.updateRotation = false;
         agent.updateUpAxis = false;
 
-        state = stats.startingState;
+        state = stats.StartingState;
     }
 
     private void OnEnable()
@@ -36,7 +36,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
 
     private void InitializeEnemy()
     {
-        currentHealth = stats.maxHealth;
+        currentHealth = stats.MaxHealth;
     }
 
     public void GetHit(int damage)
@@ -60,16 +60,16 @@ public class EnemyBase : MonoBehaviour, IEnemy
     {
         switch(state)
         {
-            case EnemyStateENum.Idle:
+            case EnemyStateEnum.Idle:
                 Idle();
                 break;
-            case EnemyStateENum.Shoot:
+            case EnemyStateEnum.Shoot:
                 Shoot();
                 break;
-            case EnemyStateENum.Follow:
+            case EnemyStateEnum.Follow:
                 Follow();
                 break;
-            case EnemyStateENum.Retreat:
+            case EnemyStateEnum.Retreat:
                 Retreat();
                 break;
 
@@ -88,7 +88,7 @@ public class EnemyBase : MonoBehaviour, IEnemy
     {
         if (Player.Instance != null)
         {
-            agent.speed = stats.moveSpeed;
+            agent.speed = stats.MoveSpeed;
             agent.SetDestination(Player.Instance.transform.position);
         }
     }
