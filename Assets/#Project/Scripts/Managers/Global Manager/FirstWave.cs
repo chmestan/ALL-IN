@@ -3,8 +3,8 @@ using UnityEngine;
 
 public static class FirstWave
 {
-    public static List<EnemyBase> availableEnemies = new List<EnemyBase>();
-    public static Dictionary<EnemyBase, int> enemiesToSpawn = new Dictionary<EnemyBase, int>();
+    private static List<EnemyBase> availableEnemies = new List<EnemyBase>();
+    private static Dictionary<EnemyBase, int> enemiesToSpawn1stWave = new Dictionary<EnemyBase, int>();
     private static List<EnemyBase> enemyTypes;
 
     public static Dictionary<EnemyBase, int> Init(int nbAvailableTypes, int nbEnemiesToGenerate)
@@ -15,7 +15,7 @@ public static class FirstWave
 
     private static void AvailableEnemies1stWave(int nbAvailableTypes)
     {
-        enemyTypes = EnemyPools.SharedInstance.enemyTypes;
+        enemyTypes = EnemyPools.SharedInstance.EnemyTypes;
 
         // Select the first X enemy types for the first wave
         availableEnemies.Clear();
@@ -31,14 +31,14 @@ public static class FirstWave
 
         (int countA, int countB, int countC) = combinations[Random.Range(0, combinations.Count)];
 
-        enemiesToSpawn.Clear();
-        enemiesToSpawn[availableEnemies[0]] = countA;
-        enemiesToSpawn[availableEnemies[1]] = countB;
-        enemiesToSpawn[availableEnemies[2]] = countC;
+        enemiesToSpawn1stWave.Clear();
+        enemiesToSpawn1stWave[availableEnemies[0]] = countA;
+        enemiesToSpawn1stWave[availableEnemies[1]] = countB;
+        enemiesToSpawn1stWave[availableEnemies[2]] = countC;
         
         Debug.Log($"Enemies to spawn: {availableEnemies[0].name}: {countA}, {availableEnemies[1].name}: {countB}, {availableEnemies[2].name}: {countC}");
 
-        return enemiesToSpawn;
+        return enemiesToSpawn1stWave;
     }
 
     private static List<(int a, int b, int c)> Combinations(int nb)
