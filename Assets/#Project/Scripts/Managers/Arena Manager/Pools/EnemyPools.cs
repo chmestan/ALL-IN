@@ -9,11 +9,6 @@ public class EnemyPools : MonoBehaviour
     [SerializeField] List<Enemy> enemyTypes; 
     [SerializeField] int batchSize = 3; 
 
-    public List<Enemy> EnemyTypes
-    {
-        get => enemyTypes;
-    }
-
     private void Awake()
     {
         SharedInstance = this;
@@ -21,6 +16,7 @@ public class EnemyPools : MonoBehaviour
 
     private void Start()
     {
+        enemyTypes = GlobalManager.Instance.WaveConfig.EnemyTypes;
         InitializePools();
     }
 

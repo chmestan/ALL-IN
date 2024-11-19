@@ -15,7 +15,7 @@ public static class FirstWave
 
     private static void AvailableEnemies1stWave(int nbAvailableTypes)
     {
-        enemyTypes = EnemyPools.SharedInstance.EnemyTypes;
+        enemyTypes = GlobalManager.Instance.WaveConfig.EnemyTypes;
 
         // Select the first X enemy types for the first wave
         availableEnemies.Clear();

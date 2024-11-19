@@ -4,9 +4,13 @@ using UnityEngine;
 public class WaveConfig : MonoBehaviour
 {
     [Header("First Wave Configs"), Space (5f)]
-        [SerializeField] int nbAvailableTypes1stWave = 3;
+        private int nbAvailableTypes1stWave = 3;
         [SerializeField] int nbEnemies1stWave = 4;
     
+    [SerializeField] private List<Enemy> _EnemyTypes;
+    public List<Enemy> EnemyTypes
+    { get => _EnemyTypes;}
+
     // [SerializeField] private bool debug = false;
 
     private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
