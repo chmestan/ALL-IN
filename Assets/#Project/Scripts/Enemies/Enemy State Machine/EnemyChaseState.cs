@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class EnemyChaseState : EnemyState
 {
 
-
     public EnemyChaseState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         agent = enemy.Agent;
@@ -15,6 +14,7 @@ public class EnemyChaseState : EnemyState
     public override void EnterState()
     {
         base.EnterState();
+
         Debug.Log($"(EnemyFollowState) {enemy.name} entering Follow State");
     }
     public override void ExitState()

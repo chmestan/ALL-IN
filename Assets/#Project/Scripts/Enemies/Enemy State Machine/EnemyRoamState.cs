@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyRoamState : EnemyState
 {
+
+    private float dist;
+
     public EnemyRoamState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         agent = enemy.Agent;
@@ -16,10 +19,11 @@ public class EnemyRoamState : EnemyState
         base.EnterState();
         Debug.Log($"(EnemyRoamState) {enemy.name} is roaming.");
         agent.speed = stats.MoveSpeed / 2; // Roam slower than chase
+        dist = stats.RoamingDistance;
 
-        Vector3 randomDirection = enemy.transform.position + Random.insideUnitSphere * 5f;
+        Vector3 randomDirection = enemy.transform.position + Random.insideUnitSphere * dist;
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomDirection, out hit, 5f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(randomDirection, out hit, dist, NavMesh.AllAreas))
         {
             agent.SetDestination(hit.position);
         }
