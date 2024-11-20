@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum EnemyStateEnum
 {
+    Spawn,
     Roam,
     Attack,
     Chase,

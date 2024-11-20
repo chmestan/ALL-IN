@@ -38,5 +38,11 @@ public class EnemyRoamState : EnemyState
             EnterState();
         }
     }
+
+    public override void ExitState()
+    {
+        base.ExitState();
+    }
+
 }
 

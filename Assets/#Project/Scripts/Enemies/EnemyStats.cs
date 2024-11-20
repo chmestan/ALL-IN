@@ -7,7 +7,7 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private float _MoveSpeed = 3f;
     [SerializeField] private float _AttackCooldown = 2f;
 
-    [SerializeField] private EnemyStateEnum _StartingStateValue = EnemyStateEnum.Roam;
+    [SerializeField] private EnemyStateEnum _StartingStateValue = EnemyStateEnum.Spawn;
     [SerializeField] private float _RoamingDistance = 3f;
     [SerializeField] private float _ChaseRadius = 2f;
 

@@ -15,6 +15,6 @@ MonoBehaviour:
   _MaxHealth: 20
   _MoveSpeed: 2
   _AttackCooldown: 2
-  _StartingStateValue: 0
+  _StartingStateValue: 1
   _RoamingDistance: 2
   _ChaseRadius: 2

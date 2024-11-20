@@ -1,9 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using Unity.IO.LowLevel.Unsafe;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -25,6 +21,7 @@ public class Enemy : MonoBehaviour
 
     #region State Machine
     public EnemyStateMachine StateMachine {get; set;}
+    public EnemySpawnState SpawnState {get; set;}
     public EnemyRoamState RoamState {get; set;}
     public EnemyRetreatState RetreatState {get; set;}
     public EnemyChaseState ChaseState {get; set;}
@@ -43,6 +40,7 @@ public class Enemy : MonoBehaviour
         GetScriptableObject();
 
         StateMachine = new EnemyStateMachine();
+        SpawnState = new EnemySpawnState(this, StateMachine);
         RoamState = new EnemyRoamState(this, StateMachine);
         RetreatState = new EnemyRetreatState(this, StateMachine);
         ChaseState = new EnemyChaseState(this, StateMachine);
@@ -52,8 +50,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        EnemyState startingState = GetStartingState(stats.StartingStateValue);
-        StateMachine.Initialize(startingState); // to be potentially overridden 
+        StateMachine.Initialize(SpawnState); 
 
         chaseStateCollider = GetComponentInChildren<ChaseStateCollider>();
         if (chaseStateCollider != null) chaseStateCollider.SetColliderRadius(stats.ChaseRadius); 
@@ -112,10 +109,12 @@ public class Enemy : MonoBehaviour
     }
 
 
-    private EnemyState GetStartingState(EnemyStateEnum stateEnum)
+    public EnemyState GetStartingState(EnemyStateEnum stateEnum)
     {
         switch (stateEnum)
         {
+            case EnemyStateEnum.Spawn:
+                return SpawnState;
             case EnemyStateEnum.Roam:
                 return RoamState;
             case EnemyStateEnum.Retreat:
