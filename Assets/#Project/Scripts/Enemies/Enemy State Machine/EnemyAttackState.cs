@@ -1,46 +1,64 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttackState : EnemyState
 {
+    private int burstsRemaining;
+
     public EnemyAttackState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         agent = enemy.Agent;
         stats = enemy.Stats;
     }
+
     public override void EnterState()
     {
         base.EnterState();
-        if (stats.BulletsPerBurst <= 0) 
+
+        // how many bursts is this attack going to be?
+        burstsRemaining = Random.Range(stats.MinBursts, stats.MaxBursts + 1);
+
+        if (stats.BulletsPerBurst <= 0)
         {
-            Debug.Log($"(EnemyAttackState) The enemy ({enemy.name}) shouldn't be in attack state, yet it apparently is");
+            Debug.LogWarning($"(EnemyAttackState) {enemy.name} has no bullets per burst set.");
             return;
         }
-        // Start attacking
-        enemy.StartCoroutine(AttackCoroutine());
+
+        enemy.StartCoroutine(AttackRoutine());
     }
+
     public override void ExitState()
     {
         base.ExitState();
-        enemy.StopAllCoroutines();
-    }
-    public override void FrameUpdate()
-    {
-        base.FrameUpdate();
+        enemy.StopAllCoroutines(); 
     }
 
-    private IEnumerator AttackCoroutine()
+    private IEnumerator AttackRoutine()
     {
-        while (true) // continuous atm
+        while (burstsRemaining > 0)
         {
             for (int i = 0; i < stats.BulletsPerBurst; i++)
             {
                 ShootBullet();
-                yield return new WaitForSeconds(stats.TimeBetweenBullets); 
+                yield return new WaitForSeconds(stats.TimeBetweenBullets);
             }
 
-            yield return new WaitForSeconds(stats.TimeBetweenBursts);
+            burstsRemaining--;
+
+            if (burstsRemaining > 0)
+            {
+                yield return new WaitForSeconds(stats.TimeBetweenBursts);
+            }
+        }
+
+        // what next? roam or attack again?
+        if (Random.value < stats.ChanceToRoam)
+        {
+            enemy.StateMachine.ChangeState(enemy.RoamState);
+        }
+        else
+        {
+            enemy.StateMachine.ChangeState(this); // reenter attack state
         }
     }
 

@@ -15,12 +15,17 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private float _ChaseRadius = 2f;
 
     [Header ("ATTACK STATS"), Space (3f)]
-    [SerializeField] private int _BulletsPerBurst;
-    [SerializeField] private float _TimeBetweenBullets;
-    [SerializeField] private float _TimeBetweenBursts;
+    [SerializeField] private int _BulletsPerBurst = 0;
+    [SerializeField] private float _TimeBetweenBullets = 0f;
+    [SerializeField] private float _TimeBetweenBursts = 0f;
     [SerializeField] private GameObject bulletPrefab;
 
-
+    [Header ("ATTACK <=> ROAM "), Space (3f)]
+    [SerializeField] private int _MinBursts = 1; 
+    [SerializeField] private int _MaxBursts = 3; // max included
+    [SerializeField] private float _ChanceToRoam = 0.5f; // chances to switch state after completing the nb of bursts
+    [SerializeField] private int _MinRoams = 1;
+    [SerializeField] private int _MaxRoams = 3; // max included
 
     #region HEALTH
     public int MaxHealth // read only atm
@@ -68,7 +73,29 @@ public class EnemyStats : ScriptableObject
     {
         get => _TimeBetweenBursts;
     }
+    #endregion
 
+    #region ATTACK <=> ROAM
+    public int MinBursts
+    {
+        get => _MinBursts;
+    }
+    public int MaxBursts
+    {
+        get => _MaxBursts;
+    }
+    public float ChanceToRoam
+    {
+        get => _ChanceToRoam;
+    }
+    public int MinRoams
+    {
+        get => _MinRoams;
+    }
+    public int MaxRoams
+    {
+        get => _MaxRoams;
+    }
     #endregion
 
 }
