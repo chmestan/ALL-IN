@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MaxHealth: 20
   _MoveSpeed: 3
-  _AttackCooldown: 2
   _StartingStateValue: 1
   _RoamingDistance: 3
   _ChaseRadius: 4
+  _BulletsPerBurst: 0
+  _TimeBetweenBullets: 0
+  _TimeBetweenBursts: 0
+  bulletPrefab: {fileID: 276595243314985870, guid: 180d0a5573dc7e04f8f4e358bb12355e, type: 3}
