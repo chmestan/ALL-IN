@@ -20,6 +20,8 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private float _TimeBetweenBursts;
     [SerializeField] private GameObject bulletPrefab;
 
+
+
     #region HEALTH
     public int MaxHealth // read only atm
     {
