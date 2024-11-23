@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class ChasingEnemy : Enemy
 {
-
-
-
+    public override EnemyState GetStartingState()
+    {
+        return ChaseState;
+    }
+    public override EnemyState StateAfterRoaming()
+    {
+        return ChaseState; 
+    }
 }

@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyType0 : ChasingEnemy
 {
-        public override EnemyState GetStartingState()
-        {
-            return ChaseState;
-        }
+
+
 }

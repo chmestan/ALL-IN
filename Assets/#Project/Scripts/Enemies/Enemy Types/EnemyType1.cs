@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class EnemyType1 : ShootingEnemy
 {
-    // public override EnemyState GetNextStateAfterRoaming()
-    // {
-    //     return AttackState; 
-    // }
 
-    // protected override void ShootBullet()
-    // {
-    //     base.ShootBullet();
-    // }
+
 }
