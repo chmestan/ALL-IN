@@ -51,15 +51,8 @@ public class EnemyAttackState : EnemyState
             }
         }
 
-        // what next? roam or attack again?
-        if (Random.value < stats.ChanceToRoam)
-        {
-            enemy.StateMachine.ChangeState(enemy.StateAfterAttacking());
-        }
-        else
-        {
-            enemy.StateMachine.ChangeState(this); // reenter attack state
-        }
+        enemy.StateMachine.ChangeState(enemy.StateAfterAttacking());
+
     }
 
     private void ShootBullet()
