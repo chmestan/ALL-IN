@@ -108,7 +108,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     public EnemyState GetStartingState(EnemyStateEnum stateEnum)
     {
         switch (stateEnum)

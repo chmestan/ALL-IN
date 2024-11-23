@@ -45,7 +45,7 @@ public class EnemyRoamState : EnemyState
             }
             else
             {
-                enemy.StateMachine.ChangeState(enemy.AttackState);
+                enemy.StateMachine.ChangeState(enemy.AttackState); // !!!!!!!!!!!!!!!!!!!!!!!!
             }
         }
     }

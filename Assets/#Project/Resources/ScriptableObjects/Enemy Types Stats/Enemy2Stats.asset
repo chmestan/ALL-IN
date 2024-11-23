@@ -17,12 +17,12 @@ MonoBehaviour:
   _StartingStateValue: 2
   _RoamingDistance: 2
   _ChaseRadius: 3
-  _BulletsPerBurst: 5
-  _TimeBetweenBullets: 0.05
-  _TimeBetweenBursts: 4
+  _BulletsPerBurst: 2
+  _TimeBetweenBullets: 0.1
+  _TimeBetweenBursts: 1
   bulletPrefab: {fileID: 276595243314985870, guid: 180d0a5573dc7e04f8f4e358bb12355e, type: 3}
   _MinBursts: 1
-  _MaxBursts: 3
-  _ChanceToRoam: 0.5
+  _MaxBursts: 2
+  _ChanceToRoam: 0.8
   _MinRoams: 3
   _MaxRoams: 5

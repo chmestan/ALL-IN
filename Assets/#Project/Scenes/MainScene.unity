@@ -6352,7 +6352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arenaMgr: {fileID: 227687865}
-  speed: 4.3
+  speed: 6
   acceleration: 50
   deceleration: 80
   turnSpeed: 1
