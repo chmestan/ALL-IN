@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MaxHealth: 10
   _MoveSpeed: 3
-  _RoamingDistance: 3
+  _RoamingDistance: 6
   _BulletsPerBurst: 3
   _TimeBetweenBullets: 0.1
   _TimeBetweenBursts: 4

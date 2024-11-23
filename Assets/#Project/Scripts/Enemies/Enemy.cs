@@ -119,11 +119,11 @@ public abstract class Enemy : EnemyDefaultStateLogic
     #endregion
     
     #region DEBUG
-        private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, GetComponentInChildren<CircleCollider2D>().radius);
-    }
+    //     private void OnDrawGizmos()
+            // {
+            //     Gizmos.color = Color.red;
+            //     Gizmos.DrawWireSphere(transform.position, GetComponentInChildren<CircleCollider2D>().radius);
+            // }
     #endregion
 }
 

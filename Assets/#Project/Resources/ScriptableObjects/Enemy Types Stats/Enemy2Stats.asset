@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _MaxHealth: 10
   _MoveSpeed: 3
-  _RoamingDistance: 3
+  _RoamingDistance: 6
   _BulletsPerBurst: 2
   _TimeBetweenBullets: 0.1
-  _TimeBetweenBursts: 2
+  _TimeBetweenBursts: 4
   bulletPrefab: {fileID: 276595243314985870, guid: 180d0a5573dc7e04f8f4e358bb12355e, type: 3}
   _MinBursts: 1
   _MaxBursts: 1

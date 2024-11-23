@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyType0 : ChasingEnemy
 {
-    public override EnemyState StateAfterRoaming()
-    {
-        return RoamState; 
-    }
+        public override EnemyState GetStartingState()
+        {
+            return ChaseState;
+        }
 }
