@@ -12,11 +12,7 @@ public abstract class ShootingEnemy : Enemy
 
     public override EnemyState StateAfterAttacking()
     {
-        if (Random.value < Stats.ChanceToRoam)
-        {
-            return RoamState;
-        }
-        return AttackState; 
+        return RoamState;
     }
 
 }

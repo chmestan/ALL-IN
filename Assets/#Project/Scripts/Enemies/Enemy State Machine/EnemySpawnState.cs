@@ -44,6 +44,6 @@ public class EnemySpawnState : EnemyState
         }
 
         // once fade in is complete, switch to first state
-        enemy.StateMachine.ChangeState(enemy.GetStartingState(stats.StartingStateValue));
+        enemy.StateMachine.ChangeState(enemy.GetStartingState());
     }
 }

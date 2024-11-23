@@ -9,18 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0e30cca3920fc24da8a2d04aa9c7dc0, type: 3}
-  m_Name: Enemy0Stats
+  m_Script: {fileID: 11500000, guid: 8aa297f72d3bc9a48bfaa6a880d5c35d, type: 3}
+  m_Name: EnemyStats
   m_EditorClassIdentifier: 
-  _MaxHealth: 20
+  _MaxHealth: 10
   _MoveSpeed: 3
   _RoamingDistance: 3
   _BulletsPerBurst: 0
   _TimeBetweenBullets: 0
   _TimeBetweenBursts: 0
-  bulletPrefab: {fileID: 276595243314985870, guid: 180d0a5573dc7e04f8f4e358bb12355e, type: 3}
-  _MinBursts: 0
-  _MaxBursts: 0
-  _ChanceToRoam: 1
+  bulletPrefab: {fileID: 0}
+  _MinBursts: 1
+  _MaxBursts: 3
+  _ChanceToRoam: 0.5
+  _MinRoams: 1
+  _MaxRoams: 3
+  _BulletsPerBurst: 0
+  _TimeBetweenBullets: 0
+  _TimeBetweenBursts: 0
+  bulletPrefab: {fileID: 0}
+  _MinBursts: 1
+  _MaxBursts: 3
   _MinRoams: 1
   _MaxRoams: 3

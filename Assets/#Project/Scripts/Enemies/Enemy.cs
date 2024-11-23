@@ -20,7 +20,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
     }
 
 
-    private ChaseStateCollider chaseStateCollider;
+    // private ChaseStateCollider chaseStateCollider;
 
 // GET NAVMESH, STATS AND STATES
     private void Awake() 
@@ -44,9 +44,9 @@ public abstract class Enemy : EnemyDefaultStateLogic
     {
         StateMachine.Initialize(SpawnState); 
 
-        chaseStateCollider = GetComponentInChildren<ChaseStateCollider>();
-        if (chaseStateCollider != null) chaseStateCollider.SetColliderRadius(stats.ChaseRadius); 
-        else Debug.LogError($"(Enemy) ChaseCollider not found on {gameObject.name}.");
+        // chaseStateCollider = GetComponentInChildren<ChaseStateCollider>();
+        // if (chaseStateCollider != null) chaseStateCollider.SetColliderRadius(stats.ChaseRadius); 
+        // else Debug.LogError($"(Enemy) ChaseCollider not found on {gameObject.name}.");
     }
 
     private void OnEnable()
@@ -95,7 +95,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
             }
         }
 
-        public virtual EnemyState GetStartingState(EnemyStateEnum stateEnum)
+        public virtual EnemyState GetStartingState()
         {
             return RoamState;
 
