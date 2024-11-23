@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyType0 : Enemy
+public class EnemyType0 : ChasingEnemy
 {
-    // public override EnemyState GetNextStateAfterRoaming()
-    // {
-    //     return ChaseState; 
-    // }
+    public override EnemyState StateAfterRoaming()
+    {
+        return RoamState; 
+    }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class EnemyState 
+public abstract class EnemyState 
 {
     protected Enemy enemy;
     protected EnemyStateMachine enemyStateMachine;

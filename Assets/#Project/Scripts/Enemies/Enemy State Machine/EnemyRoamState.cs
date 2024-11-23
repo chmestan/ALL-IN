@@ -45,7 +45,7 @@ public class EnemyRoamState : EnemyState
             }
             else
             {
-                enemy.StateMachine.ChangeState(enemy.GetNextStateAfterRoaming()); 
+                enemy.StateMachine.ChangeState(enemy.StateAfterRoaming()); 
             }
         }
     }

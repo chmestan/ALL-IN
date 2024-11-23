@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : EnemyDefaultStateLogic
 {
     private EnemyStats stats;
     public EnemyStats Stats
@@ -19,14 +19,6 @@ public class Enemy : MonoBehaviour
         get => agent;
     }
 
-    #region State Machine
-    public EnemyStateMachine StateMachine {get; set;}
-    public EnemySpawnState SpawnState {get; set;}
-    public EnemyRoamState RoamState {get; set;}
-    public EnemyRetreatState RetreatState {get; set;}
-    public EnemyChaseState ChaseState {get; set;}
-    public EnemyAttackState AttackState {get; set;}
-    #endregion
 
     private ChaseStateCollider chaseStateCollider;
 
@@ -68,83 +60,70 @@ public class Enemy : MonoBehaviour
     }
 
 
-    public void OnPlayerDetected()
-    {
-        StateMachine.ChangeState(ChaseState);
-    }
 
-    public void OnPlayerLost()
-    {
-        StateMachine.ChangeState(RoamState);
-    }
 
-    public virtual EnemyState GetNextStateAfterRoaming()
-    {
-        return RoamState; 
-    }
-
-    public virtual EnemyState GetNextStateAfterAttacking()
-    {
-        return RoamState; 
-    }
-
-    public void GetHit(int damage)
-    {
-        currentHealth -= damage;
-        // Debug.Log($"(Enemy) {gameObject.name} took {damage} damage! Current Health: {currentHealth}");
-
-        if (currentHealth <= 0)
+    #region GET HIT AND DIE METHODS
+        public void GetHit(int damage)
         {
-            Die();
+            currentHealth -= damage;
+            // Debug.Log($"(Enemy) {gameObject.name} took {damage} damage! Current Health: {currentHealth}");
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
-    }
 
-    public void Die()
-    {
-        Debug.Log($"{gameObject.name} died.");
-        gameObject.SetActive(false);
-    }
-
-
-
-    private void GetScriptableObject()
-    {
-        string enemyName = gameObject.name.Replace("(Clone)", "").Trim();
-        stats = Resources.Load<EnemyStats>($"ScriptableObjects/Enemy Types Stats/{enemyName}Stats");
-        
-        // Debug.Log($"(Enemy) Looking for EnemyStats: {enemyName}");
-
-        if (stats == null)
+        public void Die()
         {
-            Debug.LogError($"(Enemy) No EnemyStats found for {enemyName}. Ensure it exists in Resources/EnemyStats.");
+            Debug.Log($"{gameObject.name} died.");
+            gameObject.SetActive(false);
         }
-    }
+    #endregion
 
-    public EnemyState GetStartingState(EnemyStateEnum stateEnum)
-    {
-        switch (stateEnum)
+    #region INIT METHODS
+        private void GetScriptableObject()
         {
-            case EnemyStateEnum.Spawn:
-                return SpawnState;
-            case EnemyStateEnum.Roam:
-                return RoamState;
-            case EnemyStateEnum.Retreat:
-                return RetreatState;
-            case EnemyStateEnum.Chase:
-                return ChaseState;
-            case EnemyStateEnum.Attack:
-                return AttackState;
-            default:
-                Debug.LogError("Invalid state enum provided.");
-                return RoamState; 
-        }
-    }
+            string enemyName = gameObject.name.Replace("(Clone)", "").Trim();
+            stats = Resources.Load<EnemyStats>($"ScriptableObjects/Enemy Types Stats/{enemyName}Stats");
+            
+            // Debug.Log($"(Enemy) Looking for EnemyStats: {enemyName}");
 
-    private void OnDrawGizmos()
+            if (stats == null)
+            {
+                Debug.LogError($"(Enemy) No EnemyStats found for {enemyName}. Ensure it exists in Resources/EnemyStats.");
+            }
+        }
+
+        public virtual EnemyState GetStartingState(EnemyStateEnum stateEnum)
+        {
+            return RoamState;
+
+            // switch (stateEnum)
+            // {
+            //     case EnemyStateEnum.Spawn:
+            //         return SpawnState;
+            //     case EnemyStateEnum.Roam:
+            //         return RoamState;
+            //     case EnemyStateEnum.Retreat:
+            //         return RetreatState;
+            //     case EnemyStateEnum.Chase:
+            //         return ChaseState;
+            //     case EnemyStateEnum.Attack:
+            //         return AttackState;
+            //     default:
+            //         Debug.LogError("Invalid state enum provided.");
+            //         return RoamState; 
+            // }
+        }
+    #endregion
+    
+    #region DEBUG
+        private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, GetComponentInChildren<CircleCollider2D>().radius);
     }
-
+    #endregion
 }
 

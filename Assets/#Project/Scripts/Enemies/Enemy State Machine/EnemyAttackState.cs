@@ -54,7 +54,7 @@ public class EnemyAttackState : EnemyState
         // what next? roam or attack again?
         if (Random.value < stats.ChanceToRoam)
         {
-            enemy.StateMachine.ChangeState(enemy.GetNextStateAfterAttacking());
+            enemy.StateMachine.ChangeState(enemy.StateAfterAttacking());
         }
         else
         {

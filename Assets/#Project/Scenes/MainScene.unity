@@ -5644,6 +5644,17 @@ Transform:
   - {fileID: 1028091204}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &383469546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2394277852267514062, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+  m_PrefabInstance: {fileID: 682312269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea08228faaf7ba41bf37042693d605f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,6 +5951,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2394277852267514062, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: _EnemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: -3676654556655091467, guid: ab6eb6145a47a3446a03aebf1dca27fb, type: 3}
     - target: {fileID: 3684722451207004767, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5980,6 +5995,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4419190529942340485, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: _WaveConfig
+      value: 
+      objectReference: {fileID: 383469546}
     - target: {fileID: 8523165654241456479, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: m_Name
       value: GLOBAL GAME MANAGER
