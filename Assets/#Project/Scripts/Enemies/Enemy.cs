@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
     private ChaseStateCollider chaseStateCollider;
 
-
+// GET NAVMESH, STATS AND STATES
     private void Awake() 
     {
         agent = GetComponent<NavMeshAgent>();
@@ -45,9 +45,9 @@ public class Enemy : MonoBehaviour
         RetreatState = new EnemyRetreatState(this, StateMachine);
         ChaseState = new EnemyChaseState(this, StateMachine);
         AttackState = new EnemyAttackState(this, StateMachine);
-
     }
 
+// INIT STATE AND CHASE COLLIDER
     private void Start()
     {
         StateMachine.Initialize(SpawnState); 
@@ -62,11 +62,11 @@ public class Enemy : MonoBehaviour
         currentHealth = stats.MaxHealth;
     }
 
-
     private void Update()
     {
         StateMachine.Update();
     }
+
 
     public void OnPlayerDetected()
     {
@@ -76,6 +76,16 @@ public class Enemy : MonoBehaviour
     public void OnPlayerLost()
     {
         StateMachine.ChangeState(RoamState);
+    }
+
+    public virtual EnemyState GetNextStateAfterRoaming()
+    {
+        return RoamState; 
+    }
+
+    public virtual EnemyState GetNextStateAfterAttacking()
+    {
+        return RoamState; 
     }
 
     public void GetHit(int damage)
@@ -94,6 +104,8 @@ public class Enemy : MonoBehaviour
         Debug.Log($"{gameObject.name} died.");
         gameObject.SetActive(false);
     }
+
+
 
     private void GetScriptableObject()
     {

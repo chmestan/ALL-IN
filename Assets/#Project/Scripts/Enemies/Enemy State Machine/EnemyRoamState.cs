@@ -45,7 +45,7 @@ public class EnemyRoamState : EnemyState
             }
             else
             {
-                enemy.StateMachine.ChangeState(enemy.AttackState); // !!!!!!!!!!!!!!!!!!!!!!!!
+                enemy.StateMachine.ChangeState(enemy.GetNextStateAfterRoaming()); 
             }
         }
     }
@@ -60,6 +60,8 @@ public class EnemyRoamState : EnemyState
     {
         Vector3 randomDirection = enemy.transform.position + Random.insideUnitSphere * roamDistance;
         NavMeshHit hit;
+        Debug.DrawLine(enemy.transform.position, randomDirection, Color.red, 1f);
+
 
         if (NavMesh.SamplePosition(randomDirection, out hit, roamDistance, NavMesh.AllAreas))
         {
@@ -70,4 +72,6 @@ public class EnemyRoamState : EnemyState
             Debug.LogWarning($"(EnemyRoamState) {enemy.name} failed to find a valid roaming destination.");
         }
     }
+
+    
 }

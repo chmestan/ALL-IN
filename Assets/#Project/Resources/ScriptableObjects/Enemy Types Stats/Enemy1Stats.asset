@@ -15,14 +15,14 @@ MonoBehaviour:
   _MaxHealth: 20
   _MoveSpeed: 2
   _StartingStateValue: 2
-  _RoamingDistance: 2
+  _RoamingDistance: 4
   _ChaseRadius: 2
   _BulletsPerBurst: 2
   _TimeBetweenBullets: 0.1
   _TimeBetweenBursts: 1
   bulletPrefab: {fileID: 276595243314985870, guid: 180d0a5573dc7e04f8f4e358bb12355e, type: 3}
   _MinBursts: 1
-  _MaxBursts: 2
-  _ChanceToRoam: 0.5
+  _MaxBursts: 1
+  _ChanceToRoam: 1
   _MinRoams: 2
   _MaxRoams: 5
