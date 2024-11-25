@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArenaState : MonoBehaviour
 {
-    public ArenaStateEnum state = ArenaStateEnum.Live;
+    public ArenaStateEnum state = ArenaStateEnum.Ongoing;
     PauseGame pauseScript;
 
     void Awake()
@@ -14,6 +14,6 @@ public class ArenaState : MonoBehaviour
 
     void Update()
     {
-        state = pauseScript.paused? ArenaStateEnum.Paused : ArenaStateEnum.Live;
+        state = pauseScript.paused? ArenaStateEnum.Paused : ArenaStateEnum.Ongoing;
     }
 }

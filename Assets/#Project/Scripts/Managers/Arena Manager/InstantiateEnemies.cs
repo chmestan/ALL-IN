@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InstantiateArena : MonoBehaviour
+public class InstantiateEnemies : MonoBehaviour
 {
     private WaveConfig waveConfig;
     private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
@@ -15,10 +15,10 @@ public class InstantiateArena : MonoBehaviour
     private void Start()
     {
         enemiesToSpawn = waveConfig.EnemiesToSpawn;
-        InstantiateEnemies(enemiesToSpawn);
+        GetEnemies(enemiesToSpawn);
     }
 
-    private void InstantiateEnemies(Dictionary<Enemy, int> enemiesToSpawn)
+    private void GetEnemies(Dictionary<Enemy, int> enemiesToSpawn)
     {
         foreach (KeyValuePair<Enemy, int> entry in enemiesToSpawn)
         {
