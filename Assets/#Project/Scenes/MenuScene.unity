@@ -262,6 +262,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3706619196429692175, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: confirmInput.m_Name
+      value: Confirm Input
+      objectReference: {fileID: 0}
     - target: {fileID: 8523165654241456479, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: m_Name
       value: GLOBAL GAME MANAGER

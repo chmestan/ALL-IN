@@ -5,5 +5,7 @@ using UnityEngine;
 public enum ArenaStateEnum
 {
     Paused,
-    Live
+    Ongoing,
+    Lost,
+    Won
 }

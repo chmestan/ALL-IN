@@ -43,9 +43,12 @@ public class PlayerMovement : MonoBehaviour
             case ArenaStateEnum.Paused:
                 Pause();
                 break;
-            case ArenaStateEnum.Live:
+            default:
                 Live();
                 break;
+            // case ArenaStateEnum.Ongoing:
+            //     Live();
+            //     break;
         }
     }
 
