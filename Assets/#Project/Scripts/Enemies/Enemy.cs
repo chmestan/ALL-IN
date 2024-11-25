@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public abstract class Enemy : EnemyDefaultStateLogic
 {
@@ -18,6 +19,8 @@ public abstract class Enemy : EnemyDefaultStateLogic
     { 
         get => agent;
     }
+
+    public UnityEvent OnDeath = new UnityEvent();
 
 
     // private ChaseStateCollider chaseStateCollider;
@@ -77,6 +80,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
         public void Die()
         {
             Debug.Log($"{gameObject.name} died.");
+            OnDeath.Invoke(); 
             gameObject.SetActive(false);
         }
     #endregion
