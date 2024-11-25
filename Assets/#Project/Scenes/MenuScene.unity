@@ -222,6 +222,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2394277852267514062, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: enemyTypes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394277852267514062, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: enemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: -3676654556655091467, guid: ab6eb6145a47a3446a03aebf1dca27fb, type: 3}
+    - target: {fileID: 2394277852267514062, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: enemyTypes.Array.data[1]
+      value: 
+      objectReference: {fileID: -7651385526578291147, guid: 58fa63c848769ad44939ffccadffa5a2, type: 3}
+    - target: {fileID: 2394277852267514062, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: enemyTypes.Array.data[2]
+      value: 
+      objectReference: {fileID: 1576605113499556747, guid: a48ceae47924dae498bbfd9582648577, type: 3}
     - target: {fileID: 3684722451207004767, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

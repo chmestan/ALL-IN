@@ -8,7 +8,8 @@ public class EnemyManager : MonoBehaviour
     [Header ("SPAWNERS")]
     [SerializeField] private List<Transform> spawners;
 
-    private WaveManager waveConfig;
+    private WaveManager waveManager;
+
     private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
     private Queue<Enemy> enemyQueue = new Queue<Enemy>();
 
@@ -29,16 +30,23 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        waveConfig = GlobalManager.Instance.GetComponent<WaveManager>();
+        waveManager = GlobalManager.Instance.GetComponent<WaveManager>();
     }
 
     private void Start()
     {
+        InitializeWave();
+        StartCoroutine(SpawnEnemies());    
+    }
+
+    private void InitializeWave()
+    {
         enemyQueue = GenerateEnemyQueue();
         totalEnemies = enemyQueue.Count;
+        killedEnemies = 0;
+        activeEnemies = 0;
         remainingEnemies = totalEnemies;
-        Debug.Log($"Total enemies to spawn: {totalEnemies}");
-        StartCoroutine(SpawnEnemies());    
+        waveManager.enemyManager = this;
     }
 
     private void HandleEnemyDeath(Enemy enemy)
@@ -52,11 +60,11 @@ public class EnemyManager : MonoBehaviour
     }
 
 
-    private Queue<Enemy> GenerateEnemyQueue()
+    private Queue<Enemy> GenerateEnemyQueue() 
     {
         List<Enemy> tempList = new List<Enemy>();
 
-        foreach (KeyValuePair<Enemy, int> entry in waveConfig.EnemiesToSpawn)
+        foreach (KeyValuePair<Enemy, int> entry in waveManager.EnemiesToSpawn)
         {
             for (int i = 0; i < entry.Value; i++)
             {
@@ -133,10 +141,15 @@ public class EnemyManager : MonoBehaviour
     {
             Transform spawnPoint = spawners[currentSpawnerIndex];
             enemy.transform.position = spawnPoint.position;
-            currentSpawnerIndex ++;
+            currentSpawnerIndex = (currentSpawnerIndex +1) % spawners.Count;
     }
 
-
+    public void NextWave()
+    {
+        StopAllCoroutines(); // Stop previous wave's spawning
+        InitializeWave();    // Reinitialize wave-specific variables
+        StartCoroutine(SpawnEnemies());
+    }
 
 }
 

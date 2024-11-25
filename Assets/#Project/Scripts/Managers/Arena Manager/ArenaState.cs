@@ -33,6 +33,7 @@ public class ArenaState : MonoBehaviour
     {
         waveManager.arenaState = this;
         waveManager.arenaState.OnWaveCompleted.AddListener(waveManager.IncrementWaveCount);
+        waveManager.arenaState.OnWaveCompleted.AddListener(waveManager.NextWaveDefaultConfig);
     }
 
     private void Update()
@@ -76,5 +77,10 @@ public class ArenaState : MonoBehaviour
         }
 
         changeScene.LoadScene(shopSceneName);
+    }
+
+    private void OnDisable()
+    {
+        waveManager.arenaState.OnWaveCompleted.RemoveAllListeners();
     }
 }

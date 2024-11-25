@@ -4,31 +4,29 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [Header ("All enemies"), Space (10f)]
-    [SerializeField] private List<Enemy> _EnemyTypes; // can I get all enemies automatically added from folder?
+    [SerializeField] private List<Enemy> enemyTypes; // can I get all enemies automatically added from folder?
 
-    [Header("First Wave Configs"), Space (5f)]
-        private int nbAvailableTypes1stWave = 3;
-        [SerializeField] int nbEnemies1stWave = 4;
-    
-    private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
+    private Dictionary<Enemy, int> enemiesToSpawn;
 
     [Header ("Wave Progress"), Space (10f)]
     [SerializeField] private int waveCount = 1;
-
+    
     public ArenaState arenaState;  
+    public EnemyManager enemyManager;
+
 
     #region Properties
     public List<Enemy> EnemyTypes
-    { get => _EnemyTypes;}
+    { get => enemyTypes;}
     public Dictionary<Enemy, int> EnemiesToSpawn
     { get => enemiesToSpawn;}
-    // public int WaveCount
-    // { get => _WaveCount;}
+    public int WaveCount
+    { get => waveCount;}
     #endregion
 
     private void Start()
     {
-        enemiesToSpawn = FirstWave.Init(nbAvailableTypes1stWave,nbEnemies1stWave);
+        enemiesToSpawn = EnemyDictionaryManager.CreateEnemyDictionary(waveCount, enemyTypes.Count);
     }
 
     public void IncrementWaveCount()
@@ -37,9 +35,11 @@ public class WaveManager : MonoBehaviour
         Debug.Log($"(WaveManager) Wave Count incremented: {waveCount}");
     }
 
-    private void OnDestroy()
+    public void NextWaveDefaultConfig()
     {
-        if (arenaState != null) arenaState.OnWaveCompleted.RemoveListener(IncrementWaveCount);
+        enemiesToSpawn = EnemyDictionaryManager.CreateEnemyDictionary(waveCount, enemyTypes.Count);
+        enemyManager.NextWave();
     }
+
 
 }
