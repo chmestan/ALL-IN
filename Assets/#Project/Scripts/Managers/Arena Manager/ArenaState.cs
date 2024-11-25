@@ -11,12 +11,14 @@ public class ArenaState : MonoBehaviour
     private EnemyManager enemyManager;
     private InputDeviceHandler inputMgr;
     private ChangeScene changeScene;
-    public UnityEvent OnWaveCompleted;
-    public UnityEvent OnWaveLost;
+    public UnityEvent OnWaveCompleted = new UnityEvent();
+    public UnityEvent OnWaveLost = new UnityEvent();
+    private WaveManager waveManager;
 
     private bool temp = false;
 
     [SerializeField] private string shopSceneName = "ShopScene";
+    [SerializeField] private float timeBeforeConfirm = 1f;
 
     private void Awake()
     {
@@ -24,6 +26,13 @@ public class ArenaState : MonoBehaviour
         enemyManager = GetComponent<EnemyManager>();
         changeScene = GlobalManager.Instance.GetComponent<ChangeScene>();
         inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
+        waveManager = GlobalManager.Instance.GetComponent<WaveManager>();
+    }
+
+    private void Start()
+    {
+        waveManager.arenaState = this;
+        waveManager.arenaState.OnWaveCompleted.AddListener(waveManager.IncrementWaveCount);
     }
 
     private void Update()
@@ -36,14 +45,17 @@ public class ArenaState : MonoBehaviour
             else Debug.LogError("(ArenaState) OnWaveLost event is null");
         }
 
-        if (enemyManager.RemainingEnemies <= 0)
+        if (enemyManager.RemainingEnemies <= 0 && state != ArenaStateEnum.Won)
         {
             state = ArenaStateEnum.Won;
                     
-            if (OnWaveCompleted!= null) OnWaveLost.Invoke(); // we tell WaveManager to increment waveCounter
+            if (OnWaveCompleted!= null) 
+            {
+                OnWaveCompleted.Invoke(); // we tell WaveManager to increment waveCounter
+            }
             else Debug.LogError("(ArenaState) OnWaveCompleted event is null");
 
-            Debug.Log("Wave completed. Waiting for player confirmation...");
+            Debug.Log("(ArenaState) Wave completed. Waiting for confirmation");
             StartCoroutine(WaitForConfirm());
         }
 
@@ -56,14 +68,13 @@ public class ArenaState : MonoBehaviour
 
     private IEnumerator WaitForConfirm()
     {
-        // inputHandler.DisableInputMap();
+        yield return new WaitForSeconds(timeBeforeConfirm);
 
         while (!inputMgr.confirmInput.triggered)
         {
             yield return null; 
         }
-        
-        Debug.Log("Player confirmed. Transitioning to the shop scene...");
+
         changeScene.LoadScene(shopSceneName);
     }
 }
