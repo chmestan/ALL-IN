@@ -15,8 +15,13 @@ public class EnemyManager : MonoBehaviour
     private int currentSpawnerIndex = 0;
     [Header ("ENEMIES"), Space (10f)]
     [SerializeField] private int activeEnemies = 0;
-    [SerializeField] private int totalEnemies = 1;
+    [SerializeField] private int totalEnemies;
     [SerializeField] private int killedEnemies = 0;
+    [SerializeField] private int remainingEnemies;
+    public int RemainingEnemies
+    {
+        get => remainingEnemies;
+    }
 
     [Header ("SPAWN RHYTHM"), Space (10f)]
     [SerializeField] private float delayTo5Enemies = 1f;
@@ -31,6 +36,7 @@ public class EnemyManager : MonoBehaviour
     {
         enemyQueue = GenerateEnemyQueue();
         totalEnemies = enemyQueue.Count;
+        remainingEnemies = totalEnemies;
         Debug.Log($"Total enemies to spawn: {totalEnemies}");
         StartCoroutine(SpawnEnemies());    
     }
@@ -39,6 +45,7 @@ public class EnemyManager : MonoBehaviour
     {
         activeEnemies--;
         killedEnemies++;
+        remainingEnemies = totalEnemies - killedEnemies;
         Debug.Log($"(EnemySpawner) Active: {activeEnemies}, Killed: {killedEnemies}");
 
         enemy.OnDeath.RemoveAllListeners();

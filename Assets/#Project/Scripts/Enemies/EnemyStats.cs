@@ -12,29 +12,6 @@ public class EnemyStats : ScriptableObject
     [Header ("STATES ATTRIBUTES"), Space (3f)]
     [SerializeField] private float _RoamingDistance = 3f;
 
-    #region HEALTH
-    public int MaxHealth // read only atm
-    {
-        get => _MaxHealth;
-        // set => maxHealth = value; 
-    }
-    #endregion
-    #region SPEED
-    public float MoveSpeed // read only atm
-    {
-        get => _MoveSpeed;
-        // set => moveSpeed = value; 
-    }
-    #endregion
-    #region STATES ATTRIBUTES
-
-    public float RoamingDistance
-    {
-        get => _RoamingDistance;
-    }
-
-    #endregion
-
     [Header ("ATTACK STATS"), Space (3f)]
     [SerializeField] private int _BulletsPerBurst = 0;
     [SerializeField] private float _TimeBetweenBullets = 0f;
@@ -46,6 +23,31 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private int _MaxBursts = 3; // max included
     [SerializeField] private int _MinRoams = 1;
     [SerializeField] private int _MaxRoams = 3; // max included
+
+    #region HEALTH
+    public int MaxHealth // read only atm
+    {
+        get => _MaxHealth;
+        // set => maxHealth = value; 
+    }
+    #endregion
+    
+    #region SPEED
+    public float MoveSpeed // read only atm
+    {
+        get => _MoveSpeed;
+        // set => moveSpeed = value; 
+    }
+    #endregion
+
+    #region STATES ATTRIBUTES
+
+    public float RoamingDistance
+    {
+        get => _RoamingDistance;
+    }
+
+    #endregion
 
     #region ATTACK STATS
     public float BulletsPerBurst
