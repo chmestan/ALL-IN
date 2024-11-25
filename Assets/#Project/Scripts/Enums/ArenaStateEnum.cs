@@ -6,5 +6,6 @@ public enum ArenaStateEnum
 {
     Paused,
     Ongoing,
-    Done
+    Lost,
+    Won
 }

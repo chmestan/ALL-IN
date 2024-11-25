@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     [Header ("SPAWNERS")]
     [SerializeField] private List<Transform> spawners;
 
-    private WaveConfig waveConfig;
+    private WaveManager waveConfig;
     private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
     private Queue<Enemy> enemyQueue = new Queue<Enemy>();
 
@@ -29,7 +29,7 @@ public class EnemyManager : MonoBehaviour
 
     private void Awake()
     {
-        waveConfig = GlobalManager.Instance.GetComponent<WaveConfig>();
+        waveConfig = GlobalManager.Instance.GetComponent<WaveManager>();
     }
 
     private void Start()

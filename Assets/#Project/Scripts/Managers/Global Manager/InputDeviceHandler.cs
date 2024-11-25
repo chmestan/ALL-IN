@@ -56,6 +56,7 @@ public class InputDeviceHandler : MonoBehaviour
             pauseInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Pause");
             shootInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot");
             shootDirectionInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot Direction");
+            confirmInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Confirm");
         }
         else
         {
