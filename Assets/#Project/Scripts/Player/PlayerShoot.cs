@@ -37,7 +37,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        if (arenaMgr.state == ArenaStateEnum.Paused) return;
+        // if (arenaMgr.state == ArenaStateEnum.Paused) return;
         Shoot(FacingDirection());
         AnimPlayer();
         if (debug) DebugLogs();

@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class EnemyStateMachine 
@@ -23,6 +22,7 @@ public class EnemyStateMachine
     {
         CurrentEnemyState.ExitState();
         CurrentEnemyState = nextState;
+        Debug.Log($"(EnemyStateMachine) Changing state to {nextState}");
         CurrentEnemyState.EnterState();
     }
 

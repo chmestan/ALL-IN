@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyChaseState : EnemyState
 {
-
     public EnemyChaseState(Enemy enemy, EnemyStateMachine enemyStateMachine) : base(enemy, enemyStateMachine)
     {
         agent = enemy.Agent;
@@ -27,7 +26,7 @@ public class EnemyChaseState : EnemyState
         if (playerTransform != null)
         {
             agent.speed = stats.MoveSpeed;
-            agent.SetDestination(Player.Instance.transform.position);
+            agent.SetDestination(playerTransform.position);
         }
     }
 

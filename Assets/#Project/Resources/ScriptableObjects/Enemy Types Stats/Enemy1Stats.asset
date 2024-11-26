@@ -12,9 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e30cca3920fc24da8a2d04aa9c7dc0, type: 3}
   m_Name: Enemy1Stats
   m_EditorClassIdentifier: 
-  _MaxHealth: 20
-  _MoveSpeed: 2
-  _AttackCooldown: 2
-  _StartingStateValue: 0
-  _RoamingDistance: 2
-  _ChaseRadius: 2
+  _MaxHealth: 10
+  _MoveSpeed: 3
+  _RoamingDistance: 6
+  _BulletsPerBurst: 3
+  _TimeBetweenBullets: 0.1
+  _TimeBetweenBursts: 4
+  bulletPrefab: {fileID: 276595243314985870, guid: 180d0a5573dc7e04f8f4e358bb12355e, type: 3}
+  _MinBursts: 1
+  _MaxBursts: 1
+  _MinRoams: 2
+  _MaxRoams: 3

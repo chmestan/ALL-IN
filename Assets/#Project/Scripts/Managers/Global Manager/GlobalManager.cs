@@ -5,8 +5,8 @@ using UnityEngine;
 public class GlobalManager : MonoBehaviour
 {
     public static GlobalManager Instance { get; private set; }
-    public WaveConfig _WaveConfig;
-    public WaveConfig WaveConfig
+    public WaveManager _WaveConfig;
+    public WaveManager WaveConfig
     { get => _WaveConfig; }
 
     private void Awake()
@@ -22,7 +22,7 @@ public class GlobalManager : MonoBehaviour
             Destroy(gameObject); 
         }
 
-        _WaveConfig = GetComponent<WaveConfig>();
+        _WaveConfig = GetComponent<WaveManager>();
         if (_WaveConfig == null)
         {
             Debug.LogError("(GlobalManager) WaveConfig component not found on the same GameObject.");
