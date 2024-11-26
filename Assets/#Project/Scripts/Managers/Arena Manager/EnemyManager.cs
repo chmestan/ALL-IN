@@ -103,24 +103,26 @@ public class EnemyManager : MonoBehaviour
         {
             if (enemyQueue.Count > 0)
             {
-                if (activeEnemies < 5)
+                if (activeEnemies < 4)
                 {
                     SpawnEnemy(enemyQueue.Dequeue());
-                    yield return new WaitForSeconds(delayTo5Enemies); 
+                    yield return new WaitForSeconds(delayTo5Enemies);
                 }
                 else
                 {
-                    yield return new WaitForSeconds(delayFrom5Enemies); 
+                    yield return new WaitForSeconds(delayFrom5Enemies);
+                        SpawnEnemy(enemyQueue.Dequeue());
                 }
             }
             else
             {
-                yield return null; 
+                yield return null;
             }
         }
 
-        Debug.Log("Wave Complete!");
+        Debug.Log("(Enemy Manager) Wave Complete!");
     }
+
     private void SpawnEnemy(Enemy enemyPrefab)
     {
         GameObject enemy = EnemyPools.SharedInstance.GetPooledEnemy(enemyPrefab);

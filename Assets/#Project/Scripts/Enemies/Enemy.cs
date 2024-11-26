@@ -45,7 +45,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
 // INIT STATE AND CHASE COLLIDER
     private void Start()
     {
-        StateMachine.Initialize(SpawnState); 
+        // StateMachine.Initialize(SpawnState); 
 
         // chaseStateCollider = GetComponentInChildren<ChaseStateCollider>();
         // if (chaseStateCollider != null) chaseStateCollider.SetColliderRadius(stats.ChaseRadius); 
@@ -55,6 +55,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
     private void OnEnable()
     {
         currentHealth = stats.MaxHealth;
+        StateMachine.Initialize(SpawnState);
     }
 
     private void Update()
