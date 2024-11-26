@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy0Stats
   m_EditorClassIdentifier: 
   _MaxHealth: 10
-  _MoveSpeed: 3
+  _MoveSpeed: 4.5
   _RoamingDistance: 0
   _BulletsPerBurst: 0
   _TimeBetweenBullets: 0

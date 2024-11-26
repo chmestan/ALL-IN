@@ -58,6 +58,12 @@ public abstract class Enemy : EnemyDefaultStateLogic
         StateMachine.Initialize(SpawnState);
     }
 
+    private void OnDisable()
+    {
+        agent.isStopped = true; 
+        agent.ResetPath();  
+    }
+
     private void Update()
     {
         StateMachine.Update();

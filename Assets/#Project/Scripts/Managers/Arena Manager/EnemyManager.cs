@@ -128,9 +128,9 @@ public class EnemyManager : MonoBehaviour
         GameObject enemy = EnemyPools.SharedInstance.GetPooledEnemy(enemyPrefab);
         if (enemy != null)
         {
+            enemy.SetActive(true);
             PlaceEnemy(enemy);
 
-            enemy.SetActive(true);
 
             activeEnemies++;
 

@@ -13,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Inactive Enemies
   - 
   - 
   - 
@@ -46,9 +46,9 @@ TagManager:
   - name: Bullets
     uniqueID: 3162173437
     locked: 0
-  - name: Enemies
-    uniqueID: 1904749643
-    locked: 0
   - name: Player
     uniqueID: 340458295
+    locked: 0
+  - name: Enemies
+    uniqueID: 1904749643
     locked: 0
