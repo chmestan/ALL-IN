@@ -38,7 +38,7 @@ public class WaveManager : MonoBehaviour
     public void NextWaveDefaultConfig()
     {
         enemiesToSpawn = EnemyDictionaryManager.CreateEnemyDictionary(waveCount, enemyTypes.Count);
-        enemyManager.NextWave();
+        // enemyManager.NextWave();
     }
 
 

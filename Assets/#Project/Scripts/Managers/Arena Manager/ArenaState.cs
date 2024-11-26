@@ -79,7 +79,7 @@ public class ArenaState : MonoBehaviour
         changeScene.LoadScene(shopSceneName);
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         waveManager.arenaState.OnWaveCompleted.RemoveAllListeners();
     }

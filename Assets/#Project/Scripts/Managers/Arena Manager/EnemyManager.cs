@@ -146,8 +146,8 @@ public class EnemyManager : MonoBehaviour
 
     public void NextWave()
     {
-        StopAllCoroutines(); // Stop previous wave's spawning
-        InitializeWave();    // Reinitialize wave-specific variables
+        StopAllCoroutines();
+        InitializeWave();   //reinitialize wave-specific variables
         StartCoroutine(SpawnEnemies());
     }
 
