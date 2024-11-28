@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    
-    void Start()
+    public int currentHealth;
+
+    public void Start()
     {
-        
+        currentHealth = GlobalManager.Instance.playerData.PlayerMaxHealth;
     }
 
-    void Update()
+    public void GetHit()
     {
-        
+
     }
+
+
 }

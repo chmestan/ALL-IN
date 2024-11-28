@@ -8,7 +8,7 @@ public static class EnemyDictionaryManager
 
     public static Dictionary<Enemy, int> CreateEnemyDictionary(int waveNb, int nbAvailableTypes)
     {
-        enemyTypes = GlobalManager.Instance.WaveConfig.EnemyTypes;
+        enemyTypes = GlobalManager.Instance.waveManager.EnemyTypes;
 
         int totalEnemiesToGenerate = GetNumberOfEnemies(waveNb);
 

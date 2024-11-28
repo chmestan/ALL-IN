@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class PlayerBulletMvmt : BulletMovement
 {
-    [SerializeField] private int damage = 5;
     [SerializeField] private bool debug = false; 
-
-    public int Damage
-    {
-        get => damage;
-        set => damage = value;
-    }
-
 
     // protected override void FixedUpdate()
     // {
@@ -27,14 +19,10 @@ public class PlayerBulletMvmt : BulletMovement
 
         if (enemy != null)
         {
+            int damage = GlobalManager.Instance.playerData.PlayerDamage;
             enemy.GetHit(damage);
             gameObject.SetActive(false); 
             if (debug) Debug.Log($"[BulletHit] A bullet has damaged {collider.gameObject} for {damage} damage.");
         }
     }
-
-    // public override void SetDirection(Vector2 newDirection)
-    // {
-
-    // }
 }

@@ -16,7 +16,7 @@ public class EnemyPools : MonoBehaviour
 
     private void Start()
     {
-        enemyTypes = GlobalManager.Instance.WaveConfig.EnemyTypes;
+        enemyTypes = GlobalManager.Instance.waveManager.EnemyTypes;
         InitializePools();
     }
 
