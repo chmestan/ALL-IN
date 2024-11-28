@@ -18,14 +18,14 @@ public class EnemyRoamState : EnemyState
     {
         base.EnterState();
 
-        Debug.Log($"(EnemyRoamState) {enemy.name} is roaming.");
+        // Debug.Log($"(EnemyRoamState) {enemy.name} is roaming.");
         agent.speed = stats.MoveSpeed / 2; // Roam slower than chase
 
         roamDistance = stats.RoamingDistance;
 
         // how many roams is this going to take?
         roamsRemaining = Random.Range(stats.MinRoams, stats.MaxRoams + 1);
-        Debug.Log($"(EnemyRoamState) {enemy.name} will roam {roamsRemaining} times.");
+        // Debug.Log($"(EnemyRoamState) {enemy.name} will roam {roamsRemaining} times.");
 
         SetRandomDestination();
     }
@@ -53,7 +53,7 @@ public class EnemyRoamState : EnemyState
     public override void ExitState()
     {
         base.ExitState();
-        Debug.Log($"(EnemyRoamState) {enemy.name} is exiting roaming state.");
+        // Debug.Log($"(EnemyRoamState) {enemy.name} is exiting roaming state.");
     }
 
     private void SetRandomDestination()
@@ -69,7 +69,7 @@ public class EnemyRoamState : EnemyState
         }
         else
         {
-            Debug.LogWarning($"(EnemyRoamState) {enemy.name} failed to find a valid roaming destination.");
+            Debug.LogError($"(EnemyRoamState) {enemy.name} failed to find a valid roaming destination.");
         }
     }
 

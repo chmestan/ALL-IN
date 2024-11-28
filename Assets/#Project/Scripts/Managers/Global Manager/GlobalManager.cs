@@ -25,12 +25,12 @@ public class GlobalManager : MonoBehaviour
         playerData = GetComponent<PlayerData>();
         if (playerData == null)
         {
-            Debug.LogError("(GlobalManager) PlayerData component not found on the same GameObject.");
+            Debug.LogError("(GlobalManager) PlayerData component not found on the object.");
         }
         waveManager = GetComponent<WaveManager>();
         if (waveManager == null)
         {
-            Debug.LogError("(GlobalManager) WaveManager component not found on the same GameObject.");
+            Debug.LogError("(GlobalManager) WaveManager component not found on the object.");
         }
     }
 }

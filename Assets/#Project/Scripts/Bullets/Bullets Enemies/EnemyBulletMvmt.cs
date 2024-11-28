@@ -6,19 +6,28 @@ using UnityEngine;
 public class EnemyBulletMvmt : BulletMovement
 {
 
-    // protected override void FixedUpdate()
-    // {
+    public int bulletDmg;
+    PlayerHealth playerHealth;
 
-    // }
+    private void OnEnable()
+    {
+        playerHealth = Player.Instance.GetComponent<PlayerHealth>();
+    }
 
 
     protected override void OnTriggerEnter2D(Collider2D collider)
     {
         base.OnTriggerEnter2D(collider);
-
         if (collider.gameObject.CompareTag("player"))
         {
-            Debug.Log("Enemy bullet hit the player!");
+            playerHealth.GetHit(bulletDmg);
+            Debug.Log($"[BulletHit] A bullet has damaged the player for {bulletDmg} damage.");
         }
     }
+
+    private void OnDisable()
+    {
+        bulletDmg = 0;
+    }
+
 }

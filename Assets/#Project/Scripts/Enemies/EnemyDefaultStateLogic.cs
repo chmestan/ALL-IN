@@ -14,15 +14,15 @@ public abstract class EnemyDefaultStateLogic : MonoBehaviour
         public EnemyAttackState AttackState {get; set;}
     #endregion
 
-    public virtual void OnPlayerDetected()
-    {
-        StateMachine.ChangeState(ChaseState);
-    }
+    // public virtual void OnPlayerDetected()
+    // {
+    //     StateMachine.ChangeState(ChaseState);
+    // }
 
-    public virtual void OnPlayerLost()
-    {
-        StateMachine.ChangeState(RoamState);
-    }
+    // public virtual void OnPlayerLost()
+    // {
+    //     StateMachine.ChangeState(RoamState);
+    // }
 
     public virtual EnemyState StateAfterRoaming()
     {

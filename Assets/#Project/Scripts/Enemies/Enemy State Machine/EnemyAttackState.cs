@@ -61,6 +61,9 @@ public class EnemyAttackState : EnemyState
         if (bullet != null)
         {
             bullet.transform.position = enemy.transform.position; 
+            EnemyBulletMvmt enemyBulletStats = bullet.GetComponent<EnemyBulletMvmt>();
+            if (enemyBulletStats == null) Debug.LogError("(EnemyAttackStats) Couldn't find EnemyBulletMvmt component on bullet");
+            else enemyBulletStats.bulletDmg = stats.BulletDamage;
             bullet.SetActive(true);
 
             Vector2 direction = (playerTransform.position - bullet.transform.position).normalized;

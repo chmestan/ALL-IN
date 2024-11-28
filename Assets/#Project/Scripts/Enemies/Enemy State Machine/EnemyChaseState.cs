@@ -14,7 +14,7 @@ public class EnemyChaseState : EnemyState
     {
         base.EnterState();
 
-        Debug.Log($"(EnemyFollowState) {enemy.name} entering Follow State");
+        // Debug.Log($"(EnemyFollowState) {enemy.name} entering Follow State");
     }
     public override void ExitState()
     {

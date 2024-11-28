@@ -22,7 +22,7 @@ public class EnemyStateMachine
     {
         CurrentEnemyState.ExitState();
         CurrentEnemyState = nextState;
-        Debug.Log($"(EnemyStateMachine) Changing state to {nextState}");
+        // Debug.Log($"(EnemyStateMachine) Changing state to {nextState}");
         CurrentEnemyState.EnterState();
     }
 

@@ -12,6 +12,10 @@ public class EnemyStats : ScriptableObject
     [Header ("STATES ATTRIBUTES"), Space (3f)]
     [SerializeField] private float _RoamingDistance = 3f;
 
+    [Header ("DAMAGE STATS"), Space (3f)]
+    [SerializeField] private int _BulletDamage = 5;
+    [SerializeField] private int _CollisionDamage = 10;
+
     [Header ("ATTACK STATS"), Space (3f)]
     [SerializeField] private int _BulletsPerBurst = 0;
     [SerializeField] private float _TimeBetweenBullets = 0f;
@@ -45,6 +49,17 @@ public class EnemyStats : ScriptableObject
     public float RoamingDistance
     {
         get => _RoamingDistance;
+    }
+    #endregion
+
+    #region DAMAGE
+    public int BulletDamage
+    {
+        get => _BulletDamage;
+    }
+    public int CollisionDamage
+    {
+        get => _CollisionDamage;
     }
 
     #endregion
