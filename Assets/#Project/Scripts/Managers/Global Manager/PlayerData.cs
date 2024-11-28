@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     [Header("Player Stats"), Space (10f)]
-    public int PlayerGold = 0;
-    public int PlayerDamage = 5;
-    public int PlayerMaxHealth = 20;
+    public int playerGold = 0;
+    public int playerDamage = 5;
+    public int playerMaxHealth = 20;
 
 }

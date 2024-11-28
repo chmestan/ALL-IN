@@ -87,16 +87,6 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-
-    private int CalculateTotalEnemies(Dictionary<Enemy, int> enemies)
-    {
-        int total = 0;
-        foreach (int count in enemies.Values)
-        {
-            total += count;
-        }
-        return total;
-    }
     private IEnumerator SpawnEnemies()
     {
         while (killedEnemies < totalEnemies)

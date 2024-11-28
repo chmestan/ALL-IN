@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
-        currentHealth = GlobalManager.Instance.playerData.PlayerMaxHealth;
+        currentHealth = GlobalManager.Instance.playerData.playerMaxHealth;
     }
 
     public void GetHit(int damage)

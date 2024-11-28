@@ -19,7 +19,7 @@ public class PlayerBulletMvmt : BulletMovement
 
         if (enemy != null)
         {
-            int damage = GlobalManager.Instance.playerData.PlayerDamage;
+            int damage = GlobalManager.Instance.playerData.playerDamage;
             enemy.GetHit(damage);
             gameObject.SetActive(false); 
             if (debug) Debug.Log($"[BulletHit] A bullet has damaged {collider.gameObject} for {damage} damage.");
