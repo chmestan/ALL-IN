@@ -14,9 +14,9 @@ public class UpgradeHealth : Upgrade
         { 4, 25 }
     };
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         maxLevel = healthByLevel.Count - 1;
     }
 

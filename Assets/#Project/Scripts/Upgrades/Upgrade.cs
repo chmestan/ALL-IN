@@ -23,7 +23,7 @@ public abstract class Upgrade : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
         upgradeName = GetType().Name;
     }
@@ -31,6 +31,7 @@ public abstract class Upgrade : MonoBehaviour
     {
         playerData = GlobalManager.Instance.GetComponent<PlayerData>();
         upgradeData = GlobalManager.Instance.GetComponent<UpgradeData>();
+        upgradeData.ResetUpgrades();
     }
 
     public int GetCurrentCost()

@@ -12,9 +12,9 @@ public class UpgradeDamage : Upgrade
         { 3, 15 }
     };
 
-    protected override void Start()
+    protected override void Awake()
     {
-        base.Start();
+        base.Awake();
         maxLevel = damageByLevel.Count - 1;
     }
 

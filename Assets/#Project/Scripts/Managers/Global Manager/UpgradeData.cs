@@ -4,12 +4,6 @@ using UnityEngine;
 public class UpgradeData : MonoBehaviour
 {
     public Dictionary<string, int> upgradeLevels = new Dictionary<string, int>();
-
-    private void Start()
-    {
-        ResetUpgrades();
-    }
-
     public void ResetUpgrades()
     {
         upgradeLevels.Clear();
