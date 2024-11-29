@@ -57,7 +57,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerStay2D(Collider2D collider)
     {
         if (collider.gameObject.CompareTag("player")) 
         {

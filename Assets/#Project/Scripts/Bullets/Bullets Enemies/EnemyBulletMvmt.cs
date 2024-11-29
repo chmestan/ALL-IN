@@ -7,7 +7,8 @@ public class EnemyBulletMvmt : BulletMovement
 {
 
     public int bulletDmg;
-    PlayerHealth playerHealth;
+    private PlayerHealth playerHealth;
+    [SerializeField] private bool debug = false;
 
     private void OnEnable()
     {
@@ -21,7 +22,7 @@ public class EnemyBulletMvmt : BulletMovement
         if (collider.gameObject.CompareTag("player"))
         {
             playerHealth.GetHit(bulletDmg);
-            Debug.Log($"[BulletHit] A bullet has damaged the player for {bulletDmg} damage.");
+            if (debug) Debug.Log($"[BulletHit] A bullet has damaged the player for {bulletDmg} damage.");
         }
     }
 
