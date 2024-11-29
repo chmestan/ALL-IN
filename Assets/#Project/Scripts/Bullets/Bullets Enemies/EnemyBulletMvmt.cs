@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,10 +9,12 @@ public class EnemyBulletMvmt : BulletMovement
 
     public int bulletDmg;
     private PlayerHealth playerHealth;
+
     [SerializeField] private bool debug = false;
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         playerHealth = Player.Instance.GetComponent<PlayerHealth>();
     }
 

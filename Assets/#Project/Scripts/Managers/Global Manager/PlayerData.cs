@@ -8,11 +8,13 @@ public class PlayerData : MonoBehaviour
     private int startingGold = 500;
     private int startingDamage = 5;
     private int startingHealth = 500;
+    private float startingRange = 5f;
 
     [Header("Player Stats"), Space (10f)]
     public int playerGold;
     public int playerDamage;
     public int playerMaxHealth;
+    public float playerRange;
 
     public ArenaState arenaState;
     public ChangeScene changeScene;
@@ -29,6 +31,7 @@ public class PlayerData : MonoBehaviour
         playerGold = startingGold;
         playerDamage = startingDamage;
         playerMaxHealth = startingHealth;
+        playerRange = startingRange;
     }
 
     public void ResetGame()

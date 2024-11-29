@@ -3,14 +3,29 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletMovement : MonoBehaviour
+public abstract class BulletMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 20f;
+    private float speed = 20f;
     private Vector2 direction;
+    private float distanceTraveled;
+    protected float range = 15f;
 
+    protected virtual void OnEnable()
+    {
+        distanceTraveled = 0f; 
+    }
     protected virtual void FixedUpdate()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        float distanceToTravel = speed * Time.deltaTime;
+        transform.Translate(direction * distanceToTravel);
+        distanceTraveled += distanceToTravel;
+
+        if (distanceTraveled >= range)
+        {
+            gameObject.SetActive(false);
+            direction = Vector2.zero;
+        }
+
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -26,4 +41,5 @@ public class BulletMovement : MonoBehaviour
     {
         direction = newDirection.normalized;
     }
+
 }

@@ -6692,6 +6692,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  invincibilityDuration: 1.5
+  flashInterval: 0.1
 --- !u!1001 &1242921695
 PrefabInstance:
   m_ObjectHideFlags: 0
