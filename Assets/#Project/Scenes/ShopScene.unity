@@ -593,6 +593,7 @@ GameObject:
   - component: {fileID: 198792801}
   - component: {fileID: 198792800}
   - component: {fileID: 198792803}
+  - component: {fileID: 198792804}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -643,7 +644,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 1.35
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -718,6 +719,30 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &198792804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198792799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_AssetsPPU: 100
+  m_RefResolutionX: 480
+  m_RefResolutionY: 270
+  m_CropFrame: 2
+  m_GridSnapping: 1
+  m_FilterMode: 0
+  m_UpscaleRT: 0
+  m_PixelSnapping: 0
+  m_CropFrameX: 0
+  m_CropFrameY: 0
+  m_StretchFill: 0
 --- !u!1 &207770728
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,14 +967,15 @@ GameObject:
   - component: {fileID: 885354201}
   - component: {fileID: 885354200}
   - component: {fileID: 885354199}
+  - component: {fileID: 885354202}
   - component: {fileID: 885354198}
   m_Layer: 5
-  m_Name: Upgrade 2
+  m_Name: Upgrade Damage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &885354197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1026,13 +1052,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 885354198}
-        m_TargetAssemblyTypeName: ButtonLoadScene, Assembly-CSharp
-        m_MethodName: LoadShopScene
-        m_Mode: 5
+      - m_Target: {fileID: 1622880879}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: TryPurchaseUpgrade
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 885354202}
+          m_ObjectArgumentAssemblyTypeName: Upgrade, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: MainScene
@@ -1076,6 +1102,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885354196}
   m_CullTransparentMesh: 1
+--- !u!114 &885354202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885354196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27cd4525290ed64281ea63389d8bd00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeName: 
+  maxLevel: 8
+  baseCost: 200
+  increment: 50
+  description: 
+  playerData: {fileID: 0}
+  upgradeData: {fileID: 0}
 --- !u!1 &906578801
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,10 +1413,10 @@ GameObject:
   - component: {fileID: 954522921}
   - component: {fileID: 954522920}
   - component: {fileID: 954522919}
-  - component: {fileID: 954522922}
   - component: {fileID: 954522918}
+  - component: {fileID: 954522922}
   m_Layer: 5
-  m_Name: Upgrade 1
+  m_Name: Upgrade Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1515,13 +1560,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb91a2a26b339c944ba9af3b45639c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
+  upgradeName: 
   maxLevel: 5
-  currentLevel: 0
   baseCost: 100
   increment: 50
   description: 
   playerData: {fileID: 0}
+  upgradeData: {fileID: 0}
 --- !u!1 &985812255
 GameObject:
   m_ObjectHideFlags: 0

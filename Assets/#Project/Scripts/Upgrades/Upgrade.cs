@@ -4,43 +4,61 @@ using UnityEngine;
 
 public abstract class Upgrade : MonoBehaviour
 {
-    public int index;           
+    public string upgradeName ;
     public int maxLevel;     
-    public int currentLevel = 0;  
     public int baseCost;   
     public int increment = 50; 
     public string description;    
-
     public PlayerData playerData;
+    public UpgradeData upgradeData;
+    public int CurrentLevel
+    {
+        get
+        {
+            if (upgradeData != null && upgradeData.upgradeLevels.ContainsKey(upgradeName))
+            {
+                return upgradeData.upgradeLevels[upgradeName];
+            }
+            return 0; 
+        }
+    }
 
-    public void Start()
+    private void Awake()
+    {
+        upgradeName = GetType().Name;
+    }
+    protected virtual void Start()
     {
         playerData = GlobalManager.Instance.GetComponent<PlayerData>();
+        upgradeData = GlobalManager.Instance.GetComponent<UpgradeData>();
     }
 
     public int GetCurrentCost()
     {
-        return baseCost + (currentLevel)*increment;
+        return baseCost + (CurrentLevel * increment);
     }
+
 
     public bool CanPurchase()
     {
-        return currentLevel < maxLevel;
+        return CurrentLevel < maxLevel;
     }
 
     public virtual void Purchase()
     {
-        if (CanPurchase())
-        {
-            currentLevel++;
-        }
+        upgradeData.IncrementUpgradeLevel(upgradeName);
+        Debug.Log($"{upgradeName} at level {CurrentLevel}/{maxLevel}");
+        ApplyEffect();
     }
 
     public abstract void ApplyEffect();
 
     public void ResetUpgrade()
     {
-        currentLevel = 0;
+        if (upgradeData.upgradeLevels.ContainsKey(upgradeName))
+        {
+            upgradeData.upgradeLevels[upgradeName] = 0;
+        }
     }
 
 }

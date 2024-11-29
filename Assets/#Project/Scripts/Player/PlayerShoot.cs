@@ -32,7 +32,11 @@ public class PlayerShoot : MonoBehaviour
 
         if (mainCamera == null)
             mainCamera = Camera.main;
+    }
 
+    private void Start()
+    {
+        shootingDelay = GlobalManager.Instance.playerData.playerShootingFrequency;
     }
 
     private void Update()

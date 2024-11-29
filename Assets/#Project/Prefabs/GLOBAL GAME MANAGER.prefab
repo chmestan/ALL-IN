@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3706619196429692175}
   - component: {fileID: 2394277852267514062}
   - component: {fileID: 6062343993198798912}
+  - component: {fileID: 644805936411675023}
   m_Layer: 0
   m_Name: GLOBAL GAME MANAGER
   m_TagString: Untagged
@@ -62,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7672cd676efbd3a4d8254b536b18ef8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!114 &3706619196429692175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,5 +160,20 @@ MonoBehaviour:
   playerGold: 0
   playerDamage: 0
   playerMaxHealth: 0
+  playerRange: 0
+  playerBulletSpeed: 0
+  playerShootingFrequency: 0
   arenaState: {fileID: 0}
   changeScene: {fileID: 0}
+--- !u!114 &644805936411675023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523165654241456479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9249b9b30df7fd4c92ce95afa51f893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

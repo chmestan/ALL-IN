@@ -17,8 +17,6 @@ public class ArenaState : MonoBehaviour
     public PlayerData playerData;
     public PlayerHealth playerHealth;
 
-    private bool temp = false;
-
     [SerializeField] private string shopSceneName = "ShopScene";
     [SerializeField] private float timeBeforeConfirm = 1f;
 

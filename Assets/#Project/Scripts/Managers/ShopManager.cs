@@ -18,13 +18,13 @@ public class ShopManager : MonoBehaviour
         {
             int cost = upgrade.GetCurrentCost();
 
-            if (playerData.playerGold >= cost)
+            if (cost <= 0) Debug.LogError($"(ShopManager) {upgrade.upgradeName} has an invalid cost");
+            else if (playerData.playerGold >= cost)
             {
                 playerData.playerGold -= cost;
                 upgrade.Purchase();
-                upgrade.ApplyEffect();
 
-                Debug.Log($"(ShopManager) Purchased upgrade {upgrade.index} (Level {upgrade.currentLevel}/{upgrade.maxLevel}) for {cost} gold.");
+                Debug.Log($"(ShopManager) Purchased upgrade {upgrade.upgradeName} for {cost} gold.");
             }
             else
             {
@@ -33,7 +33,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"(ShopManager) Upgrade {upgrade.index} is already at max level!");
+            Debug.Log($"(ShopManager) Upgrade {upgrade.upgradeName} is already at max level!");
         }
     }
 
