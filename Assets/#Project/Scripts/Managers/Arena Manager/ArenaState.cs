@@ -14,6 +14,8 @@ public class ArenaState : MonoBehaviour
     public UnityEvent OnWaveCompleted = new UnityEvent();
     public UnityEvent OnWaveLost = new UnityEvent();
     private WaveManager waveManager;
+    public PlayerData playerData;
+    public PlayerHealth playerHealth;
 
     private bool temp = false;
 
@@ -27,22 +29,29 @@ public class ArenaState : MonoBehaviour
         changeScene = GlobalManager.Instance.GetComponent<ChangeScene>();
         inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
         waveManager = GlobalManager.Instance.GetComponent<WaveManager>();
+        playerData = GlobalManager.Instance.GetComponent<PlayerData>();
     }
 
     private void Start()
     {
         waveManager.arenaState = this;
-        waveManager.arenaState.OnWaveCompleted.AddListener(waveManager.IncrementWaveCount);
-        waveManager.arenaState.OnWaveCompleted.AddListener(waveManager.NextWaveDefaultConfig);
+        playerData.arenaState = this;
+        waveManager.arenaState.OnWaveCompleted.AddListener(waveManager.WaveCompletion);
+        playerData.arenaState.OnWaveLost.AddListener(playerData.ResetGame);
+        playerHealth = Player.Instance.GetComponent<PlayerHealth>();
     }
 
     private void Update()
     {
-        if (temp)
+        if (playerHealth.currentHealth <= 0)
         {
             state = ArenaStateEnum.Lost;
 
-            if (OnWaveLost != null) OnWaveLost.Invoke(); // !!!!!!!!!!!
+            if (OnWaveLost != null)
+            { 
+                OnWaveLost.Invoke(); 
+                Debug.Log("(ArenaState) Wave lost.");
+            }
             else Debug.LogError("(ArenaState) OnWaveLost event is null");
         }
 
@@ -82,5 +91,6 @@ public class ArenaState : MonoBehaviour
     private void OnDestroy()
     {
         waveManager.arenaState.OnWaveCompleted.RemoveAllListeners();
+        playerData.arenaState.OnWaveLost.RemoveAllListeners();
     }
 }

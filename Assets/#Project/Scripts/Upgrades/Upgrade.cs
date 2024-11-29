@@ -20,7 +20,7 @@ public abstract class Upgrade : MonoBehaviour
 
     public int GetCurrentCost()
     {
-        return baseCost + (currentLevel-1)*increment;
+        return baseCost + (currentLevel)*increment;
     }
 
     public bool CanPurchase()
@@ -37,6 +37,11 @@ public abstract class Upgrade : MonoBehaviour
     }
 
     public abstract void ApplyEffect();
+
+    public void ResetUpgrade()
+    {
+        currentLevel = 0;
+    }
 
 }
 

@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("(PlayerHealth) Player should die right about now");
+            Debug.Log("(PlayerHealth) Player dies");
         }
     }
 
