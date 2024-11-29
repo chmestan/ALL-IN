@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     private int startingGold = 500;
-    private int startingDamage = 5;
+    private int startingDamage = 50;
     private int startingHealth = 10;
 
     [Header("Player Stats"), Space (10f)]

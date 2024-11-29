@@ -6,10 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    [SerializeField] private bool debug = false;
+
     public void LoadScene(string scene)
     {
         scene = scene.Trim();
-        Debug.Log("sceneName to load: " + scene);
+        if (debug) Debug.Log("(ChangeScene) sceneName to load: " + scene);
         SceneManager.LoadScene(scene);
     }
 

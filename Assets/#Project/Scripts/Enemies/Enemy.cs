@@ -23,6 +23,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
     public UnityEvent OnDeath = new UnityEvent();
 
 
+
     // private ChaseStateCollider chaseStateCollider;
 
 // GET NAVMESH, STATS AND STATES
@@ -75,6 +76,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
     #region GET HIT AND DIE METHODS
         public void GetHit(int damage)
         {
+            if (StateMachine.CurrentEnemyState == SpawnState) return;
             currentHealth -= damage;
             // Debug.Log($"(Enemy) {gameObject.name} took {damage} damage! Current Health: {currentHealth}");
 

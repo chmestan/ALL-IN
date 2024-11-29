@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e30cca3920fc24da8a2d04aa9c7dc0, type: 3}
   m_Name: Enemy2Stats
   m_EditorClassIdentifier: 
-  _MaxHealth: 10
+  _MaxHealth: 15
   _MoveSpeed: 3
   _RoamingDistance: 6
   _BulletDamage: 8
