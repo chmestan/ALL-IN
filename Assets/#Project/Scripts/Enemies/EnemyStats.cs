@@ -15,6 +15,7 @@ public class EnemyStats : ScriptableObject
     [Header ("DAMAGE STATS"), Space (3f)]
     [SerializeField] private int _BulletDamage = 5;
     [SerializeField] private int _CollisionDamage = 10;
+    // [SerializeField] private float _CollisionDamageTick = 0.5f;
 
     [Header ("ATTACK STATS"), Space (3f)]
     [SerializeField] private int _BulletsPerBurst = 0;
@@ -61,6 +62,10 @@ public class EnemyStats : ScriptableObject
     {
         get => _CollisionDamage;
     }
+    // public float CollisionDamageTick
+    // {
+    //     get => _CollisionDamageTick;
+    // }
 
     #endregion
 

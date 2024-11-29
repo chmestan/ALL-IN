@@ -22,11 +22,6 @@ public abstract class Enemy : EnemyDefaultStateLogic
 
     public UnityEvent OnDeath = new UnityEvent();
 
-
-
-    // private ChaseStateCollider chaseStateCollider;
-
-// GET NAVMESH, STATS AND STATES
     private void Awake() 
     {
         agent = GetComponent<NavMeshAgent>();
@@ -43,15 +38,6 @@ public abstract class Enemy : EnemyDefaultStateLogic
         AttackState = new EnemyAttackState(this, StateMachine);
     }
 
-// INIT STATE AND CHASE COLLIDER
-    private void Start()
-    {
-        // StateMachine.Initialize(SpawnState); 
-
-        // chaseStateCollider = GetComponentInChildren<ChaseStateCollider>();
-        // if (chaseStateCollider != null) chaseStateCollider.SetColliderRadius(stats.ChaseRadius); 
-        // else Debug.LogError($"(Enemy) ChaseCollider not found on {gameObject.name}.");
-    }
 
     private void OnEnable()
     {
@@ -71,7 +57,29 @@ public abstract class Enemy : EnemyDefaultStateLogic
     }
 
 
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.gameObject.CompareTag("player")) 
+        {
+            PlayerHealth playerHealth = Player.Instance.GetComponent<PlayerHealth>(); 
+            if (playerHealth != null)
+            {
+                playerHealth.GetHit(stats.CollisionDamage);
+            }
+        }
+    }
 
+    // private IEnumerator ApplyCollisionDamage(GameObject other)
+    // {
+    //     PlayerHealth playerHealth = Player.Instance.GetComponent<PlayerHealth>(); 
+
+    //     while (playerHealth != null && StateMachine.CurrentEnemyState != SpawnState)
+    //     {
+    //         playerHealth.GetHit(stats.CollisionDamage);
+    //         Debug.Log($"(Enemy) Enemy inflicting collision damage for {stats.CollisionDamage} HP");
+    //         yield return new WaitForSeconds(stats.CollisionDamageTick); 
+    //     }
+    // }
 
     #region GET HIT AND DIE METHODS
         public void GetHit(int damage)
