@@ -21,6 +21,8 @@ public abstract class Enemy : EnemyDefaultStateLogic
     }
 
     public UnityEvent OnDeath = new UnityEvent();
+    private SpriteRenderer spriteRenderer;
+    private Coroutine flashCoroutine;
 
     private void Awake() 
     {
@@ -29,6 +31,9 @@ public abstract class Enemy : EnemyDefaultStateLogic
         agent.updateUpAxis = false;
 
         GetScriptableObject();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) Debug.LogError($"(Enemy) No SpriteRenderer found on {gameObject.name}");
 
         StateMachine = new EnemyStateMachine();
         SpawnState = new EnemySpawnState(this, StateMachine);
@@ -88,6 +93,12 @@ public abstract class Enemy : EnemyDefaultStateLogic
             currentHealth -= damage;
             // Debug.Log($"(Enemy) {gameObject.name} took {damage} damage! Current Health: {currentHealth}");
 
+            if (flashCoroutine != null)
+            {
+                StopCoroutine(flashCoroutine); // only one flash active
+            }
+            flashCoroutine = StartCoroutine(FlashWhite());
+
             if (currentHealth <= 0)
             {
                 Die();
@@ -100,6 +111,15 @@ public abstract class Enemy : EnemyDefaultStateLogic
             OnDeath.Invoke(); 
             gameObject.SetActive(false);
         }
+
+        private IEnumerator FlashWhite()
+        {
+            Color originalColor = spriteRenderer.color;
+            spriteRenderer.color = Color.white; 
+            yield return new WaitForSeconds(0.05f); 
+            spriteRenderer.color = originalColor; 
+        }
+
     #endregion
 
     #region INIT METHODS

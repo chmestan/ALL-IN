@@ -5,10 +5,10 @@ using UnityEngine;
 
 public abstract class BulletMovement : MonoBehaviour
 {
-    private float speed = 20f;
     private Vector2 direction;
     private float distanceTraveled;
     protected float range = 15f;
+    protected float speed = 13f;
 
     protected virtual void OnEnable()
     {

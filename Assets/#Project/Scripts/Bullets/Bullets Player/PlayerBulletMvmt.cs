@@ -6,8 +6,9 @@ using UnityEngine;
 public class PlayerBulletMvmt : BulletMovement
 {
     [SerializeField] private bool debug = false; 
-    [SerializeField] private int defaultDamage = 5;
-    [SerializeField] private float defaultRange = 5f;
+    // [SerializeField] private int defaultDamage = 5;
+    // [SerializeField] private float defaultRange = 5f;
+    // [SerializeField] private float defaultSpeed = 5f;
 
     private int damage;
 
@@ -16,6 +17,7 @@ public class PlayerBulletMvmt : BulletMovement
         base.OnEnable();
         damage = GlobalManager.Instance.playerData.playerDamage;
         range = GlobalManager.Instance.playerData.playerRange;
+        speed = GlobalManager.Instance.playerData.playerBulletSpeed;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider)
@@ -32,10 +34,11 @@ public class PlayerBulletMvmt : BulletMovement
         }
     }
 
-    private void OnDisable()
-    {
-        damage = defaultDamage;
-        range = defaultRange;
-    }
+    // private void OnDisable()
+    // {
+    //     damage = defaultDamage;
+    //     range = defaultRange;
+    //     speed = defaultSpeed;
+    // }
 
 }
