@@ -1374,7 +1374,7 @@ PrefabInstance:
     - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1540099000}
+      objectReference: {fileID: 3789018275707868687, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
     - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadScene
@@ -1392,17 +1392,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b692a602032216f408720f89ab049624, type: 3}
---- !u!114 &1540099000 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3789018275707868687, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
-  m_PrefabInstance: {fileID: 95608973}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7672cd676efbd3a4d8254b536b18ef8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1611713806
 GameObject:
   m_ObjectHideFlags: 0

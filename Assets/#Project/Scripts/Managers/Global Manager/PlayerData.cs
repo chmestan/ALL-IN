@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     private int startingGold = 0;
     private int startingDamage = 5;
-    private int startingHealth = 100;
+    private int startingHealth = 500;
     private float startingRange = 7f;
     private float startingBulletSpeed = 13f;
     private float startingShootingFrequency = 0.7f;
