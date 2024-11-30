@@ -721,6 +721,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1622880880}
+    - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddRandomEnemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ExtraEnemies, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1510,6 +1530,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622880878}
   - component: {fileID: 1622880879}
+  - component: {fileID: 1622880880}
   m_Layer: 0
   m_Name: ShopManager
   m_TagString: Untagged
@@ -1545,6 +1566,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerData: {fileID: 0}
+--- !u!114 &1622880880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622880877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231f136064c4a3f458e0f7b13aebd0ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  extraEnemyCap: 30
+  chances:
+  - 0.2
+  - 0.55
+  - 0.2
+  - 0.03
+  - 0.015
+  - 0.005
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

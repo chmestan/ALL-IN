@@ -59,8 +59,19 @@ public class WaveManager : MonoBehaviour
     public void NextWaveDefaultConfig()
     {
         enemiesToSpawn = EnemyDictionaryManager.CreateEnemyDictionary(waveCount, enemyTypes.Count);
-        // enemyManager.NextWave();
     }
 
+    public void UpdateExtraEnemies(Dictionary<Enemy, int> extraEnemies, int extraPrize)
+    {
+        foreach (var entry in extraEnemies)
+        {
+            if (enemiesToSpawn.ContainsKey(entry.Key))
+                enemiesToSpawn[entry.Key] += entry.Value;
+            else
+                enemiesToSpawn[entry.Key] = entry.Value;
+        }
+
+        prize += extraPrize;
+    }
 
 }

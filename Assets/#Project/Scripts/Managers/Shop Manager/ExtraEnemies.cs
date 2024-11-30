@@ -1,0 +1,85 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ExtraEnemies : MonoBehaviour
+{
+    [SerializeField] private int extraEnemyCap = 30;
+
+    [SerializeField] private List<float> chances;
+
+    private Dictionary<Enemy, int> extraEnemies = new Dictionary<Enemy, int>();
+    private int totalExtraEnemies = 0;
+    private int extraPrize = 0;
+
+    public void AddRandomEnemies()
+    {
+        CheckChances();
+        if (totalExtraEnemies >= extraEnemyCap)
+        {
+            Debug.Log("Enemy cap reached!");
+            return;
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            Enemy randomEnemy = GlobalManager.Instance.waveManager.EnemyTypes[Random.Range(0, GlobalManager.Instance.waveManager.EnemyTypes.Count)];
+            int randomCount = RollEnemyCount();
+
+            // IF I WANT THE CAP OF 30 TO BE STRICTLY RESPECTED
+            // if (totalExtraEnemies + randomCount > extraEnemyCap)
+            //     randomCount = extraEnemyCap - totalExtraEnemies;
+
+            if (randomCount > 0)
+            {
+                if (extraEnemies.ContainsKey(randomEnemy))
+                    extraEnemies[randomEnemy] += randomCount;
+                else
+                    extraEnemies[randomEnemy] = randomCount;
+
+                totalExtraEnemies += randomCount;
+            }
+            Debug.Log($"Extra enemies added: {randomCount}");
+        }
+        extraPrize += 100;
+        Debug.Log($"Extra prize: {extraPrize}");
+
+        GlobalManager.Instance.waveManager.UpdateExtraEnemies(extraEnemies, extraPrize);
+    }
+
+    public int RollEnemyCount()
+    {
+        if (chances == null || chances.Count == 0)
+        {
+            Debug.LogError("Chances list is not set or empty!");
+            return 0;
+        }
+
+        float roll = Random.value;
+        float cumulative = 0f;
+
+        for (int i = 0; i < chances.Count; i++)
+        {
+            cumulative += chances[i];
+            if (roll < cumulative)
+                return i;
+        }
+
+        // in case of floating point errors:
+        Debug.LogWarning("Roll exceeded cumulative chances. Returning last index.");
+        return 2;
+    }
+
+    private void CheckChances()
+    {
+        float total = 0f;
+        foreach (float chance in chances)
+            total += chance;
+
+        if (Mathf.Abs(total - 100f) > 0.01f)
+        {
+            Debug.LogWarning("Chances do not sum up to 100%");
+        }
+    }
+
+}
