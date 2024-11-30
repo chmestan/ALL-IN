@@ -23,7 +23,8 @@ public class ExtraEnemies : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            Enemy randomEnemy = GlobalManager.Instance.waveManager.EnemyTypes[Random.Range(0, GlobalManager.Instance.waveManager.EnemyTypes.Count)];
+            List<Enemy> listOfEnemies = GlobalManager.Instance.waveManager.EnemyTypes;
+            Enemy randomEnemy = listOfEnemies[Random.Range(0, listOfEnemies.Count)];
             int randomCount = RollEnemyCount();
 
             // IF I WANT THE CAP OF 30 TO BE STRICTLY RESPECTED
@@ -32,19 +33,23 @@ public class ExtraEnemies : MonoBehaviour
 
             if (randomCount > 0)
             {
-                if (extraEnemies.ContainsKey(randomEnemy))
-                    extraEnemies[randomEnemy] += randomCount;
+                // Add directly to WaveManager's enemiesToSpawn
+                if (GlobalManager.Instance.waveManager.EnemiesToSpawn.ContainsKey(randomEnemy))
+                {
+                    GlobalManager.Instance.waveManager.EnemiesToSpawn[randomEnemy] += randomCount;
+                }
                 else
-                    extraEnemies[randomEnemy] = randomCount;
-
-                totalExtraEnemies += randomCount;
-            }
+                {
+                    GlobalManager.Instance.waveManager.EnemiesToSpawn[randomEnemy] = randomCount;
+                }
+            totalExtraEnemies += randomCount;
+            }            
             Debug.Log($"Extra enemies added: {randomCount}");
         }
         extraPrize += 100;
         Debug.Log($"Extra prize: {extraPrize}");
 
-        GlobalManager.Instance.waveManager.UpdateExtraEnemies(extraEnemies, extraPrize);
+        GlobalManager.Instance.waveManager.UpdatePrize(extraPrize);
     }
 
     public int RollEnemyCount()
@@ -67,7 +72,7 @@ public class ExtraEnemies : MonoBehaviour
 
         // in case of floating point errors:
         Debug.LogWarning("Roll exceeded cumulative chances. Returning last index.");
-        return 2;
+        return 1;
     }
 
     private void CheckChances()

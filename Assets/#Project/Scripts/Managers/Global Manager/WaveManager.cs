@@ -61,17 +61,10 @@ public class WaveManager : MonoBehaviour
         enemiesToSpawn = EnemyDictionaryManager.CreateEnemyDictionary(waveCount, enemyTypes.Count);
     }
 
-    public void UpdateExtraEnemies(Dictionary<Enemy, int> extraEnemies, int extraPrize)
+    public void UpdatePrize(int extraPrize)
     {
-        foreach (var entry in extraEnemies)
-        {
-            if (enemiesToSpawn.ContainsKey(entry.Key))
-                enemiesToSpawn[entry.Key] += entry.Value;
-            else
-                enemiesToSpawn[entry.Key] = entry.Value;
-        }
-
         prize += extraPrize;
+        Debug.Log($"Updated prize: {prize}");
     }
 
 }
