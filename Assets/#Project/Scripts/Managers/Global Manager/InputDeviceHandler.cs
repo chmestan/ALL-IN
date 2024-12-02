@@ -10,6 +10,7 @@ public class InputDeviceHandler : MonoBehaviour
     public InputAction moveInput;
     public InputAction pauseInput;
     public InputAction shootInput;
+    public InputAction dashInput;
     public InputAction confirmInput;
     public InputAction shootDirectionInput;
 
@@ -56,7 +57,8 @@ public class InputDeviceHandler : MonoBehaviour
             pauseInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Pause");
             shootInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot");
             shootDirectionInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Shoot Direction");
-            confirmInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Confirm");
+            dashInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Dash");
+            confirmInput = inputActions.FindActionMap("PlayerGamepad").FindAction("Confirm");
         }
         else
         {
@@ -66,6 +68,7 @@ public class InputDeviceHandler : MonoBehaviour
             moveInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Move");
             pauseInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Pause");
             shootInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Shoot");
+            dashInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Dash");
             confirmInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Confirm");
             // shootDirectionInput = inputActions.FindActionMap("PlayerKeyboard").FindAction("Shoot Direction");
         }

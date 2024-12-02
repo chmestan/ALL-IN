@@ -9,19 +9,21 @@ public class PlayerHealth : MonoBehaviour
     public float invincibilityDuration = 1.5f; 
     private bool isInvincible = false;  
     private SpriteRenderer spriteRenderer;
+    private PlayerMovement playerMovement;
     [SerializeField] private float flashInterval = 0.1f;
 
     private void Start()
     {
         currentHealth = GlobalManager.Instance.playerData.playerMaxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
         if (spriteRenderer == null) Debug.LogError("(PlayerHealth) No SpriteRenderer found on Player");
 
     }
 
     public void GetHit(int damage)
     {
-        if (isInvincible) return;
+        if (isInvincible || playerMovement.isDashing || playerMovement.isInGracePeriod) return;
 
         currentHealth -= damage;
         Debug.Log($"(PlayerHealth) Player now has {currentHealth} HP.");

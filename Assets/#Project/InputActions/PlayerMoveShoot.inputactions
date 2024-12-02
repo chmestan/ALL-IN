@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "53e8ab93-8028-4b2c-ae28-75f51942eb67",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -106,17 +115,6 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "2802f5fb-a2e7-402e-92fa-522891ca9672",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
@@ -205,6 +203,17 @@
                     "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fe780b05-9d42-42c2-bd30-a07e5b33dd31",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -252,6 +261,15 @@
                     "name": "Confirm",
                     "type": "Button",
                     "id": "1fc6c7d4-c522-4e07-945c-0b211e6a5164",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "ac9dd28f-a1f3-4772-9c8f-31e3c9db15ed",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -360,12 +378,23 @@
                 },
                 {
                     "name": "",
-                    "id": "74d86258-e372-4791-b310-564a0acf4194",
-                    "path": "<Keyboard>/enter",
+                    "id": "245579f2-f12a-4bae-9bb9-3dabe4617b99",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Confirm",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c47fdd9-4622-4d5d-b804-350ccd8b7ffb",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -21,6 +21,22 @@ public class PlayerMovement : MonoBehaviour
         public Vector2 lastDirection = new Vector2(1,0);
         private Vector2 currentVelocity = Vector2.zero;    
 
+    [Header("Dash"), Space(10f)]
+        [SerializeField] float dashSpeed = 20f; 
+        [SerializeField] float dashDuration = 0.2f; 
+        [SerializeField] float dashCooldown = 1f; 
+        [SerializeField] float dashGracePeriod = 0.2f;
+        [SerializeField] bool canDash = true;
+        public bool isDashing = false;
+        public bool isInGracePeriod = false;
+        private Vector2 dashDirection;
+    
+    [Header("Flash Effect"), Space(10f)]
+        [SerializeField] private Color flashColor = Color.yellow; 
+        [SerializeField] private float flashDuration = 0.05f; 
+        private SpriteRenderer spriteRenderer;
+        private Color originalColor;
+
     [Header ("Technical"), Space (10f)]
         [SerializeField] float diagonalBufferTime = 0.1f;
         private float lastDirectionUpdateTime;
@@ -33,38 +49,26 @@ public class PlayerMovement : MonoBehaviour
     {
         inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        originalColor = spriteRenderer.color;
     }
 
     private void FixedUpdate()
     {
-        Move();
-        UpdateLastDirection();
-        AnimPlayer();
-
-        // switch (arenaMgr.state)
-        // {
-        //     case ArenaStateEnum.Paused:
-        //         break;
-        //     default:
-        //         Live();
-        //         break;
-        //     // case ArenaStateEnum.Ongoing:
-        //     //     Live();
-        //     //     break;
-        // }
+        if (!isDashing)
+        {
+            Move();
+            UpdateLastDirection();
+            AnimPlayer();
+        }
     }
-
-    // private void Pause()
-    // {
-    //     return;
-    // }
-
-    // private void Live()
-    // {
-    //     Move();
-    //     UpdateLastDirection();
-    //     AnimPlayer();
-    // }
+    private void Update()
+    {
+        if (inputMgr.dashInput.WasPressedThisFrame())
+        {
+            Dash();
+        }
+    }
 
     private void Move()
     {
@@ -104,7 +108,51 @@ public class PlayerMovement : MonoBehaviour
         float magnitudeX = Math.Abs(moveAmount.x);
         float magnitudeY = Math.Abs(moveAmount.y);
         anim.SetFloat("MoveMagnitude", Math.Max(magnitudeX,magnitudeY));
+    }
 
+    public void Dash()
+    {
+        if (!canDash || isDashing || moveAmount == Vector2.zero) return;
+
+        isDashing = true;
+        canDash = false;
+
+        dashDirection = moveAmount.normalized;
+
+        StartCoroutine(PerformDash());
+    }
+
+private IEnumerator PerformDash()
+{
+    float elapsedTime = 0f;
+
+    // Start Dash
+    while (elapsedTime < dashDuration)
+    {
+        transform.Translate(dashDirection * dashSpeed * Time.deltaTime);
+        elapsedTime += Time.deltaTime;
+        yield return null;
+    }
+
+    isDashing = false; 
+    isInGracePeriod = true; 
+
+    yield return new WaitForSeconds(dashGracePeriod); 
+
+    isInGracePeriod = false; 
+    yield return new WaitForSeconds(dashCooldown - dashGracePeriod); 
+    StartCoroutine(FlashEffect()); 
+    canDash = true;
+}
+
+    private IEnumerator FlashEffect()
+    {
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = flashColor; 
+            yield return new WaitForSeconds(flashDuration);
+            spriteRenderer.color = originalColor; 
+        }
     }
 
 }

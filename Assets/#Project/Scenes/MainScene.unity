@@ -6583,6 +6583,15 @@ MonoBehaviour:
   turnSpeed: 1
   turnSpeedCompensation: 5
   lastDirection: {x: 0, y: 0}
+  dashSpeed: 20
+  dashDuration: 0.1
+  dashCooldown: 1
+  dashGracePeriod: 0.4
+  canDash: 1
+  isDashing: 0
+  isInGracePeriod: 0
+  flashColor: {r: 1, g: 0.9918206, b: 0.51886785, a: 1}
+  flashDuration: 0.05
   diagonalBufferTime: 0.1
   debug: 0
 --- !u!114 &1081019529
