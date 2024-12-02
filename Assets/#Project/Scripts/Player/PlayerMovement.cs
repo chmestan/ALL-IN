@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     
-        [SerializeField] private ArenaState arenaMgr;
         private InputDeviceHandler inputMgr;
         private Vector2 moveAmount;
         private Animator anim;

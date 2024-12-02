@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.Versioning;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -11,13 +11,20 @@ public class PlayerHealth : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private PlayerMovement playerMovement;
     [SerializeField] private float flashInterval = 0.1f;
+    public CameraShakeManager cameraShakeManager;
+    CinemachineImpulseSource impulseSource;
+
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        playerMovement = GetComponent<PlayerMovement>();
+        if (spriteRenderer == null) Debug.LogError("(PlayerHealth) No SpriteRenderer found on Player");
+        impulseSource = GetComponent<CinemachineImpulseSource>();
+    }
 
     private void Start()
     {
         currentHealth = GlobalManager.Instance.playerData.playerMaxHealth;
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        playerMovement = GetComponent<PlayerMovement>();
-        if (spriteRenderer == null) Debug.LogError("(PlayerHealth) No SpriteRenderer found on Player");
 
     }
 
@@ -26,6 +33,7 @@ public class PlayerHealth : MonoBehaviour
         if (isInvincible || playerMovement.isDashing || playerMovement.isInGracePeriod) return;
 
         currentHealth -= damage;
+        cameraShakeManager.CameraShake(impulseSource);
         Debug.Log($"(PlayerHealth) Player now has {currentHealth} HP.");
 
         if (currentHealth <= 0)
