@@ -21,6 +21,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
     }
 
     public UnityEvent OnDeath = new UnityEvent();
+    private Color originalColor;
     private SpriteRenderer spriteRenderer;
     private Coroutine flashCoroutine;
 
@@ -34,6 +35,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null) Debug.LogError($"(Enemy) No SpriteRenderer found on {gameObject.name}");
+        else originalColor = spriteRenderer.color;
 
         StateMachine = new EnemyStateMachine();
         SpawnState = new EnemySpawnState(this, StateMachine);
@@ -96,6 +98,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
             if (flashCoroutine != null)
             {
                 StopCoroutine(flashCoroutine); // only one flash active
+                spriteRenderer.color = originalColor;
             }
             flashCoroutine = StartCoroutine(FlashWhite());
 
@@ -114,7 +117,6 @@ public abstract class Enemy : EnemyDefaultStateLogic
 
         private IEnumerator FlashWhite()
         {
-            Color originalColor = spriteRenderer.color;
             spriteRenderer.color = Color.white; 
             yield return new WaitForSeconds(0.05f); 
             spriteRenderer.color = originalColor; 

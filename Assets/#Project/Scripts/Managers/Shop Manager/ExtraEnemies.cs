@@ -10,7 +10,7 @@ public class ExtraEnemies : MonoBehaviour
 
     private Dictionary<Enemy, int> extraEnemies = new Dictionary<Enemy, int>();
     private int totalExtraEnemies = 0;
-    private int extraPrize = 0;
+    private int extraPrize = 100;
 
     public void AddRandomEnemies()
     {
@@ -46,7 +46,6 @@ public class ExtraEnemies : MonoBehaviour
             }            
             Debug.Log($"Extra enemies added: {randomCount}");
         }
-        extraPrize += 100;
         Debug.Log($"Extra prize: {extraPrize}");
 
         GlobalManager.Instance.waveManager.UpdatePrize(extraPrize);
@@ -81,7 +80,7 @@ public class ExtraEnemies : MonoBehaviour
         foreach (float chance in chances)
             total += chance;
 
-        if (Mathf.Abs(total - 100f) > 0.01f)
+        if (Mathf.Abs(total - 1f) > 0.0001f)
         {
             Debug.LogWarning("Chances do not sum up to 100%");
         }
