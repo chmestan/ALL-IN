@@ -146,7 +146,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
                 StopCoroutine(flashCoroutine); // only one flash active
                 spriteRenderer.color = originalColor;
             }
-            flashCoroutine = StartCoroutine(FlashWhite());
+            flashCoroutine = StartCoroutine(FlashOnHit());
 
             if (currentHealth <= 0)
             {
@@ -161,9 +161,9 @@ public abstract class Enemy : EnemyDefaultStateLogic
             gameObject.SetActive(false);
         }
 
-        private IEnumerator FlashWhite()
+        private IEnumerator FlashOnHit()
         {
-            spriteRenderer.color = Color.white; 
+            spriteRenderer.color = Color.red; 
             yield return new WaitForSeconds(0.05f); 
             spriteRenderer.color = originalColor; 
         }

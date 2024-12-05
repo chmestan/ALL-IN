@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f54a131d31727644086cbe0a032f5e05
+guid: 5b39c444f3e7c4648a55f08587f5d635
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 1
+  spriteExtrude: 12
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -97,64 +97,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DealerIdle0
+      name: Bullets_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 19
-        height: 33
+        width: 10
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e536b25ba5608b45bbdfb9da582a58a
-      internalID: 1220596717
+      spriteID: 9b8dd4a52ba7555438428592bb664a25
+      internalID: 765716979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DealerIdle1
+      name: Bullets_1
       rect:
         serializedVersion: 2
-        x: 19
+        x: 10
         y: 0
-        width: 19
-        height: 33
+        width: 10
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f37c34e977934d4a81703f1cdd87b8e
-      internalID: -760447120
+      spriteID: 6c58a1f1f4f716549be243859fe75b13
+      internalID: -1669033443
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DealerIdle2
+      name: Bullets_2
       rect:
         serializedVersion: 2
-        x: 38
+        x: 20
         y: 0
-        width: 19
-        height: 33
+        width: 10
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fe12ae18adc8384b9a7a7ca2752d63e
-      internalID: 1665949688
+      spriteID: cefe70e544f4570438d4de1f67e09c2c
+      internalID: 361226985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_3
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 0
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f26e7789101cdf43995a7a18f96d2ff
+      internalID: 1724954973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bullets_4
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d0d433a6e8ed940bfa4bb16d1c996d
+      internalID: -1558914872
       vertices: []
       indices: 
       edges: []
@@ -170,9 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      DealerIdle0: 1220596717
-      DealerIdle1: -760447120
-      DealerIdle2: 1665949688
+      Bullets_0: 765716979
+      Bullets_1: -1669033443
+      Bullets_2: 361226985
+      Bullets_3: 1724954973
+      Bullets_4: -1558914872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

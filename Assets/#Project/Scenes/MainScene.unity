@@ -384,19 +384,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b93f05bf63159bd42aac3605697f4853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilemap: {fileID: 0}
-  groundTiles:
-  - {fileID: 11400000, guid: d14edd8cad677824eb8e0ddd41951404, type: 2}
-  - {fileID: 11400000, guid: 3403bd2d3ad4bcc449a1846e6b3f8267, type: 2}
-  - {fileID: 11400000, guid: c69fbb2237b17e743938e7d5471c9be4, type: 2}
-  - {fileID: 11400000, guid: d46d0ab55b8aed04ebfd5b4d038b1a82, type: 2}
-  - {fileID: 11400000, guid: f8532634263214c4582999ed90162f33, type: 2}
-  neutralTile: {fileID: 11400000, guid: d14edd8cad677824eb8e0ddd41951404, type: 2}
-  size: {x: 28, y: 14}
-  numberOfObstacles: 5
-  debug: 0
-  navMeshSurface: {fileID: 0}
-  offset: {x: 0, y: 0}
 --- !u!114 &227687864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1841,7 +1828,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.06666667
+  m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: f1e193324eb10794aadfc31e28f6981b, type: 2}
