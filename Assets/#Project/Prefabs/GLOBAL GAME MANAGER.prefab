@@ -104,6 +104,15 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  dashInput:
+    m_Name: Dash Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 506fc690-e065-4f13-bddd-ebf6dbf1b937
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   confirmInput:
     m_Name: Confirm Input
     m_Type: 0

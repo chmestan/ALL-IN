@@ -1,18 +1,17 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 
 public class ChangeScene : MonoBehaviour
 {
     [SerializeField] private bool debug = false;
 
+    // Loads a scene immediately
     public void LoadScene(string scene)
     {
         scene = scene.Trim();
-        if (debug) Debug.Log("(ChangeScene) sceneName to load: " + scene);
+        if (debug) Debug.Log("(ChangeScene) Scene name to load: " + scene);
         SceneManager.LoadScene(scene);
     }
-
 }
+
