@@ -13,17 +13,26 @@ public abstract class Enemy : EnemyDefaultStateLogic
     }
     protected int currentHealth;
     
-
-    protected NavMeshAgent agent;
-    public NavMeshAgent Agent
-    { 
-        get => agent;
-    }
-
+    #region NavMesh
+        protected NavMeshAgent agent;
+        public NavMeshAgent Agent
+        { 
+            get => agent;
+        }
+        #endregion
     public UnityEvent OnDeath = new UnityEvent();
-    private Color originalColor;
-    private SpriteRenderer spriteRenderer;
-    private Coroutine flashCoroutine;
+
+    #region Sprite Renderer
+        private Color originalColor;
+        private SpriteRenderer spriteRenderer;
+        private Coroutine flashCoroutine;
+    #endregion
+    
+    #region Animation
+        private Animator animator;
+        private Vector2 lastDirection;
+        private Vector2 currentDirection;
+    #endregion
 
     private void Awake() 
     {
@@ -36,6 +45,9 @@ public abstract class Enemy : EnemyDefaultStateLogic
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null) Debug.LogError($"(Enemy) No SpriteRenderer found on {gameObject.name}");
         else originalColor = spriteRenderer.color;
+
+        animator = GetComponent<Animator>();
+        if (animator == null) Debug.LogError($"(Enemy) No Animator found on {gameObject.name}");
 
         StateMachine = new EnemyStateMachine();
         SpawnState = new EnemySpawnState(this, StateMachine);
