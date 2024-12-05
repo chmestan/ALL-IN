@@ -7,10 +7,9 @@ public class UpgradeBulletSpeed : StatUpgrade<int>
     {
         valuesByLevel = new Dictionary<int, int>
         {
-            { 0, 13 },
-            { 1, 15 },
-            { 2, 17 },
-            { 3, 20 }
+            { 0, 17 },
+            { 1, 20 },
+            { 2, 25 }
         };
         base.Awake();
     }
