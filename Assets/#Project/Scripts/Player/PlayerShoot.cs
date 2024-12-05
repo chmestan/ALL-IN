@@ -1,13 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] Camera mainCamera;
-    [SerializeField] private ArenaState arenaMgr;
     private InputDeviceHandler inputMgr;
     private PlayerMovement playerMovement;
     private Animator anim;
@@ -51,7 +50,7 @@ public class PlayerShoot : MonoBehaviour
     {
         if (!inputMgr.useGamepad)
         {
-            Vector2 mousePos = mainCamera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             shootDirection = (mousePos - (Vector2)transform.position); // direction to mouse
             LastDirection = shootDirection.normalized;
         }
