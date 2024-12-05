@@ -12,4 +12,9 @@ public class ChasingEnemy : Enemy
     {
         return ChaseState; 
     }
+
+    public override void Update()
+    {
+        base.Update();        
+    }
 }

@@ -70,11 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4928965588691982762, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
       propertyPath: m_Color.g
-      value: 0.67488766
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4928965588691982762, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -84,6 +84,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
       insertIndex: 1
       addedObject: {fileID: 1576605113499556747}
+    - targetCorrespondingSourceObject: {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1315090220934583735}
   m_SourcePrefab: {fileID: 100100000, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
 --- !u!1 &1103854047708690806 stripped
 GameObject:
@@ -102,3 +105,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5827b85ffe7a3884282b2ac453e4cf0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!95 &1315090220934583735
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103854047708690806}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 74c83a6ed040aee4aa27fb67bafb3d92, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

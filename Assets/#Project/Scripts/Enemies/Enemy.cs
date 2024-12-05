@@ -29,10 +29,10 @@ public abstract class Enemy : EnemyDefaultStateLogic
     #endregion
     
     #region Animation
-        private Animator animator;
-        private Vector2 lastDirection;
-        private Vector2 currentDirection;
+        private Animator anim;
     #endregion
+
+    [SerializeField] private bool debug = false;
 
     private void Awake() 
     {
@@ -46,8 +46,8 @@ public abstract class Enemy : EnemyDefaultStateLogic
         if (spriteRenderer == null) Debug.LogError($"(Enemy) No SpriteRenderer found on {gameObject.name}");
         else originalColor = spriteRenderer.color;
 
-        animator = GetComponent<Animator>();
-        if (animator == null) Debug.LogError($"(Enemy) No Animator found on {gameObject.name}");
+        anim = GetComponent<Animator>();
+        if (anim == null) Debug.LogError($"(Enemy) No Animator found on {gameObject.name}");
 
         StateMachine = new EnemyStateMachine();
         SpawnState = new EnemySpawnState(this, StateMachine);
@@ -70,9 +70,19 @@ public abstract class Enemy : EnemyDefaultStateLogic
         agent.ResetPath();  
     }
 
-    private void Update()
+    public virtual void Update()
     {
         StateMachine.Update();
+
+        UpdateMovementAnimation();
+        if (debug)
+        { 
+            Debug.Log($"(Enemy) Enemy Velocity: {agent.velocity}");
+            Debug.Log($"(Enemy) Enemy Speed: {agent.speed}");
+            Debug.Log($"(Enemy) MoveX: {anim.GetFloat("MoveX")}, MoveY: {anim.GetFloat("MoveY")}");
+            Debug.Log($"(Enemy) LastMoveX: {anim.GetFloat("LastMoveX")}, LastMoveY: {anim.GetFloat("LastMoveY")}");
+            Debug.Log($"(Enemy) MoveMagnitude: {anim.GetFloat("MoveMagnitude")}");
+        }
     }
 
 
@@ -87,6 +97,30 @@ public abstract class Enemy : EnemyDefaultStateLogic
             }
         }
     }
+
+    private void UpdateMovementAnimation()
+    {
+        Vector2 currentVelocity = new Vector2(agent.velocity.x, agent.velocity.y);
+
+        if (currentVelocity.magnitude > 0.1f) 
+        {
+            Vector2 movementDirection = currentVelocity.normalized;
+
+            anim.SetFloat("MoveX", movementDirection.x);
+            anim.SetFloat("MoveY", movementDirection.y);
+
+            anim.SetFloat("LastMoveX", movementDirection.x);
+            anim.SetFloat("LastMoveY", movementDirection.y);
+        }
+        else
+        {
+            anim.SetFloat("MoveX", 0);
+            anim.SetFloat("MoveY", 0);
+        }
+
+        anim.SetFloat("MoveMagnitude", currentVelocity.magnitude);
+    }
+
 
     // private IEnumerator ApplyCollisionDamage(GameObject other)
     // {
@@ -122,7 +156,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
 
         public void Die()
         {
-            Debug.Log($"{gameObject.name} died.");
+            if (debug) Debug.Log($"(Enemy) {gameObject.name} died.");
             OnDeath.Invoke(); 
             gameObject.SetActive(false);
         }
