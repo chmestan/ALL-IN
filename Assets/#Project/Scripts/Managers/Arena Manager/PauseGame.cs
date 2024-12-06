@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 public class PauseGame : MonoBehaviour
 {
+
     [Header ("Input Map")]
         private InputDeviceHandler inputMgr;
 

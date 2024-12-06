@@ -13,6 +13,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float flashInterval = 0.1f;
     public CameraShakeManager cameraShakeManager;
     CinemachineImpulseSource impulseSource;
+    public bool isDead = false;
+    private Animator anim;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         if (spriteRenderer == null) Debug.LogError("(PlayerHealth) No SpriteRenderer found on Player");
         impulseSource = GetComponent<CinemachineImpulseSource>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start()
@@ -38,12 +41,20 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+            anim.SetTrigger("Death");
+            isInvincible = true;
+            spriteRenderer.sortingOrder = 3;
             Debug.Log("(PlayerHealth) Player dies");
         }
         else
         {
             StartCoroutine(InvincibilityCoroutine());
         }
+    }
+
+    public void IsDead()
+    {
+        isDead = true;
     }
 
 

@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     private int startingGold = 0;
     private int startingDamage = 5;
-    private int startingHealth = 500;
+    private int startingHealth = 5;
     private float startingRange = 7f;
     private float startingBulletSpeed = 17f;
     private float startingShootingFrequency = 0.7f;
@@ -44,7 +44,7 @@ public class PlayerData : MonoBehaviour
     {
         ResetValues();
         ResetUpgrades();
-        changeScene.LoadScene(menuSceneName);
+        changeScene.LoadSceneWithTransition(menuSceneName, 1f);
     }
 
     public void ResetUpgrades()

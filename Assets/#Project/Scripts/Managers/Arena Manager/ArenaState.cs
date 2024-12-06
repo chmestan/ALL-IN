@@ -41,10 +41,8 @@ public class ArenaState : MonoBehaviour
 
     private void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if (playerHealth.isDead == true)
         {
-            state = ArenaStateEnum.Lost;
-
             if (OnWaveLost != null)
             { 
                 OnWaveLost.Invoke(); 

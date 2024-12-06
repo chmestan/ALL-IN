@@ -362,7 +362,6 @@ GameObject:
   - component: {fileID: 227687867}
   - component: {fileID: 227687866}
   - component: {fileID: 227687865}
-  - component: {fileID: 227687863}
   - component: {fileID: 227687864}
   - component: {fileID: 227687868}
   m_Layer: 0
@@ -372,18 +371,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &227687863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 227687862}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b93f05bf63159bd42aac3605697f4853, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &227687864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +416,7 @@ MonoBehaviour:
   playerData: {fileID: 0}
   playerHealth: {fileID: 0}
   shopSceneName: ShopScene
-  timeBeforeConfirm: 1
+  timeBeforeConfirm: 0.1
 --- !u!114 &227687866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1434,13 +1421,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 340458295
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1890629317, guid: 84bf1cfd6e954124abdbbbf33d530234, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.95454544, y: 1.4545455}
+  m_Size: {x: 1.3125, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1491,7 +1478,8 @@ MonoBehaviour:
   currentHealth: 0
   invincibilityDuration: 1.5
   flashInterval: 0.1
-  cameraShakeManager: {fileID: 0}
+  cameraShakeManager: {fileID: 227687868}
+  isDead: 0
 --- !u!114 &1081019534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,9 +1625,9 @@ MonoBehaviour:
   m_UseCameraSpace: 1
   m_ReactionSettings:
     m_SecondaryNoise: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-    m_AmplitudeGain: 4
-    m_FrequencyGain: 3
-    m_Duration: 1
+    m_AmplitudeGain: 0.5
+    m_FrequencyGain: 0.5
+    m_Duration: 0.1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1177257591
 GameObject:
