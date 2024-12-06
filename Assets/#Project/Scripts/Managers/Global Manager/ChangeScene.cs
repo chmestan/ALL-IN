@@ -13,6 +13,11 @@ public class ChangeScene : MonoBehaviour
         if (transitionAnim == null) Debug.LogError("(ChangeScene) Animator not found");
     }
 
+    private void Start()
+    {
+        transitionAnim.SetTrigger("SlideRight");
+    }
+
    public void LoadSceneWithTransition(string scene, float delay)
     {
         if (transitionAnim != null)
