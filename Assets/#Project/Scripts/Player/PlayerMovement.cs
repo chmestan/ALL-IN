@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
         private InputDeviceHandler inputMgr;
         private Vector2 moveAmount;
         private Animator anim;
+        private PlayerHealth playerHealth;
 
     [Header ("Movement"), Space (10f)]
         [SerializeField] float speed = 9f;
@@ -50,10 +51,12 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void FixedUpdate()
     {
+        if (playerHealth.currentHealth <= 0) return;
         if (!isDashing)
         {
             Move();
@@ -63,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
+        if (playerHealth.currentHealth <= 0) return;
         if (inputMgr.dashInput.WasPressedThisFrame())
         {
             Dash();

@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             anim.SetTrigger("Death");
+            DisableEnemyAgents();
             isInvincible = true;
             spriteRenderer.sortingOrder = 3;
             Debug.Log("(PlayerHealth) Player dies");
@@ -52,11 +53,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    private void DisableEnemyAgents()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            enemy.Agent.isStopped = true; 
+        }
+    }
+
     public void IsDead()
     {
         isDead = true;
     }
-
 
     private IEnumerator InvincibilityCoroutine()
     {
