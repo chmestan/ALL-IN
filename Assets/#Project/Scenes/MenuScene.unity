@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417c4740d6f907442a61a1f0417fea95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!1 &29925734
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +321,7 @@ GameObject:
   - component: {fileID: 29925737}
   - component: {fileID: 29925741}
   - component: {fileID: 29925742}
+  - component: {fileID: 29925743}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -370,7 +372,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 29925736}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 29925743}
+        m_TargetAssemblyTypeName: ExitButton, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &29925736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +488,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 417c4740d6f907442a61a1f0417fea95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debug: 0
+--- !u!114 &29925743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 29925734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bede1394f02c624686e57c5abb32697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &677521341
@@ -1187,6 +1214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417c4740d6f907442a61a1f0417fea95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!1 &1865974193
 GameObject:
   m_ObjectHideFlags: 0
@@ -1555,6 +1583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 417c4740d6f907442a61a1f0417fea95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug: 0
 --- !u!1 &2135549485
 GameObject:
   m_ObjectHideFlags: 0
