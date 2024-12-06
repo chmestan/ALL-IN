@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneName: MainScene
-  delay: 3
+  delay: 1
 --- !u!1 &29925734
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +892,14 @@ PrefabInstance:
       propertyPath: enemyTypes.Array.data[2]
       value: 
       objectReference: {fileID: 1576605113499556747, guid: a48ceae47924dae498bbfd9582648577, type: 3}
+    - target: {fileID: 2662059016036026158, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2962283597991110573, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: m_Layer
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3684722451207004767, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -939,6 +947,10 @@ PrefabInstance:
     - target: {fileID: 3789018275707868687, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: debug
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8190621479403128417, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8523165654241456479, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: m_Name

@@ -15,7 +15,7 @@ public class GoToArenaButton : MonoBehaviour
 
     public void OnClick()
     {
-        changeScene.LoadSceneWithDelay(sceneName, delay);
+        changeScene.LoadSceneWithTransition(sceneName, delay);
     }
 
 }
