@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -53,7 +54,7 @@ public class ArenaState : MonoBehaviour
             else Debug.LogError("(ArenaState) OnWaveLost event is null");
         }
 
-        if (enemyManager.RemainingEnemies <= 0 && state != ArenaStateEnum.Won)
+        else if (enemyManager.RemainingEnemies <= 0 && state != ArenaStateEnum.Won)
         {
             state = ArenaStateEnum.Won;
                     

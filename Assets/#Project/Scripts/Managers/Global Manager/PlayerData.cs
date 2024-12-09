@@ -43,6 +43,7 @@ public class PlayerData : MonoBehaviour
     {
         ResetValues();
         ResetUpgrades();
+        GlobalManager.Instance.waveManager.WaveCount = 1;
     }
 
     public void ResetUpgrades()

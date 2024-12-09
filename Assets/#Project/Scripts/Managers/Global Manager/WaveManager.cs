@@ -24,7 +24,8 @@ public class WaveManager : MonoBehaviour
     public Dictionary<Enemy, int> EnemiesToSpawn
     { get => enemiesToSpawn;}
     public int WaveCount
-    { get => waveCount;}
+    { get => waveCount;
+      set => waveCount = value;}
     #endregion
 
     private void Start()
