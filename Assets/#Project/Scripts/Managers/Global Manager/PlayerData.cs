@@ -22,7 +22,6 @@ public class PlayerData : MonoBehaviour
 
     public ArenaState arenaState;
     public ChangeScene changeScene;
-    private string menuSceneName = "MenuScene";
 
     public void Start()
     {
@@ -44,7 +43,6 @@ public class PlayerData : MonoBehaviour
     {
         ResetValues();
         ResetUpgrades();
-        changeScene.LoadSceneWithTransition(menuSceneName, 1f);
     }
 
     public void ResetUpgrades()

@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] Camera mainCamera;
     private InputDeviceHandler inputMgr;
     private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
     private Animator anim;
 
     [Header("Shooting"), Space(10f)]
@@ -27,6 +28,7 @@ public class PlayerShoot : MonoBehaviour
     {
         inputMgr = GlobalManager.Instance.GetComponent<InputDeviceHandler>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerHealth = GetComponent<PlayerHealth>();
         anim = GetComponent<Animator>();
 
         if (mainCamera == null)
@@ -41,6 +43,7 @@ public class PlayerShoot : MonoBehaviour
     private void Update()
     {
         // if (arenaMgr.state == ArenaStateEnum.Paused) return;
+        if (playerHealth.currentHealth <= 0) return;
         Shoot(FacingDirection());
         AnimPlayer();
         if (debug) DebugLogs();

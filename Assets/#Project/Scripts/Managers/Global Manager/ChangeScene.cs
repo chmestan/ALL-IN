@@ -6,6 +6,7 @@ public class ChangeScene : MonoBehaviour
 {
     [SerializeField] private bool debug = true;
     private Animator transitionAnim;
+    private bool isSceneChanging = false; 
 
     private void Awake()
     {
@@ -18,18 +19,15 @@ public class ChangeScene : MonoBehaviour
         transitionAnim.SetTrigger("SlideRight");
     }
 
-   public void LoadSceneWithTransition(string scene, float delay)
+    public void LoadSceneWithTransition(string scene, float delay)
     {
+        if (isSceneChanging) return;
+        isSceneChanging = true;
+
         if (transitionAnim != null)
         {
             StartCoroutine(SceneTransition(scene.Trim(), delay));
         }
-        // else
-        // {
-        //     // fallback
-        //     if (debug) Debug.LogWarning("(ChangeScene) Transition Animator not found, loading scene without transition.");
-        //     LoadSceneWithDelay(scene, delay);
-        // }
     }
 
     private IEnumerator SceneTransition(string scene, float delay)
@@ -42,31 +40,10 @@ public class ChangeScene : MonoBehaviour
         if (debug) Debug.Log($"(ChangeScene) Loading scene: {scene}");
         SceneManager.LoadScene(scene);
 
-        yield return new WaitForSeconds(0.1f); 
+        yield return new WaitForSeconds(0.1f);
 
+        isSceneChanging = false; 
         transitionAnim.SetTrigger("SlideRight");
     }
-
-
-    #region fallback
-    public void LoadSceneWithDelay(string scene, float delay)
-    {
-        StartCoroutine(DelayedSceneLoad(scene.Trim(), delay));
-    }
-
-    private IEnumerator DelayedSceneLoad(string scene, float delay)
-    {
-        if (debug) Debug.Log($"(ChangeScene) Delaying scene load for {delay} seconds.");
-        yield return new WaitForSeconds(delay);
-
-        if (debug) Debug.Log($"(ChangeScene) Loading scene: {scene}");
-        SceneManager.LoadScene(scene);
-    }
-
-    public void LoadScene(string scene)
-    {
-        LoadSceneWithDelay(scene, 0); 
-    }
-    #endregion
 }
 

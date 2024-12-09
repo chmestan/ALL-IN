@@ -17,7 +17,6 @@ public class ArenaState : MonoBehaviour
     public PlayerData playerData;
     public PlayerHealth playerHealth;
 
-    [SerializeField] private string shopSceneName = "ShopScene";
     [SerializeField] private float timeBeforeConfirm = 1f;
 
     private void Awake()
@@ -46,7 +45,8 @@ public class ArenaState : MonoBehaviour
             if (OnWaveLost != null)
             { 
                 OnWaveLost.Invoke(); 
-                Debug.Log("(ArenaState) Wave lost.");
+                StartCoroutine(WaitForConfirm("MenuScene"));
+                // Debug.Log("(ArenaState) Wave lost.");
             }
             else Debug.LogError("(ArenaState) OnWaveLost event is null");
         }
@@ -58,11 +58,11 @@ public class ArenaState : MonoBehaviour
             if (OnWaveCompleted!= null) 
             {
                 OnWaveCompleted.Invoke(); // we tell WaveManager to increment waveCounter
+                StartCoroutine(WaitForConfirm("ShopScene"));
+                // Debug.Log("(ArenaState) Wave completed. Waiting for confirmation");
             }
             else Debug.LogError("(ArenaState) OnWaveCompleted event is null");
 
-            Debug.Log("(ArenaState) Wave completed. Waiting for confirmation");
-            StartCoroutine(WaitForConfirm());
         }
 
         // we can only pause if the wave is ongoing, not if it's either won or lost
@@ -72,17 +72,19 @@ public class ArenaState : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitForConfirm()
+    private IEnumerator WaitForConfirm(string nextScene)
     {
         yield return new WaitForSeconds(timeBeforeConfirm);
 
+        Debug.Log("(ArenaState) Waiting for player confirmation.");
         while (!inputMgr.confirmInput.triggered)
         {
-            yield return null; 
+            yield return null;
         }
 
-        changeScene.LoadScene(shopSceneName);
+        changeScene.LoadSceneWithTransition(nextScene, 1f);
     }
+
 
     private void OnDestroy()
     {

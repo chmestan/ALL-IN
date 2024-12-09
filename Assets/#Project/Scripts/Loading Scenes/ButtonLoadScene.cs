@@ -11,7 +11,7 @@ public class ButtonLoadScene : MonoBehaviour
             ChangeScene changeScene = GlobalManager.Instance.GetComponent<ChangeScene>();
             if (changeScene != null)
             {
-                changeScene.LoadScene(scene);
+                changeScene.LoadSceneWithTransition(scene, 1f);
             }
             else
             {
