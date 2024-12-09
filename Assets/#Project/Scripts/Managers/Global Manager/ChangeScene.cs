@@ -19,6 +19,16 @@ public class ChangeScene : MonoBehaviour
         transitionAnim.SetTrigger("SlideRight");
     }
 
+    public void LoadSceneWithFixedTransition(string scene)
+    {
+        if (isSceneChanging) return;
+        isSceneChanging = true;
+
+        if (transitionAnim != null)
+        {
+            StartCoroutine(SceneTransition(scene.Trim(), 1f));
+        }
+    }
     public void LoadSceneWithTransition(string scene, float delay)
     {
         if (isSceneChanging) return;
