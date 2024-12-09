@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class AnimOnTimer : MonoBehaviour
+public class AnimOnTimer : MonoBehaviour
 {
     protected Animator anim;
 

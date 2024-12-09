@@ -515,7 +515,7 @@ GameObject:
   - component: {fileID: 677521346}
   - component: {fileID: 677521345}
   - component: {fileID: 677521344}
-  - component: {fileID: 677521343}
+  - component: {fileID: 677521347}
   m_Layer: 5
   m_Name: Eyes
   m_TagString: Untagged
@@ -542,21 +542,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.03527832, y: 0}
   m_SizeDelta: {x: 0.070587, y: -0.000019073}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &677521343
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677521341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a34649a5c97cb1e4f9275fe783addd3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialDelay: 2
-  animInterval: 4
-  triggerName: EyesMove
 --- !u!95 &677521344
 Animator:
   serializedVersion: 5
@@ -616,6 +601,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 677521341}
   m_CullTransparentMesh: 1
+--- !u!114 &677521347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 677521341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2d8076c9417b54c9d9e55aeef999e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDelay: 1
+  animInterval: 3
+  triggerName: Eyes
 --- !u!1 &948358174
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,9 +747,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.012037037
-    width: 0.80937505
-    height: 0.25
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -973,7 +973,7 @@ GameObject:
   - component: {fileID: 1265704469}
   - component: {fileID: 1265704468}
   - component: {fileID: 1265704467}
-  - component: {fileID: 1265704466}
+  - component: {fileID: 1265704470}
   m_Layer: 5
   m_Name: ALL IN
   m_TagString: Untagged
@@ -1000,21 +1000,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0.12359619, y: -0.061798096}
   m_SizeDelta: {x: -0.31640005, y: 0.05430007}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1265704466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265704464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80d6e5aa981e7f54dafbad922e7a2af6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialDelay: 4
-  animInterval: 3
-  triggerName: PlayShine
 --- !u!95 &1265704467
 Animator:
   serializedVersion: 5
@@ -1074,6 +1059,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265704464}
   m_CullTransparentMesh: 1
+--- !u!114 &1265704470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265704464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae2d8076c9417b54c9d9e55aeef999e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialDelay: 1
+  animInterval: 5
+  triggerName: Shine
 --- !u!1 &1640318017
 GameObject:
   m_ObjectHideFlags: 0
