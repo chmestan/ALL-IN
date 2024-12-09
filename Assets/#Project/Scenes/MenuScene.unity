@@ -132,6 +132,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11592564}
   - component: {fileID: 11592568}
+  - component: {fileID: 11592572}
   - component: {fileID: 11592567}
   - component: {fileID: 11592569}
   - component: {fileID: 11592565}
@@ -266,9 +267,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1240024589}
-        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: LoadSceneWithFixedTransition
+      - m_Target: {fileID: 11592572}
+        m_TargetAssemblyTypeName: ChangeSceneButton, Assembly-CSharp
+        m_MethodName: OnClick
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -306,6 +307,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 0
+--- !u!114 &11592572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11592563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1a1282064621a418516dacaa207522, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &29925734
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,17 +963,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
---- !u!114 &1240024589 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3789018275707868687, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
-  m_PrefabInstance: {fileID: 1240024588}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7672cd676efbd3a4d8254b536b18ef8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1265704464
 GameObject:
   m_ObjectHideFlags: 0
