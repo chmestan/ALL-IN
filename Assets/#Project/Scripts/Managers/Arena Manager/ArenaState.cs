@@ -16,6 +16,8 @@ public class ArenaState : MonoBehaviour
     private WaveManager waveManager;
     public PlayerData playerData;
     public PlayerHealth playerHealth;
+    [SerializeField] private GameObject waveWonUI;
+    [SerializeField] private GameObject waveLostUI;
 
     [SerializeField] private float timeBeforeConfirm = 1f;
 
@@ -45,7 +47,7 @@ public class ArenaState : MonoBehaviour
             if (OnWaveLost != null)
             { 
                 OnWaveLost.Invoke(); 
-                StartCoroutine(WaitForConfirm("MenuScene"));
+                StartCoroutine(WaitForConfirm("MenuScene",waveLostUI));
                 // Debug.Log("(ArenaState) Wave lost.");
             }
             else Debug.LogError("(ArenaState) OnWaveLost event is null");
@@ -58,7 +60,7 @@ public class ArenaState : MonoBehaviour
             if (OnWaveCompleted!= null) 
             {
                 OnWaveCompleted.Invoke(); // we tell WaveManager to increment waveCounter
-                StartCoroutine(WaitForConfirm("ShopScene"));
+                StartCoroutine(WaitForConfirm("ShopScene", waveWonUI));
                 // Debug.Log("(ArenaState) Wave completed. Waiting for confirmation");
             }
             else Debug.LogError("(ArenaState) OnWaveCompleted event is null");
@@ -72,9 +74,11 @@ public class ArenaState : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitForConfirm(string nextScene)
+    private IEnumerator WaitForConfirm(string nextScene, GameObject ui)
     {
         yield return new WaitForSeconds(timeBeforeConfirm);
+
+        ui.SetActive(true);
 
         Debug.Log("(ArenaState) Waiting for player confirmation.");
         while (!inputMgr.confirmInput.triggered)

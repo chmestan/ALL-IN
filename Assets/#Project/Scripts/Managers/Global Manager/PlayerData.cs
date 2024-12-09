@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     private int startingGold = 0;
-    private int startingDamage = 5;
+    private int startingDamage = 50;
     private int startingHealth = 5;
     private float startingRange = 7f;
     private float startingBulletSpeed = 17f;
