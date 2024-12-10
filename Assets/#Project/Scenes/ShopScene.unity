@@ -179,7 +179,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7f687328fd412e242a62a72b3941d6eb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6be035d1973ebdb4bb4a73952a524880, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4048,7 +4048,6 @@ GameObject:
   - component: {fileID: 1989756777}
   - component: {fileID: 1989756776}
   - component: {fileID: 1989756775}
-  - component: {fileID: 1989756779}
   m_Layer: 5
   m_Name: Arm
   m_TagString: Untagged
@@ -4115,7 +4114,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4125,9 +4124,9 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: 87ef4af631c7e4e47ba1420d8df344d4, type: 3}
-    m_PressedSprite: {fileID: -2050445763, guid: 7a54fc262ec986f45b3be1f6857e09e7, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: 87ef4af631c7e4e47ba1420d8df344d4, type: 3}
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -4143,18 +4142,6 @@ MonoBehaviour:
       - m_Target: {fileID: 1622880880}
         m_TargetAssemblyTypeName: ExtraEnemies, Assembly-CSharp
         m_MethodName: AddRandomEnemies
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1989756779}
-        m_TargetAssemblyTypeName: SlotMachine, Assembly-CSharp
-        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4202,18 +4189,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1989756773}
   m_CullTransparentMesh: 1
---- !u!114 &1989756779
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1989756773}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2048cc66ed05d24da26c3d62d4ae0df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &124856200154766727
 RectTransform:
   m_ObjectHideFlags: 0
