@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Upgrade : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public abstract class Upgrade : MonoBehaviour
     public string description;    
     public PlayerData playerData;
     public UpgradeData upgradeData;
+    private TextMeshProUGUI levelText;
     public int CurrentLevel
     {
         get
@@ -26,12 +28,16 @@ public abstract class Upgrade : MonoBehaviour
     protected virtual void Awake()
     {
         upgradeName = GetType().Name;
+        levelText = GetComponentInChildren<TextMeshProUGUI>();
     }
+
     protected virtual void Start()
     {
         playerData = GlobalManager.Instance.GetComponent<PlayerData>();
         upgradeData = GlobalManager.Instance.GetComponent<UpgradeData>();
         upgradeData.InitializeUpgrades();
+
+        UpdateLevelText(); 
     }
 
     public int GetCurrentCost()
@@ -50,6 +56,7 @@ public abstract class Upgrade : MonoBehaviour
         upgradeData.IncrementUpgradeLevel(upgradeName);
         Debug.Log($"{upgradeName} at level {CurrentLevel}/{maxLevel}");
         ApplyEffect();
+        UpdateLevelText();
     }
 
     public abstract void ApplyEffect();
@@ -61,6 +68,18 @@ public abstract class Upgrade : MonoBehaviour
             upgradeData.upgradeLevels[upgradeName] = 0;
         }
     }
+
+    private void UpdateLevelText()
+    {
+        if (levelText != null)
+        {
+            levelText.text = $"{CurrentLevel}";
+        }
+        else
+        {
+            Debug.LogWarning($"{upgradeName}: Level text is not assigned!");
+        }
+    }    
 
 }
 
