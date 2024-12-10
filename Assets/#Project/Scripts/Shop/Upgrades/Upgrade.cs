@@ -31,7 +31,7 @@ public abstract class Upgrade : MonoBehaviour
     {
         playerData = GlobalManager.Instance.GetComponent<PlayerData>();
         upgradeData = GlobalManager.Instance.GetComponent<UpgradeData>();
-        upgradeData.ResetUpgrades();
+        upgradeData.InitializeUpgrades();
     }
 
     public int GetCurrentCost()

@@ -4,8 +4,13 @@ using UnityEngine;
 public class UpgradeData : MonoBehaviour
 {
     public Dictionary<string, int> upgradeLevels = new Dictionary<string, int>();
-    public void ResetUpgrades()
+    public bool isInitialized = false;
+
+    public void InitializeUpgrades()
     {
+        if (isInitialized) return; 
+        isInitialized = true;
+        
         upgradeLevels.Clear();
 
         Upgrade[] upgrades = FindObjectsOfType<Upgrade>();
