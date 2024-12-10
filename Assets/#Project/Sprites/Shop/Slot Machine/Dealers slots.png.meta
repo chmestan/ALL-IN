@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Dealers slots_0
+      name: 1_1
       rect:
         serializedVersion: 2
         x: 0
@@ -105,7 +105,7 @@ TextureImporter:
         width: 47
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dealers slots_1
+      name: 1_2
       rect:
         serializedVersion: 2
         x: 47
@@ -126,7 +126,7 @@ TextureImporter:
         width: 47
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,7 +139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dealers slots_2
+      name: 1_3
       rect:
         serializedVersion: 2
         x: 94
@@ -147,7 +147,7 @@ TextureImporter:
         width: 47
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dealers slots_3
+      name: 1_4
       rect:
         serializedVersion: 2
         x: 141
@@ -168,7 +168,7 @@ TextureImporter:
         width: 47
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Dealers slots_4
+      name: 1_5
       rect:
         serializedVersion: 2
         x: 188
@@ -189,7 +189,7 @@ TextureImporter:
         width: 47
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,11 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Dealers slots_0: -1193415419
-      Dealers slots_1: 2067866217
-      Dealers slots_2: -1365357398
-      Dealers slots_3: -1480875457
-      Dealers slots_4: 2113692242
+      1_1: -1193415419
+      1_2: 2067866217
+      1_3: -1365357398
+      1_4: -1480875457
+      1_5: 2113692242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

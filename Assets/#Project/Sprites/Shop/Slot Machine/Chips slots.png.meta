@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Chips slots_0
+      name: 0_1
       rect:
         serializedVersion: 2
         x: 0
@@ -105,7 +105,7 @@ TextureImporter:
         width: 46
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chips slots_1
+      name: 0_2
       rect:
         serializedVersion: 2
         x: 46
@@ -126,7 +126,7 @@ TextureImporter:
         width: 46
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,7 +139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chips slots_2
+      name: 0_3
       rect:
         serializedVersion: 2
         x: 92
@@ -147,7 +147,7 @@ TextureImporter:
         width: 46
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -160,7 +160,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chips slots_3
+      name: 0_4
       rect:
         serializedVersion: 2
         x: 138
@@ -168,7 +168,7 @@ TextureImporter:
         width: 46
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -181,7 +181,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chips slots_4
+      name: 0_5
       rect:
         serializedVersion: 2
         x: 184
@@ -189,7 +189,7 @@ TextureImporter:
         width: 46
         height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,11 +212,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Chips slots_0: -711999262
-      Chips slots_1: -566200743
-      Chips slots_2: 1722672872
-      Chips slots_3: 749889345
-      Chips slots_4: 450174138
+      0_1: -711999262
+      0_2: -566200743
+      0_3: 1722672872
+      0_4: 749889345
+      0_5: 450174138
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

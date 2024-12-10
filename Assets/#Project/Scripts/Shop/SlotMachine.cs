@@ -9,6 +9,7 @@ public class SlotMachine : MonoBehaviour
     public UnityEvent OnAnimEnded = new UnityEvent();
     [SerializeField] SlotMachineArm arm;
     [SerializeField] private bool debug = false;
+    [SerializeField] SlotManager slotManager;
 
     private Animator anim;
     // private Button armButton;
@@ -33,6 +34,7 @@ public class SlotMachine : MonoBehaviour
     public void RollIsOver()
     {
         if (debug) Debug.Log("(SlotMachine) Roll is over");
+        slotManager.UpdateSlots();
         OnAnimEnded.Invoke();
     }
 }

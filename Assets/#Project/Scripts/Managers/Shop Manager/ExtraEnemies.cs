@@ -12,6 +12,8 @@ public class ExtraEnemies : MonoBehaviour
     private int totalExtraEnemies = 0;
     private int extraPrize = 100;
 
+    public List<(int enemyType, int count)> rolledResults = new List<(int, int)>();
+
     public void AddRandomEnemies()
     {
         CheckChances();
@@ -21,10 +23,12 @@ public class ExtraEnemies : MonoBehaviour
             return;
         }
 
+        rolledResults.Clear(); 
+
         for (int i = 0; i < 3; i++)
         {
             List<Enemy> listOfEnemies = GlobalManager.Instance.waveManager.EnemyTypes;
-            Enemy randomEnemy = listOfEnemies[Random.Range(0, listOfEnemies.Count)];
+            int enemyType = Random.Range(0, listOfEnemies.Count);            
             int randomCount = RollEnemyCount();
 
             // IF I WANT THE CAP OF 30 TO BE STRICTLY RESPECTED
@@ -33,6 +37,7 @@ public class ExtraEnemies : MonoBehaviour
 
             if (randomCount > 0)
             {
+                Enemy randomEnemy = listOfEnemies[enemyType];
                 // Add directly to WaveManager's enemiesToSpawn
                 if (GlobalManager.Instance.waveManager.EnemiesToSpawn.ContainsKey(randomEnemy))
                 {
@@ -43,6 +48,7 @@ public class ExtraEnemies : MonoBehaviour
                     GlobalManager.Instance.waveManager.EnemiesToSpawn[randomEnemy] = randomCount;
                 }
             totalExtraEnemies += randomCount;
+            rolledResults.Add((enemyType, randomCount));
             }            
             Debug.Log($"Extra enemies added: {randomCount}");
         }
