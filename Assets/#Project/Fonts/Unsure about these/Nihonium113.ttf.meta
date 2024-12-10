@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bbec19bfcdeae35468c849101b62a71d
+guid: 1ff918202f1d67148810dac70c141e92
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Born2bSporty FS
+  - Nihonium113
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
