@@ -21,6 +21,7 @@ public static class EnemyDictionaryManager
 
     private static int GetNumberOfEnemies(int waveNb) // Example of scaling logic
     {
+        Debug.Log($"WAVENB = {waveNb}");
         return (waveNb + 1) * 2; 
     }
 

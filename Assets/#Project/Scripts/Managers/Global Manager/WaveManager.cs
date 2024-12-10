@@ -31,12 +31,12 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         playerData = GlobalManager.Instance.GetComponent<PlayerData>();
+        FirstWave();
+    }
 
+    public void FirstWave()
+    {
         enemiesToSpawn = EnemyDictionaryManager.CreateEnemyDictionary(waveCount, enemyTypes.Count);
-
-        // add more enemies if added
-        // add prize money if enemies added
-
     }
 
     public void WaveCompletion()

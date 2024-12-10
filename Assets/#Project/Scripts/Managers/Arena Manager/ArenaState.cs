@@ -21,6 +21,7 @@ public class ArenaState : MonoBehaviour
     [SerializeField] private GameObject waveLostUI;
 
     [SerializeField] private float timeBeforeConfirm = 1f;
+    [SerializeField] private bool debug = false;
 
     private void Awake()
     {
@@ -48,6 +49,7 @@ public class ArenaState : MonoBehaviour
             if (OnWaveLost != null)
             { 
                 OnWaveLost.Invoke(); 
+                playerData.arenaState.OnWaveLost.RemoveAllListeners();
                 StartCoroutine(WaitForConfirm("MenuScene",waveLostUI));
                 // Debug.Log("(ArenaState) Wave lost.");
             }
@@ -81,7 +83,7 @@ public class ArenaState : MonoBehaviour
 
         ui.SetActive(true);
 
-        Debug.Log("(ArenaState) Waiting for player confirmation.");
+        if (debug) Debug.Log("(ArenaState) Waiting for player confirmation.");
         while (!inputMgr.confirmInput.triggered)
         {
             yield return null;
