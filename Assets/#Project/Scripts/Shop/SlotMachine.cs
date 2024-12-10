@@ -35,6 +35,14 @@ public class SlotMachine : MonoBehaviour
     {
         if (debug) Debug.Log("(SlotMachine) Roll is over");
         slotManager.UpdateSlots();
+        
+        EnemyCountUI shopEnemyDisplay = FindObjectOfType<EnemyCountUI>();
+        if (shopEnemyDisplay != null)
+        {
+            shopEnemyDisplay.UpdateEnemyCounts();
+        }
+
+
         OnAnimEnded.Invoke();
     }
 }
