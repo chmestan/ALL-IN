@@ -11,19 +11,20 @@ public class ExtraEnemies : MonoBehaviour
     private Dictionary<Enemy, int> extraEnemies = new Dictionary<Enemy, int>();
     private int totalExtraEnemies = 0;
     private int extraPrize = 100;
-
+    private int bonusPrize;
     public List<(int enemyType, int count)> rolledResults = new List<(int, int)>();
 
     public void AddRandomEnemies()
     {
         CheckChances();
+        rolledResults.Clear(); 
         if (totalExtraEnemies >= extraEnemyCap)
         {
             Debug.Log("Enemy cap reached!");
             return;
         }
 
-        rolledResults.Clear(); 
+        bonusPrize = 0;
 
         for (int i = 0; i < 3; i++)
         {
@@ -49,12 +50,19 @@ public class ExtraEnemies : MonoBehaviour
                 }
             totalExtraEnemies += randomCount;
             rolledResults.Add((enemyType, randomCount));
-            }            
+            }      
+            else
+            {
+                rolledResults.Add((enemyType, 0)); // Ensure there are 3 entries even if count is 0
+                bonusPrize += 5;
+            }      
             Debug.Log($"Extra enemies added: {randomCount}");
+            
         }
         Debug.Log($"Extra prize: {extraPrize}");
+        Debug.Log($"Bonus prize: {bonusPrize}");
 
-        GlobalManager.Instance.waveManager.UpdatePrize(extraPrize);
+        GlobalManager.Instance.waveManager.UpdatePrize(extraPrize + bonusPrize);
     }
 
     public int RollEnemyCount()

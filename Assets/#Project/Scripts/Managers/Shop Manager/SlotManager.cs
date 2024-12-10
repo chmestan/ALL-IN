@@ -37,7 +37,12 @@ public class SlotManager : MonoBehaviour
 
     private Sprite GetSprite((int enemyType, int count) rollResult)
     {
-        int maxCount = 5; // Adjust this to the maximum count for any enemy
+        if (rollResult.count == 0)
+        {
+            return sprites[15];
+        }
+
+        int maxCount = 5; 
         int index = rollResult.enemyType * maxCount + rollResult.count - 1;
 
         if (index < 0 || index >= sprites.Count)
@@ -48,5 +53,4 @@ public class SlotManager : MonoBehaviour
 
         return sprites[index];
     }
-
 }
