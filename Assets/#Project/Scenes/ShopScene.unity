@@ -3219,6 +3219,7 @@ GameObject:
   - component: {fileID: 1474531806}
   - component: {fileID: 1474531805}
   - component: {fileID: 1474531804}
+  - component: {fileID: 1474531807}
   m_Layer: 5
   m_Name: Slot Machine
   m_TagString: Untagged
@@ -3304,6 +3305,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1474531802}
   m_CullTransparentMesh: 1
+--- !u!114 &1474531807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1474531802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1404162858cc9054dbb8a29778b7ebb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnAnimEnded:
+    m_PersistentCalls:
+      m_Calls: []
+  arm: {fileID: 1989756779}
+  debug: 0
 --- !u!1001 &1479363406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4302,6 +4320,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2048cc66ed05d24da26c3d62d4ae0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotMachine: {fileID: 1474531807}
+  debug: 0
 --- !u!114 &1989756780
 MonoBehaviour:
   m_ObjectHideFlags: 0

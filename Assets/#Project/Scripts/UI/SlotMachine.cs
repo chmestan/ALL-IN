@@ -1,29 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class SlotMachine : MonoBehaviour
 {
+    public UnityEvent OnAnimEnded = new UnityEvent();
+    [SerializeField] SlotMachineArm arm;
+    [SerializeField] private bool debug = false;
+
     private Animator anim;
-    private Button button;
+    // private Button armButton;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        button = GetComponent<Button>();
+        arm.slotMachine = this;
     }
 
-    public void PullAnimation()
+    private void Start()
     {
-        button.interactable = false;
-        anim.SetTrigger("Pull");
-        StartCoroutine(ReEnableButtonAfterAnimation());
+        OnAnimEnded.AddListener(arm.SlotMachineHasRolled);
     }
 
-    private IEnumerator ReEnableButtonAfterAnimation()
+    public void TriggerRollAnimation()
     {
-        yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length);
-        button.interactable = true; 
+        if (debug) Debug.Log("(SlotMachine) Rolling");
+        anim.SetTrigger("Roll");
+    }
+
+    public void RollIsOver()
+    {
+        if (debug) Debug.Log("(SlotMachine) Roll is over");
+        OnAnimEnded.Invoke();
     }
 }
