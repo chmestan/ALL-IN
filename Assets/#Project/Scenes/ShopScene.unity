@@ -4682,6 +4682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotMachine: {fileID: 1474531807}
   debug: 0
+  slotManager: {fileID: 1622880881}
 --- !u!114 &1989756780
 MonoBehaviour:
   m_ObjectHideFlags: 0

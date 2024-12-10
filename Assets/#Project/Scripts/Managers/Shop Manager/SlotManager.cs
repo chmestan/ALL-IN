@@ -8,12 +8,18 @@ public class SlotManager : MonoBehaviour
     [SerializeField] private Image leftSlot;
     [SerializeField] private Image middleSlot;
     [SerializeField] private Image rightSlot; 
+    private Animator leftSlotAnimator;
+    private Animator middleSlotAnimator;
+    private Animator rightSlotAnimator;
 
     private ExtraEnemies extraEnemies;
 
     private void Start()
     {
         extraEnemies = GetComponent<ExtraEnemies>();
+        leftSlotAnimator = leftSlot.gameObject.GetComponent<Animator>();
+        middleSlotAnimator = middleSlot.gameObject.GetComponent<Animator>();
+        rightSlotAnimator = rightSlot.gameObject.GetComponent<Animator>();
     }
 
     public void UpdateSlots()
@@ -33,7 +39,19 @@ public class SlotManager : MonoBehaviour
         leftSlot.gameObject.SetActive(true);
         middleSlot.gameObject.SetActive(true);
         rightSlot.gameObject.SetActive(true);
+        leftSlotAnimator.SetTrigger("FadeIn");
+        middleSlotAnimator.SetTrigger("FadeIn");
+        rightSlotAnimator.SetTrigger("FadeIn");
+
     }
+
+        public void TriggerFadeOut()
+        {
+            // Set the FadeOut trigger for each slot
+            leftSlotAnimator.SetTrigger("FadeOut");
+            middleSlotAnimator.SetTrigger("FadeOut");
+            rightSlotAnimator.SetTrigger("FadeOut");
+        }
 
     private Sprite GetSprite((int enemyType, int count) rollResult)
     {

@@ -9,6 +9,7 @@ public class SlotMachineArm : MonoBehaviour
     private Button button;
     public SlotMachine slotMachine;
     [SerializeField] private bool debug = false;
+    [SerializeField] private SlotManager slotManager;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class SlotMachineArm : MonoBehaviour
     {
         button.interactable = false;
         anim.SetTrigger("Pull");
+        slotManager.TriggerFadeOut();
     }
 
     public void TriggerAnimSlots()
