@@ -12,7 +12,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField] private int waveCount = 1;
 
     [Header ("Money Reward"), Space (3f)]
-    [SerializeField] private int prize = 100; // always 100 by default
+
+    private int prize = 100;
+    public int Prize 
+    { get => prize;}
     
     public ArenaState arenaState;  
     public EnemyManager enemyManager;

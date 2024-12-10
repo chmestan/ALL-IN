@@ -942,7 +942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 78.6, y: -22.8}
+  m_AnchoredPosition: {x: 78.6, y: -24.299995}
   m_SizeDelta: {x: 29.0355, y: 19.1278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &260045373
@@ -992,8 +992,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2936,7 +2936,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.7, y: -25.6}
+  m_AnchoredPosition: {x: 12.7, y: -24.4}
   m_SizeDelta: {x: 29.0355, y: 19.1278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &990000157
@@ -2961,8 +2961,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 561b3af3b3d06364a8ab3f18149cd40f, type: 2}
-  m_sharedMaterial: {fileID: -5545359858264707267, guid: 561b3af3b3d06364a8ab3f18149cd40f, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 62cfd5f1ed259ea4daf34bcd829e4182, type: 2}
+  m_sharedMaterial: {fileID: 5313442543288275716, guid: 62cfd5f1ed259ea4daf34bcd829e4182, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3984,7 +3984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.7, y: -24.5}
+  m_AnchoredPosition: {x: 45.7, y: -24.299995}
   m_SizeDelta: {x: 29.0355, y: 19.1278}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1285062770
@@ -4009,8 +4009,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 0
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 7a3982429b94dce4ca4543c52da425fe, type: 2}
-  m_sharedMaterial: {fileID: -7162019305173209486, guid: 7a3982429b94dce4ca4543c52da425fe, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 62cfd5f1ed259ea4daf34bcd829e4182, type: 2}
+  m_sharedMaterial: {fileID: 5313442543288275716, guid: 62cfd5f1ed259ea4daf34bcd829e4182, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4034,8 +4034,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 14
+  m_fontSizeBase: 14
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4070,7 +4070,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 1.869194}
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4576,6 +4576,8 @@ GameObject:
   - component: {fileID: 1622880879}
   - component: {fileID: 1622880880}
   - component: {fileID: 1622880881}
+  - component: {fileID: 1622880882}
+  - component: {fileID: 1622880883}
   m_Layer: 0
   m_Name: ShopManager
   m_TagString: Untagged
@@ -4663,6 +4665,36 @@ MonoBehaviour:
   leftSlot: {fileID: 1911563356}
   middleSlot: {fileID: 453311343}
   rightSlot: {fileID: 1216440220}
+--- !u!114 &1622880882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622880877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a461ca733691940997f1b9bb8d0023, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCountTexts:
+  - {fileID: 990000157}
+  - {fileID: 1285062770}
+  - {fileID: 260045373}
+--- !u!114 &1622880883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622880877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b57227249514a3459ebeddcf616c9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFundsText: {fileID: 798473702}
+  nextPayoutText: {fileID: 947507277}
 --- !u!1001 &1744029649
 PrefabInstance:
   m_ObjectHideFlags: 0

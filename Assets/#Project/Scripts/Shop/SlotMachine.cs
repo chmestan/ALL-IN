@@ -35,11 +35,17 @@ public class SlotMachine : MonoBehaviour
     {
         if (debug) Debug.Log("(SlotMachine) Roll is over");
         slotManager.UpdateSlots();
-        
-        EnemyCountUI shopEnemyDisplay = FindObjectOfType<EnemyCountUI>();
-        if (shopEnemyDisplay != null)
+
+        MoneyTextUI moneyTextUI = FindObjectOfType<MoneyTextUI>();
+        if (moneyTextUI != null)
         {
-            shopEnemyDisplay.UpdateEnemyCounts();
+            moneyTextUI.UpdateMoneyDisplay();
+        }
+
+        EnemyCountUI enemyCountUI = FindObjectOfType<EnemyCountUI>();
+        if (enemyCountUI != null)
+        {
+            enemyCountUI.UpdateEnemyCounts();
         }
 
 

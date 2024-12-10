@@ -5,7 +5,12 @@ using UnityEngine;
 public class PurchaseUpgrage : MonoBehaviour
 {
     public PlayerData playerData;
+    private MoneyTextUI moneyTextUI;
 
+    private void Awake()
+    {
+        moneyTextUI = GetComponent<MoneyTextUI>();
+    }
     public void Start()
     {
         playerData = GlobalManager.Instance.GetComponent<PlayerData>();
@@ -23,6 +28,7 @@ public class PurchaseUpgrage : MonoBehaviour
             {
                 playerData.playerGold -= cost;
                 upgrade.Purchase();
+                moneyTextUI.UpdateMoneyDisplay();
 
                 Debug.Log($"(ShopManager) Purchased upgrade {upgrade.upgradeName} for {cost} gold.");
             }
