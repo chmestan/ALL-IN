@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy2Stats
   m_EditorClassIdentifier: 
   _MaxHealth: 15
-  _MoveSpeed: 3
+  _MoveSpeed: 4
   _RoamingDistance: 6
   _BulletDamage: 8
   _CollisionDamage: 5

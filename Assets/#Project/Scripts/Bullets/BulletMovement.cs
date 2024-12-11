@@ -11,11 +11,13 @@ public abstract class BulletMovement : MonoBehaviour
     protected float speed = 13f;
     protected ParticleSystem particles;
     protected SpriteRenderer spriteRenderer;
+    protected new Collider2D collider2D;
     private bool isDisabling; 
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<Collider2D>();
         particles = GetComponentInChildren<ParticleSystem>();
     }
 
@@ -23,6 +25,7 @@ public abstract class BulletMovement : MonoBehaviour
     {
         distanceTraveled = 0f;
         spriteRenderer.enabled = true;
+        collider2D.enabled = true;
         isDisabling = false; 
     }
 
@@ -60,6 +63,8 @@ public abstract class BulletMovement : MonoBehaviour
         else Debug.LogWarning("(BulletMovement) Couldn't find particles");
 
         spriteRenderer.enabled = false;
+        collider2D.enabled = false;
+
         direction = Vector2.zero;
 
         StartCoroutine(DeactivateAfterParticles());
