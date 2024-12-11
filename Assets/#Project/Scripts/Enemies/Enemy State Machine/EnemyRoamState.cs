@@ -53,24 +53,25 @@ public class EnemyRoamState : EnemyState
     public override void ExitState()
     {
         base.ExitState();
-        // Debug.Log($"(EnemyRoamState) {enemy.name} is exiting roaming state.");
     }
 
     private void SetRandomDestination()
     {
-        Vector3 randomDirection = enemy.transform.position + Random.insideUnitSphere * roamDistance;
-        NavMeshHit hit;
-        Debug.DrawLine(enemy.transform.position, randomDirection, Color.red, 1f);
+        int maxAttempts = 10; 
 
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector3 randomDirection = enemy.transform.position + Random.insideUnitSphere * roamDistance;
+            NavMeshHit hit;
 
-        if (NavMesh.SamplePosition(randomDirection, out hit, roamDistance, NavMesh.AllAreas))
-        {
-            agent.SetDestination(hit.position);
+            if (NavMesh.SamplePosition(randomDirection, out hit, roamDistance, NavMesh.AllAreas))
+            {
+                agent.SetDestination(hit.position);
+                return; 
+            }
         }
-        else
-        {
-            Debug.LogError($"(EnemyRoamState) {enemy.name} failed to find a valid roaming destination.");
-        }
+
+        Debug.LogError($"(EnemyRoamState) {enemy.name} failed to find a valid destination.");
     }
 
     
