@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
         private SpriteRenderer spriteRenderer;
         private PlayerMovement playerMovement;
         private Animator anim;
-        private ParticleSystem bloodParticles; 
+        [SerializeField] private ParticleSystem bloodParticles; 
     #endregion
 
     #region Camera Shake

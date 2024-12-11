@@ -38,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
         private Color originalColor;
 
     [Header ("Technical"), Space (10f)]
+        [SerializeField] private ParticleSystem dashReadyParticle;
+
+    [Header ("Technical"), Space (10f)]
         [SerializeField] float diagonalBufferTime = 0.1f;
         private float lastDirectionUpdateTime;
 
@@ -129,7 +132,6 @@ private IEnumerator PerformDash()
 {
     float elapsedTime = 0f;
 
-    // Start Dash
     while (elapsedTime < dashDuration)
     {
         transform.Translate(dashDirection * dashSpeed * Time.deltaTime);
@@ -144,8 +146,15 @@ private IEnumerator PerformDash()
 
     isInGracePeriod = false; 
     yield return new WaitForSeconds(dashCooldown - dashGracePeriod); 
+
     StartCoroutine(FlashEffect()); 
     canDash = true;
+
+    if (dashReadyParticle != null)
+    {
+        dashReadyParticle.Play(); 
+    }
+    else Debug.LogWarning("(PlayerMovement) Couldn't find particles");
 }
 
     private IEnumerator FlashEffect()
