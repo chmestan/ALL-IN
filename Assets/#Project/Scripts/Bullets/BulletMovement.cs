@@ -5,14 +5,25 @@ using UnityEngine;
 
 public abstract class BulletMovement : MonoBehaviour
 {
-    private Vector2 direction;
+    protected Vector2 direction;
     private float distanceTraveled;
     protected float range = 15f;
     protected float speed = 13f;
+    protected ParticleSystem collisionParticles;
+    protected SpriteRenderer spriteRenderer;
 
+    private void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        collisionParticles = GetComponentInChildren<ParticleSystem>();
+    }
+    private void Start()
+    {
+    }
     protected virtual void OnEnable()
     {
         distanceTraveled = 0f; 
+        spriteRenderer.enabled = true;
     }
     protected virtual void FixedUpdate()
     {
@@ -30,11 +41,22 @@ public abstract class BulletMovement : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
-       if (other.gameObject.GetComponent<ILimit>() != null) 
+        if (other.gameObject.GetComponent<ILimit>() != null)
         {
-            gameObject.SetActive(false);
+            if (collisionParticles != null) collisionParticles.Play();
+            else Debug.LogWarning("(BulletMovement) Couldn't find particles");
+
+            spriteRenderer.enabled = false;
             direction = Vector2.zero;
-        } 
+            StartCoroutine(DeactivateAfterParticles());
+        }
+    }
+
+    protected IEnumerator DeactivateAfterParticles()
+    {
+        yield return new WaitForSeconds(collisionParticles.main.duration);
+
+        gameObject.SetActive(false);
     }
 
     public virtual void SetDirection(Vector2 newDirection)

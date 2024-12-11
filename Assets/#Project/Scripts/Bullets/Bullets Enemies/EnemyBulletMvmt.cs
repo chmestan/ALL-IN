@@ -26,6 +26,14 @@ public class EnemyBulletMvmt : BulletMovement
         {
             playerHealth.GetHit(bulletDmg);
             if (debug) Debug.Log($"[BulletHit] A bullet has damaged the player for {bulletDmg} damage.");
+            
+            if (collisionParticles != null) collisionParticles.Play();
+            else Debug.LogWarning("(BulletMovement) Couldn't find particles");
+
+            spriteRenderer.enabled = false;
+            direction = Vector2.zero;
+            StartCoroutine(DeactivateAfterParticles());
+
         }
     }
 
