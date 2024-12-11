@@ -15,7 +15,9 @@ public class WaveManager : MonoBehaviour
 
     private int prize = 100;
     public int Prize 
-    { get => prize;}
+    { get => prize;
+      set => prize = value;
+    }
     
     public ArenaState arenaState;  
     public EnemyManager enemyManager;
@@ -62,6 +64,7 @@ public class WaveManager : MonoBehaviour
 
     public void NextWaveDefaultConfig()
     {
+        prize = 100;
         enemiesToSpawn = EnemyDictionaryManager.CreateEnemyDictionary(waveCount, enemyTypes.Count);
     }
 

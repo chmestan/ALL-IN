@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     private int startingGold = 0;
     private int startingDamage = 5;
-    private int startingHealth = 10;
+    private int startingHealth = 1000;
     private float startingRange = 7f;
     private float startingBulletSpeed = 17f;
     private float startingShootingFrequency = 0.7f;
@@ -22,11 +22,13 @@ public class PlayerData : MonoBehaviour
 
     public ArenaState arenaState;
     public ChangeScene changeScene;
+    private UpgradeData upgradeData;
 
     public void Start()
     {
         ResetValues();
         changeScene = GetComponent<ChangeScene>();
+        upgradeData = GetComponent<UpgradeData>();
     }
 
     public void ResetValues()
@@ -42,22 +44,10 @@ public class PlayerData : MonoBehaviour
     public void ResetGame()
     {
         ResetValues();
-        ResetUpgrades();
+        upgradeData.ResetUpgradeLevels();
         GlobalManager.Instance.waveManager.WaveCount = 1;
+        GlobalManager.Instance.waveManager.Prize = 100;
         GlobalManager.Instance.waveManager.FirstWave();
-
-    }
-
-    public void ResetUpgrades()
-    {
-        Upgrade[] upgrades = FindObjectsOfType<Upgrade>();
-
-        foreach (Upgrade upgrade in upgrades)
-        {
-            upgrade.ResetUpgrade();
-        }
-
-        Debug.Log("(PlayerData) All upgrades have been reset to level 1.");
     }
 
 }
