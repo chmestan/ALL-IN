@@ -61,13 +61,14 @@ public abstract class Upgrade : MonoBehaviour
 
     public abstract void ApplyEffect();
 
-    public void ResetUpgrade()
-    {
-        if (upgradeData.upgradeLevels.ContainsKey(upgradeName))
-        {
-            upgradeData.upgradeLevels[upgradeName] = 0;
-        }
-    }
+    // public void ResetUpgrade()
+    // {
+    //     if (upgradeData.upgradeLevels.ContainsKey(upgradeName))
+    //     {
+    //         upgradeData.upgradeLevels[upgradeName] = 0;
+    //         Debug.Log($"{upgradeName} reset to level {upgradeData.upgradeLevels[upgradeName]}");
+    //     }
+    // }
 
     private void UpdateLevelText()
     {

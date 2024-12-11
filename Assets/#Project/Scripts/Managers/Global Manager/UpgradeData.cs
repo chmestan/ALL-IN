@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class UpgradeData : MonoBehaviour
@@ -43,6 +44,17 @@ public class UpgradeData : MonoBehaviour
         {
             Debug.LogError($"(PlayerData) Upgrade '{upgradeName}' not found in upgradeLevels.");
         }
+    }
+
+    public void ResetUpgradeLevels()
+    {
+        foreach (var key in new List<string>(upgradeLevels.Keys))
+        {
+            upgradeLevels[key] = 0;
+            Debug.Log($"(UpgradeData) Upgrade '{key}' reset to level 0.");
+        }
+
+        Debug.Log("(UpgradeData) All upgrades have been reset.");
     }
 
 }

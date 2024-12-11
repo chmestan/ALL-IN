@@ -16,7 +16,7 @@ MonoBehaviour:
   _MoveSpeed: 3
   _RoamingDistance: 6
   _BulletDamage: 8
-  _CollisionDamage: 10
+  _CollisionDamage: 5
   _BulletsPerBurst: 1
   _TimeBetweenBullets: 0.1
   _TimeBetweenBursts: 4
