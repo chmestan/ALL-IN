@@ -8,20 +8,30 @@ using UnityEngine.SceneManagement;
 public class ArenaState : MonoBehaviour
 {
     public ArenaStateEnum state = ArenaStateEnum.Ongoing;
-    private PauseGame pauseScript;
-    private EnemyManager enemyManager;
-    private InputDeviceHandler inputMgr;
-    private ChangeScene changeScene;
-    public UnityEvent OnWaveCompleted = new UnityEvent();
-    public UnityEvent OnWaveLost = new UnityEvent();
-    private WaveManager waveManager;
-    public PlayerData playerData;
-    public PlayerHealth playerHealth;
-    [SerializeField] private GameObject waveWonUI;
-    [SerializeField] private GameObject waveLostUI;
+    public bool started = false;
+    
+    #region References
+        private PauseGame pauseScript;
+        private EnemyManager enemyManager;
+        private InputDeviceHandler inputMgr;
+        private ChangeScene changeScene;
+        private WaveManager waveManager;
+        public PlayerData playerData;
+        public PlayerHealth playerHealth;
+    #endregion
 
-    [SerializeField] private float timeBeforeConfirm = 1f;
-    [SerializeField] private bool debug = false;
+    #region Events
+        public UnityEvent OnWaveCompleted = new UnityEvent();
+        public UnityEvent OnWaveLost = new UnityEvent();
+    #endregion
+
+    [Header ("UI"), Space (3f)]
+        [SerializeField] private GameObject waveWonUI;
+        [SerializeField] private GameObject waveLostUI;
+        [SerializeField] private float timeBeforeConfirm = 1f;
+    
+    [Header ("Debug"), Space (3f)]
+        [SerializeField] private bool debug = false;
 
     private void Awake()
     {

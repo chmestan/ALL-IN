@@ -90,6 +90,8 @@ public class EnemyManager : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        yield return new WaitForSeconds(1.2f);
+
         while (killedEnemies < totalEnemies)
         {
             if (enemyQueue.Count > 0)
@@ -102,7 +104,7 @@ public class EnemyManager : MonoBehaviour
                 else
                 {
                     yield return new WaitForSeconds(delayFrom5Enemies);
-                        SpawnEnemy(enemyQueue.Dequeue());
+                    SpawnEnemy(enemyQueue.Dequeue());
                 }
             }
             else
@@ -113,6 +115,7 @@ public class EnemyManager : MonoBehaviour
 
         Debug.Log("(Enemy Manager) Wave Complete!");
     }
+
 
     private void SpawnEnemy(Enemy enemyPrefab)
     {
