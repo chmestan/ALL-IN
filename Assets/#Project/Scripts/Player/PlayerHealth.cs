@@ -6,6 +6,7 @@ using Cinemachine;
 public class PlayerHealth : MonoBehaviour
 {
     public int currentHealth;
+    private HPDisplayManager hpDisplayManager;
     [SerializeField] private float invincibilityDuration = 1.5f; 
     [SerializeField] private float flashInterval = 0.1f;
     private bool isInvincible = false;  
@@ -36,19 +37,17 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = GlobalManager.Instance.playerData.playerMaxHealth;
-
+        hpDisplayManager = FindObjectOfType<HPDisplayManager>();
+        hpDisplayManager.Initialize(currentHealth);
     }
 
     public void GetHit(int damage)
     {
         if (isInvincible || playerMovement.isDashing || playerMovement.isInGracePeriod) return;
 
-        if (bloodParticles == null) Debug.LogWarning ("(PlayerHealth) Couldn't find blood particles");
-        else bloodParticles.Play();
-
-        currentHealth -= damage;
-        cameraShakeManager.CameraShake(impulseSource);
-        Debug.Log($"(PlayerHealth) Player now has {currentHealth} HP.");
+        currentHealth = Mathf.Max(0, currentHealth - damage);         
+        hpDisplayManager.UpdateHPDisplay(currentHealth);
+        hpDisplayManager.TriggerChipAnimation(damage);
 
         if (currentHealth <= 0)
         {
@@ -56,14 +55,12 @@ public class PlayerHealth : MonoBehaviour
             DisableEnemyAgents();
             isInvincible = true;
             spriteRenderer.sortingOrder = 3;
-            Debug.Log("(PlayerHealth) Player dies");
         }
         else
         {
             StartCoroutine(InvincibilityCoroutine());
         }
     }
-
     private void DisableEnemyAgents()
     {
         Enemy[] enemies = FindObjectsOfType<Enemy>();
