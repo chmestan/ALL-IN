@@ -6,20 +6,28 @@ using Cinemachine;
 public class PlayerHealth : MonoBehaviour
 {
     public int currentHealth;
-    public float invincibilityDuration = 1.5f; 
-    private bool isInvincible = false;  
-    private SpriteRenderer spriteRenderer;
-    private PlayerMovement playerMovement;
+    [SerializeField] private float invincibilityDuration = 1.5f; 
     [SerializeField] private float flashInterval = 0.1f;
-    public CameraShakeManager cameraShakeManager;
-    CinemachineImpulseSource impulseSource;
+    private bool isInvincible = false;  
     public bool isDead = false;
-    private Animator anim;
+
+    #region References
+        private SpriteRenderer spriteRenderer;
+        private PlayerMovement playerMovement;
+        private Animator anim;
+        private ParticleSystem bloodParticles; 
+    #endregion
+
+    #region Camera Shake
+        public CameraShakeManager cameraShakeManager;
+        CinemachineImpulseSource impulseSource;
+    #endregion 
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerMovement = GetComponent<PlayerMovement>();
+        bloodParticles = GetComponentInChildren<ParticleSystem>();
         if (spriteRenderer == null) Debug.LogError("(PlayerHealth) No SpriteRenderer found on Player");
         impulseSource = GetComponent<CinemachineImpulseSource>();
         anim = GetComponent<Animator>();
@@ -34,6 +42,9 @@ public class PlayerHealth : MonoBehaviour
     public void GetHit(int damage)
     {
         if (isInvincible || playerMovement.isDashing || playerMovement.isInGracePeriod) return;
+
+        if (bloodParticles == null) Debug.LogWarning ("(PlayerHealth) Couldn't find blood particles");
+        else bloodParticles.Play();
 
         currentHealth -= damage;
         cameraShakeManager.CameraShake(impulseSource);

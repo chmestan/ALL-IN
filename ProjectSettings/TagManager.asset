@@ -13,7 +13,7 @@ TagManager:
   - 
   - Water
   - UI
-  - Inactive Enemies
+  - 
   - 
   - 
   - 
@@ -48,4 +48,7 @@ TagManager:
     locked: 0
   - name: Actors
     uniqueID: 340458295
+    locked: 0
+  - name: Particles
+    uniqueID: 1300826143
     locked: 0
