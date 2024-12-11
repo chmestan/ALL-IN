@@ -9,52 +9,65 @@ public abstract class BulletMovement : MonoBehaviour
     private float distanceTraveled;
     protected float range = 15f;
     protected float speed = 13f;
-    protected ParticleSystem collisionParticles;
+    protected ParticleSystem particles;
     protected SpriteRenderer spriteRenderer;
+    private bool isDisabling; 
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        collisionParticles = GetComponentInChildren<ParticleSystem>();
+        particles = GetComponentInChildren<ParticleSystem>();
     }
-    private void Start()
-    {
-    }
+
     protected virtual void OnEnable()
     {
-        distanceTraveled = 0f; 
+        distanceTraveled = 0f;
         spriteRenderer.enabled = true;
+        isDisabling = false; 
     }
+
     protected virtual void FixedUpdate()
     {
+        if (isDisabling) return; 
+
         float distanceToTravel = speed * Time.deltaTime;
         transform.Translate(direction * distanceToTravel);
         distanceTraveled += distanceToTravel;
 
         if (distanceTraveled >= range)
         {
-            gameObject.SetActive(false);
-            direction = Vector2.zero;
+            PlayParticlesThenDisable();
         }
-
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        if (isDisabling) return; 
+
         if (other.gameObject.GetComponent<ILimit>() != null)
         {
-            if (collisionParticles != null) collisionParticles.Play();
-            else Debug.LogWarning("(BulletMovement) Couldn't find particles");
-
-            spriteRenderer.enabled = false;
-            direction = Vector2.zero;
-            StartCoroutine(DeactivateAfterParticles());
+            PlayParticlesThenDisable();
         }
+    }
+
+    protected void PlayParticlesThenDisable()
+    {
+        if (isDisabling) return;
+
+        isDisabling = true; 
+
+        if (particles != null) particles.Play();
+        else Debug.LogWarning("(BulletMovement) Couldn't find particles");
+
+        spriteRenderer.enabled = false;
+        direction = Vector2.zero;
+
+        StartCoroutine(DeactivateAfterParticles());
     }
 
     protected IEnumerator DeactivateAfterParticles()
     {
-        yield return new WaitForSeconds(collisionParticles.main.duration);
+        yield return new WaitForSeconds(particles.main.duration);
 
         gameObject.SetActive(false);
     }
@@ -63,5 +76,4 @@ public abstract class BulletMovement : MonoBehaviour
     {
         direction = newDirection.normalized;
     }
-
 }
