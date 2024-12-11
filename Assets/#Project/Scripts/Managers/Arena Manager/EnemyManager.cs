@@ -13,7 +13,7 @@ public class EnemyManager : MonoBehaviour
     private Dictionary<Enemy, int> enemiesToSpawn = new Dictionary<Enemy, int>();
     private Queue<Enemy> enemyQueue = new Queue<Enemy>();
 
-    private int currentSpawnerIndex = 0;
+    private int currentSpawnerIndex;
     [Header ("ENEMIES"), Space (10f)]
     [SerializeField] private int activeEnemies = 0;
     [SerializeField] private int totalEnemies;
@@ -26,11 +26,12 @@ public class EnemyManager : MonoBehaviour
 
     [Header ("SPAWN RHYTHM"), Space (10f)]
     [SerializeField] private float delayTo5Enemies = 1f;
-    [SerializeField] private float delayFrom5Enemies = 3f;
+    [SerializeField] private float delayFrom5Enemies = 4f;
 
     private void Awake()
     {
         waveManager = GlobalManager.Instance.GetComponent<WaveManager>();
+        currentSpawnerIndex = Random.Range(0,4);
     }
 
     private void Start()
