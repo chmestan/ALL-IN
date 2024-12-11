@@ -7,11 +7,9 @@ using UnityEngine.InputSystem;
 
 public class PauseGame : MonoBehaviour
 {
-
-    [Header ("Input Map")]
         private InputDeviceHandler inputMgr;
-
         public bool paused;
+        [SerializeField] private GameObject pauseScreen; 
 
     // [SerializeField, Space (20f)] private bool debug = false;
 
@@ -22,7 +20,17 @@ public class PauseGame : MonoBehaviour
 
     private void Update()
     {
+
         Time.timeScale = WasPauseButtonPressed()? 0: 1;
+        switch(Time.timeScale)
+        {
+            case 0:
+                pauseScreen.SetActive(true);
+                break;
+            default:
+                pauseScreen.SetActive(false);
+                break;
+        }
     }
 
     private bool WasPauseButtonPressed()
