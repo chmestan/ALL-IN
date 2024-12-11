@@ -9,7 +9,7 @@ public abstract class EnemyDefaultStateLogic : MonoBehaviour
         public EnemyStateMachine StateMachine {get; set;}
         public EnemySpawnState SpawnState {get; set;}
         public EnemyRoamState RoamState {get; set;}
-        public EnemyRetreatState RetreatState {get; set;}
+        public EnemyDeadState DeadState {get; set;}
         public EnemyChaseState ChaseState {get; set;}
         public EnemyAttackState AttackState {get; set;}
     #endregion

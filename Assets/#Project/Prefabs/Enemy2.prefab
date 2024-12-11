@@ -88,6 +88,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 340458295
       objectReference: {fileID: 0}
+    - target: {fileID: 5688487135136095569, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8588465357998180996, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
@@ -103,6 +107,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 68567035376461066}
   m_SourcePrefab: {fileID: 100100000, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+--- !u!198 &91928421028849812 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3804739557503011672, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+  m_PrefabInstance: {fileID: 3858386487808091084}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1103854047708690806 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
@@ -123,6 +132,9 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  poofSpawn: {fileID: 91928421028849812}
+  poofDeath: {fileID: 5773816870316675962}
+  attackWarning: {fileID: 8897475658605493917}
   debug: 0
 --- !u!95 &1315090220934583735
 Animator:
@@ -180,3 +192,13 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.16}
   m_Size: {x: 0.8125, y: 1.96}
   m_Direction: 0
+--- !u!198 &5773816870316675962 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7325959987045724342, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+  m_PrefabInstance: {fileID: 3858386487808091084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8897475658605493917 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5688487135136095569, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+  m_PrefabInstance: {fileID: 3858386487808091084}
+  m_PrefabAsset: {fileID: 0}

@@ -37,6 +37,10 @@ public class EnemyAttackState : EnemyState
     {
         while (burstsRemaining > 0)
         {
+            if (enemy.attackWarning != null) enemy.attackWarning.Play();
+
+            yield return new WaitForSeconds(0.5f);
+
             for (int i = 0; i < stats.BulletsPerBurst; i++)
             {
                 ShootBullet();
@@ -51,10 +55,9 @@ public class EnemyAttackState : EnemyState
             }
         }
 
+    // Transition to the next state after attacking
         enemy.StateMachine.ChangeState(enemy.StateAfterAttacking());
-
     }
-
     private void ShootBullet()
     {
         GameObject bullet = EnemyBulletsPool.SharedInstance.GetPooledObject();

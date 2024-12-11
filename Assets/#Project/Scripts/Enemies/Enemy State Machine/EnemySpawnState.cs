@@ -24,7 +24,7 @@ public class EnemySpawnState : EnemyState
     public override void ExitState()
     {
         base.ExitState();
-
+        enemy.poofSpawn.Play();
         // make sure alpha is set to 1 as we exit the state
         spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
     }

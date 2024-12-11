@@ -28,8 +28,12 @@ public abstract class Enemy : EnemyDefaultStateLogic
         private Coroutine flashCoroutine;
     #endregion
     
-    #region Animation
+    #region Animation & particles
         private Animator anim;
+        public ParticleSystem poofSpawn;
+        public ParticleSystem poofDeath;
+        public ParticleSystem attackWarning;
+
     #endregion
 
     [SerializeField] private bool debug = false;
@@ -52,7 +56,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
         StateMachine = new EnemyStateMachine();
         SpawnState = new EnemySpawnState(this, StateMachine);
         RoamState = new EnemyRoamState(this, StateMachine);
-        RetreatState = new EnemyRetreatState(this, StateMachine);
+        DeadState = new EnemyDeadState(this, StateMachine);
         ChaseState = new EnemyChaseState(this, StateMachine);
         AttackState = new EnemyAttackState(this, StateMachine);
     }
@@ -61,7 +65,10 @@ public abstract class Enemy : EnemyDefaultStateLogic
     private void OnEnable()
     {
         currentHealth = stats.MaxHealth;
-        StateMachine.Initialize(SpawnState);
+        spriteRenderer.enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+
+        StateMachine.Initialize(SpawnState);    
     }
 
     private void OnDisable()
@@ -91,7 +98,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
         if (collider.gameObject.CompareTag("player")) 
         {
             PlayerHealth playerHealth = Player.Instance.GetComponent<PlayerHealth>(); 
-            if (playerHealth != null)
+            if (playerHealth != null && StateMachine.CurrentEnemyState != SpawnState && StateMachine.CurrentEnemyState != DeadState)
             {
                 playerHealth.GetHit(stats.CollisionDamage);
             }
@@ -121,19 +128,6 @@ public abstract class Enemy : EnemyDefaultStateLogic
         anim.SetFloat("MoveMagnitude", currentVelocity.magnitude);
     }
 
-
-    // private IEnumerator ApplyCollisionDamage(GameObject other)
-    // {
-    //     PlayerHealth playerHealth = Player.Instance.GetComponent<PlayerHealth>(); 
-
-    //     while (playerHealth != null && StateMachine.CurrentEnemyState != SpawnState)
-    //     {
-    //         playerHealth.GetHit(stats.CollisionDamage);
-    //         Debug.Log($"(Enemy) Enemy inflicting collision damage for {stats.CollisionDamage} HP");
-    //         yield return new WaitForSeconds(stats.CollisionDamageTick); 
-    //     }
-    // }
-
     #region GET HIT AND DIE METHODS
         public void GetHit(int damage)
         {
@@ -158,6 +152,23 @@ public abstract class Enemy : EnemyDefaultStateLogic
         {
             if (debug) Debug.Log($"(Enemy) {gameObject.name} died.");
             OnDeath.Invoke(); 
+
+            // Change state to DeadState to ensure no harmful behavior
+            StateMachine.ChangeState(DeadState);
+
+            // Hide the sprite immediately
+            spriteRenderer.enabled = false;
+
+            // Play the poof animation
+            poofDeath.Play();
+
+            // Start coroutine to deactivate the enemy after the poof animation
+            StartCoroutine(DeactivateAfterPoof());
+        }
+
+        private IEnumerator DeactivateAfterPoof()
+        {
+            yield return new WaitForSeconds(.3f);
             gameObject.SetActive(false);
         }
 

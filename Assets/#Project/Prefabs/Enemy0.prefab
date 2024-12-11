@@ -110,6 +110,16 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3593666727821634220}
   m_SourcePrefab: {fileID: 100100000, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+--- !u!198 &1582479174015971284 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7325959987045724342, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+  m_PrefabInstance: {fileID: 8096647116408561506}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4940510224674001978 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3804739557503011672, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
+  m_PrefabInstance: {fileID: 8096647116408561506}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5370264235505042904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4240723409643395770, guid: ddf9e9230aa5e684a8bedfecefc361f6, type: 3}
@@ -130,6 +140,8 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+  poofSpawn: {fileID: 4940510224674001978}
+  poofDeath: {fileID: 1582479174015971284}
   debug: 0
 --- !u!58 &8534657826135301912
 CircleCollider2D:
