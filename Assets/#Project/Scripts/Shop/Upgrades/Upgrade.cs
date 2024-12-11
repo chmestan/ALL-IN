@@ -12,7 +12,10 @@ public abstract class Upgrade : MonoBehaviour
     public string description;    
     public PlayerData playerData;
     public UpgradeData upgradeData;
-    private TextMeshProUGUI levelText;
+    
+    [Header ("Texts"), Space (3f)]
+        [SerializeField] private TextMeshProUGUI levelText;
+        [SerializeField] private TextMeshProUGUI priceText;
     public int CurrentLevel
     {
         get
@@ -27,8 +30,7 @@ public abstract class Upgrade : MonoBehaviour
 
     protected virtual void Awake()
     {
-        upgradeName = GetType().Name;
-        levelText = GetComponentInChildren<TextMeshProUGUI>();
+        upgradeName = GetType().Name;        
     }
 
     protected virtual void Start()
@@ -37,7 +39,7 @@ public abstract class Upgrade : MonoBehaviour
         upgradeData = GlobalManager.Instance.GetComponent<UpgradeData>();
         upgradeData.InitializeUpgrades();
 
-        UpdateLevelText(); 
+        UpdateTexts(); 
     }
 
     public int GetCurrentCost()
@@ -56,7 +58,7 @@ public abstract class Upgrade : MonoBehaviour
         upgradeData.IncrementUpgradeLevel(upgradeName);
         Debug.Log($"{upgradeName} at level {CurrentLevel}/{maxLevel}");
         ApplyEffect();
-        UpdateLevelText();
+        UpdateTexts();
     }
 
     public abstract void ApplyEffect();
@@ -70,16 +72,13 @@ public abstract class Upgrade : MonoBehaviour
     //     }
     // }
 
-    private void UpdateLevelText()
+    private void UpdateTexts()
     {
-        if (levelText != null)
-        {
-            levelText.text = $"{CurrentLevel}";
-        }
-        else
-        {
-            Debug.LogWarning($"{upgradeName}: Level text is not assigned!");
-        }
+        if (levelText != null) levelText.text = $"{CurrentLevel}";
+        else Debug.LogWarning($"{upgradeName}: Level text is not assigned!");
+        
+        if (priceText != null) priceText.text = $"{GetCurrentCost()}";
+        else Debug.LogWarning($"{upgradeName}: Price text is not assigned!");
     }    
 
 }

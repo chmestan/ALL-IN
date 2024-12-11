@@ -264,6 +264,8 @@ MonoBehaviour:
   description: Increase range
   playerData: {fileID: 0}
   upgradeData: {fileID: 0}
+  levelText: {fileID: 1854203267}
+  priceText: {fileID: 1775653248}
 --- !u!1 &76289741
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,6 +335,8 @@ MonoBehaviour:
   description: Increase bullets' speed
   playerData: {fileID: 0}
   upgradeData: {fileID: 0}
+  levelText: {fileID: 1997905292}
+  priceText: {fileID: 266706948}
 --- !u!1001 &95608973
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1043,6 +1047,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 260045371}
   m_CullTransparentMesh: 1
+--- !u!114 &266706948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3747756750977616683, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 619770028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &380735641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,6 +1356,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
   m_PrefabInstance: {fileID: 475334631}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &479388571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3747756750977616683, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 1213997861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &517049990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1625,6 +1651,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
   m_PrefabInstance: {fileID: 555339251}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &567480156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 1213997861}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &577749260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,14 +1808,6 @@ PrefabInstance:
     - target: {fileID: 5508633534934152638, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5571701155384235324, guid: b692a602032216f408720f89ab049624, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 18.3114
-      objectReference: {fileID: 0}
-    - target: {fileID: 5571701155384235324, guid: b692a602032216f408720f89ab049624, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -11.174599
       objectReference: {fileID: 0}
     - target: {fileID: 7737246719480760938, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Type
@@ -2036,6 +2065,8 @@ MonoBehaviour:
   description: Increase shooting frequency
   playerData: {fileID: 0}
   upgradeData: {fileID: 0}
+  levelText: {fileID: 1650801583}
+  priceText: {fileID: 886221326}
 --- !u!1 &789744627
 GameObject:
   m_ObjectHideFlags: 0
@@ -2435,6 +2466,17 @@ PrefabInstance:
       insertIndex: 1
       addedObject: {fileID: 1228350312}
   m_SourcePrefab: {fileID: 100100000, guid: b692a602032216f408720f89ab049624, type: 3}
+--- !u!114 &886221326 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3747756750977616683, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 989342005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &893252560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,14 +2893,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5571701155384235324, guid: b692a602032216f408720f89ab049624, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 18.3114
-      objectReference: {fileID: 0}
-    - target: {fileID: 5571701155384235324, guid: b692a602032216f408720f89ab049624, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -11.174599
-      objectReference: {fileID: 0}
     - target: {fileID: 8963924394940716910, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -3179,6 +3213,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
   m_PrefabInstance: {fileID: 1021771736}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1035058411 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3747756750977616683, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 857085427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1087411094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3282,14 +3327,6 @@ PrefabInstance:
     - target: {fileID: 5508633534934152638, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5571701155384235324, guid: b692a602032216f408720f89ab049624, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 18.3114
-      objectReference: {fileID: 0}
-    - target: {fileID: 5571701155384235324, guid: b692a602032216f408720f89ab049624, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -11.174599
       objectReference: {fileID: 0}
     - target: {fileID: 7737246719480760938, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Type
@@ -3514,6 +3551,8 @@ MonoBehaviour:
   description: Increase max health
   playerData: {fileID: 0}
   upgradeData: {fileID: 0}
+  levelText: {fileID: 567480156}
+  priceText: {fileID: 479388571}
 --- !u!1001 &1213997861
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3809,6 +3848,8 @@ MonoBehaviour:
   description: Increase bullets' damage
   playerData: {fileID: 0}
   upgradeData: {fileID: 0}
+  levelText: {fileID: 1788930546}
+  priceText: {fileID: 1035058411}
 --- !u!1001 &1251625843
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4696,6 +4737,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentFundsText: {fileID: 798473702}
   nextPayoutText: {fileID: 947507277}
+--- !u!114 &1650801583 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 989342005}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1744029649
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4838,6 +4890,39 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
   m_PrefabInstance: {fileID: 1744029649}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1775653248 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3747756750977616683, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 1087411094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1788930546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 857085427}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1854203267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 1087411094}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911563354
 GameObject:
   m_ObjectHideFlags: 0
@@ -5547,6 +5632,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1997905292 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
+  m_PrefabInstance: {fileID: 619770028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2101353346
 GameObject:
   m_ObjectHideFlags: 0
