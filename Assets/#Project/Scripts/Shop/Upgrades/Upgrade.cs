@@ -16,6 +16,8 @@ public abstract class Upgrade : MonoBehaviour
     [Header ("Texts"), Space (3f)]
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private TextMeshProUGUI priceText;
+
+
     public int CurrentLevel
     {
         get
@@ -62,15 +64,6 @@ public abstract class Upgrade : MonoBehaviour
     }
 
     public abstract void ApplyEffect();
-
-    // public void ResetUpgrade()
-    // {
-    //     if (upgradeData.upgradeLevels.ContainsKey(upgradeName))
-    //     {
-    //         upgradeData.upgradeLevels[upgradeName] = 0;
-    //         Debug.Log($"{upgradeName} reset to level {upgradeData.upgradeLevels[upgradeName]}");
-    //     }
-    // }
 
     private void UpdateTexts()
     {

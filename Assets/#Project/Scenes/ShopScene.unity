@@ -1246,6 +1246,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1384,6 +1388,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 364711687206459490, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -1529,6 +1537,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1731756382, guid: 3dcdf659ec9a0b14789b60959a0d8001, type: 3}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1914,6 +1926,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -310869070, guid: 3dcdf659ec9a0b14789b60959a0d8001, type: 3}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3091,6 +3107,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3400,6 +3420,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 441029054, guid: 3dcdf659ec9a0b14789b60959a0d8001, type: 3}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3870,6 +3894,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1470117624, guid: 3dcdf659ec9a0b14789b60959a0d8001, type: 3}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4375,6 +4403,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1955666254, guid: 3dcdf659ec9a0b14789b60959a0d8001, type: 3}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4620,6 +4652,7 @@ GameObject:
   - component: {fileID: 1622880881}
   - component: {fileID: 1622880882}
   - component: {fileID: 1622880883}
+  - component: {fileID: 1622880884}
   m_Layer: 0
   m_Name: ShopManager
   m_TagString: Untagged
@@ -4737,6 +4770,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentFundsText: {fileID: 798473702}
   nextPayoutText: {fileID: 947507277}
+--- !u!114 &1622880884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622880877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57ffb48480c2534d9f898369c6d8773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descriptionText: {fileID: 2101353348}
 --- !u!114 &1650801583 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
@@ -4765,6 +4811,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 364711687206459490, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -5190,6 +5240,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -5325,6 +5379,10 @@ PrefabInstance:
       value: Shop Button (10)
       objectReference: {fileID: 0}
     - target: {fileID: 364711687206459490, guid: b692a602032216f408720f89ab049624, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2599376859055838408, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -5701,9 +5759,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is an upgrade's description
+  m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 14dc1c97b43aec4478a6e09c03a0d42e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f3f7f70935df2e04285d171e167d9b06, type: 2}
   m_sharedMaterial: {fileID: -2747484332315010972, guid: 14dc1c97b43aec4478a6e09c03a0d42e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5711,14 +5769,14 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4284336376
-  m_fontColor: {r: 0.9725491, g: 0.7843138, b: 0.3647059, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
+  m_fontColor: {r: 0.9450981, g: 0.74509805, b: 0.34901962, a: 1}
+  m_enableVertexGradient: 1
+  m_colorMode: 2
   m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+    topLeft: {r: 1, g: 0.8306588, b: 0.6396227, a: 1}
+    topRight: {r: 1, g: 0.8306588, b: 0.6396227, a: 1}
+    bottomLeft: {r: 1, g: 0.61050755, b: 0.2924527, a: 1}
+    bottomRight: {r: 1, g: 0.61050755, b: 0.2924527, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
@@ -5764,10 +5822,10 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -104.9816, y: 109.27237, z: 212.44398, w: -86.22249}
+  m_margin: {x: -104.27643, y: 108.09709, z: 212.44398, w: -86.22249}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2101353349
