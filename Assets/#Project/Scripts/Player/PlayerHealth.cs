@@ -47,7 +47,7 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth = Mathf.Max(0, currentHealth - damage);         
         hpDisplayManager.UpdateHPDisplay(currentHealth);
-        hpDisplayManager.TriggerChipAnimation(damage);
+        // hpDisplayManager.TriggerChipAnimation(damage);
 
         if (currentHealth <= 0)
         {
