@@ -45,7 +45,12 @@ public class PlayerMovement : MonoBehaviour
         [SerializeField] float diagonalBufferTime = 0.1f;
         private float lastDirectionUpdateTime;
 
-
+    [Header("Juice"), Space(10f)]
+        private Transform spriteTransform;
+        [SerializeField] float stretchFactor = 1.1f;
+        [SerializeField] float smoothTime = 0.1f;
+        private Vector3 originalScale;
+        private Vector3 targetScale;
     [SerializeField, Space (20) ] bool debug = false;
 
 
@@ -56,6 +61,10 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         playerHealth = GetComponent<PlayerHealth>();
+        spriteTransform = GetComponent<Transform>();
+        originalScale = spriteTransform.localScale;
+        targetScale = originalScale;
+
     }
 
     private void Start()
@@ -97,6 +106,22 @@ public class PlayerMovement : MonoBehaviour
             (moveAmount.magnitude > 0 ? acceleration : deceleration) * Time.deltaTime * turnSpeed);
 
         transform.Translate(currentVelocity * Time.deltaTime);
+
+        if (Mathf.Abs(moveAmount.x) > 0)
+        {
+            targetScale = new Vector3(originalScale.x * stretchFactor, originalScale.y, originalScale.z);
+        }
+        else if (Mathf.Abs(moveAmount.y) > 0)
+        {
+            targetScale = new Vector3(originalScale.x, originalScale.y * stretchFactor, originalScale.z);
+        }
+        else
+        {
+            targetScale = originalScale;
+        }
+
+        spriteTransform.localScale = Vector3.Lerp(spriteTransform.localScale, targetScale, smoothTime);
+
     }
 
     private void UpdateLastDirection()
