@@ -10,14 +10,13 @@ public class HPDisplayManager : MonoBehaviour
     public void Initialize(int health)
     {
         maxHealth = health;
-        UpdateHPDisplay(maxHealth); 
+        UpdateHPDisplay(maxHealth);
     }
 
     public void UpdateHPDisplay(int currentHealth)
     {
-        // Ensure we only use active chips for display
-        float chipHeight = 20f; // Set this to the height of your chip prefab
-        float spacing = 5f;     // Spacing between chips
+        float chipHeight = GetChipHeight();
+        float spacing = 2; 
 
         for (int i = activeChips.Count; i < currentHealth; i++)
         {
@@ -28,13 +27,11 @@ public class HPDisplayManager : MonoBehaviour
                 chip.SetActive(true);
                 activeChips.Add(chip);
 
-                // Position each chip relative to its index
                 RectTransform rectTransform = chip.GetComponent<RectTransform>();
                 rectTransform.anchoredPosition = new Vector2(0, i * (chipHeight + spacing));
             }
         }
 
-        // Hide excess chips
         while (activeChips.Count > currentHealth)
         {
             GameObject chip = activeChips[activeChips.Count - 1];
@@ -42,9 +39,11 @@ public class HPDisplayManager : MonoBehaviour
             chip.SetActive(false);
         }
     }
+
     public void TriggerChipAnimation(int lostHealth)
     {
-        for (int i = maxHealth - 1; i >= maxHealth - lostHealth; i--)
+        int startIndex = Mathf.Max(0, maxHealth - lostHealth);
+        for (int i = maxHealth - 1; i >= startIndex; i--)
         {
             if (i < activeChips.Count && activeChips[i].activeSelf)
             {
@@ -54,6 +53,25 @@ public class HPDisplayManager : MonoBehaviour
                     animator.SetTrigger("Slide");
                 }
             }
+        }
+    }
+
+    private float GetChipHeight()
+    {
+        // Create a temporary chip to get dimensions if none exist
+        if (activeChips.Count > 0)
+        {
+            RectTransform rect = activeChips[0].GetComponent<RectTransform>();
+            return rect.rect.height;
+        }
+        else
+        {
+            GameObject tempChip = HPChipPool.SharedInstance.GetPooledObject();
+            tempChip.SetActive(true);
+            RectTransform rect = tempChip.GetComponent<RectTransform>();
+            float height = rect.rect.height;
+            tempChip.SetActive(false);
+            return height;
         }
     }
 }
