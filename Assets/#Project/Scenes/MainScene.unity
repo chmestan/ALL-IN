@@ -6151,7 +6151,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 8.4375
+  orthographic size: 190.71684
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7374,7 +7374,7 @@ TrailRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Time: 0.2
-  m_PreviewTimeScale: 0.42
+  m_PreviewTimeScale: 0.1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -7451,7 +7451,7 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_MaskInteraction: 0
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
   m_ApplyActiveColorSpace: 1
 --- !u!1 &1123724234
 GameObject:
