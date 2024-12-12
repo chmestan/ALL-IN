@@ -6,7 +6,7 @@ using Cinemachine;
 public class PlayerHealth : MonoBehaviour
 {
     public int currentHealth;
-    private HPDisplayManager hpDisplayManager;
+    private UIDisplayManager hpDisplayManager;
     [SerializeField] private float invincibilityDuration = 1.5f; 
     [SerializeField] private float flashInterval = 0.1f;
     private bool isInvincible = false;  
@@ -37,7 +37,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = GlobalManager.Instance.playerData.playerMaxHealth;
-        hpDisplayManager = FindObjectOfType<HPDisplayManager>();
+        hpDisplayManager = FindObjectOfType<UIDisplayManager>();
         hpDisplayManager.Initialize(currentHealth);
     }
 

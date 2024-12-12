@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
-public class HPDisplayManager : MonoBehaviour
+public class UIDisplayManager : MonoBehaviour
 {
     [Header ("HP Chips References"), Space (3f)]
         [SerializeField] private Transform hpContainer; 
         [SerializeField] private GameObject chipPrefab; 
+        
+    [Header ("Wave Count Text"), Space (3f)]
+        [SerializeField] private TextMeshProUGUI waveCountText;    
 
     private int maxHealth;
     private List<GameObject> activeChips = new List<GameObject>();
@@ -15,6 +19,7 @@ public class HPDisplayManager : MonoBehaviour
     {
         maxHealth = health;
         UpdateHPDisplay(maxHealth);
+        waveCountText.text = $"{GlobalManager.Instance.waveManager.WaveCount}"; 
     }
 
     public void UpdateHPDisplay(int currentHealth)
