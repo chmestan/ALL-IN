@@ -47,6 +47,8 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth = Mathf.Max(0, currentHealth - damage);         
         hpDisplayManager.UpdateHPDisplay(currentHealth);
+        bloodParticles.Play();
+        impulseSource.GenerateImpulse();
 
         if (currentHealth <= 0)
         {
