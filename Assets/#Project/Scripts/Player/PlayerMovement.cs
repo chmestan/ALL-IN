@@ -37,8 +37,9 @@ public class PlayerMovement : MonoBehaviour
         private SpriteRenderer spriteRenderer;
         private Color originalColor;
 
-    [Header ("Technical"), Space (10f)]
+    [Header ("VFX"), Space (10f)]
         [SerializeField] private ParticleSystem dashReadyParticle;
+        [SerializeField] TrailRenderer dashTrail;
 
     [Header ("Technical"), Space (10f)]
         [SerializeField] float diagonalBufferTime = 0.1f;
@@ -55,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         playerHealth = GetComponent<PlayerHealth>();
+    }
+
+    private void Start()
+    {
+        dashTrail.emitting = false;
     }
 
     private void FixedUpdate()
@@ -125,6 +131,8 @@ public class PlayerMovement : MonoBehaviour
 
         dashDirection = moveAmount.normalized;
 
+        dashTrail.emitting = true;
+
         StartCoroutine(PerformDash());
     }
 
@@ -140,6 +148,7 @@ private IEnumerator PerformDash()
     }
 
     isDashing = false; 
+    dashTrail.emitting = false;
     isInGracePeriod = true; 
 
     yield return new WaitForSeconds(dashGracePeriod); 
@@ -150,11 +159,7 @@ private IEnumerator PerformDash()
     StartCoroutine(FlashEffect()); 
     canDash = true;
 
-    if (dashReadyParticle != null)
-    {
-        dashReadyParticle.Play(); 
-    }
-    else Debug.LogWarning("(PlayerMovement) Couldn't find particles");
+    dashReadyParticle.Play();
 }
 
     private IEnumerator FlashEffect()
