@@ -17,6 +17,7 @@ public class SceneAudio : MonoBehaviour
     private IEnumerator FadeInMasterVolume()
     {
         audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.0001f) * 20); 
+        audioManager.audioMixer.SetFloat("MusicVolume", Mathf.Log10(1f) * 20); 
         yield return new WaitForSeconds(1.0f);
 
         audioManager.PlayMusic(sceneMusic);

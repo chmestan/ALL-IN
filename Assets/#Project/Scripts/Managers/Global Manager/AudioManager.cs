@@ -31,6 +31,15 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
     }
 
+    public void FadeMusicGroup(float targetVolume, float duration)
+    {
+        if (activeFadeCoroutine != null)
+        {
+            StopCoroutine(activeFadeCoroutine);
+        }
+
+        activeFadeCoroutine = StartCoroutine(FadeAudioGroupCoroutine("MusicVolume", targetVolume, duration));
+    }
     public void FadeMasterVolume(float targetVolume, float duration)
     {
         if (activeFadeCoroutine != null)
@@ -38,14 +47,14 @@ public class AudioManager : MonoBehaviour
             StopCoroutine(activeFadeCoroutine);
         }
 
-        activeFadeCoroutine = StartCoroutine(FadeMasterVolumeCoroutine(targetVolume, duration));
+        activeFadeCoroutine = StartCoroutine(FadeAudioGroupCoroutine("MasterVolume", targetVolume, duration));
     }
 
-    private IEnumerator FadeMasterVolumeCoroutine(float targetVolume, float duration)
+    private IEnumerator FadeAudioGroupCoroutine(string parameterName, float targetVolume, float duration)
     {
         float currentTime = 0;
-        audioMixer.GetFloat("MasterVolume", out float currentVolume);
-        currentVolume = Mathf.Pow(10, currentVolume / 20); 
+        audioMixer.GetFloat(parameterName, out float currentVolume);
+        currentVolume = Mathf.Pow(10, currentVolume / 20); // Convert from dB to linear scale
 
         float startVolume = currentVolume;
 
@@ -53,17 +62,11 @@ public class AudioManager : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             float newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
-            audioMixer.SetFloat("MasterVolume", Mathf.Log10(newVolume) * 20);
+            audioMixer.SetFloat(parameterName, Mathf.Log10(newVolume) * 20);
             yield return null;
         }
 
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(targetVolume) * 20);
+        audioMixer.SetFloat(parameterName, Mathf.Log10(targetVolume) * 20);
 
-        if (Mathf.Approximately(targetVolume, 0.0001f))
-        {
-            StopMusic();
-        }
-
-        activeFadeCoroutine = null; 
-    }
-}
+        activeFadeCoroutine = null; // Reset the coroutine reference
+    }}

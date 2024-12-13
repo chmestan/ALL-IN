@@ -96,6 +96,7 @@ public class ArenaState : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeConfirm);
 
         ui.SetActive(true);
+        audioManager.FadeMusicGroup(0.0001f, 0.5f);
         audioManager.PlaySFX(waveClearedAudioClip);
 
         if (debug) Debug.Log("(ArenaState) Waiting for player confirmation.");
