@@ -142,6 +142,11 @@ MonoBehaviour:
       m_Calls: []
   poofSpawn: {fileID: 4940510224674001978}
   poofDeath: {fileID: 1582479174015971284}
+  attackWarning: {fileID: 0}
+  audioManager: {fileID: 0}
+  enemyShootAudioClip: {fileID: 8300000, guid: 298fb005d220c194aa740e38eaab1cea, type: 3}
+  enemyHitAudioClip: {fileID: 8300000, guid: eba2e33580d059546a75ed5aa81835ca, type: 3}
+  enemyDeathAudioClip: {fileID: 8300000, guid: dfb3200b8fe438848b5c329b6a9201c9, type: 3}
   debug: 0
 --- !u!58 &8534657826135301912
 CircleCollider2D:

@@ -6,6 +6,7 @@ public class PurchaseUpgrage : MonoBehaviour
 {
     public PlayerData playerData;
     private MoneyTextUI moneyTextUI;
+    private AudioManager audioManager;
 
     private void Awake()
     {
@@ -14,6 +15,7 @@ public class PurchaseUpgrage : MonoBehaviour
     public void Start()
     {
         playerData = GlobalManager.Instance.GetComponent<PlayerData>();
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
     }
 
 
@@ -28,17 +30,20 @@ public class PurchaseUpgrage : MonoBehaviour
             {
                 playerData.playerGold -= cost;
                 upgrade.Purchase();
+                audioManager.PlaySFX(upgrade.purchasedAudioClip);
                 moneyTextUI.UpdateMoneyDisplay();
 
                 Debug.Log($"(ShopManager) Purchased upgrade {upgrade.upgradeName} for {cost} gold.");
             }
             else
             {
+                audioManager.PlaySFX(upgrade.cantBuyAudioClip);
                 Debug.Log("(ShopManager) Not enough gold!");
             }
         }
         else
         {
+            audioManager.PlaySFX(upgrade.cantBuyAudioClip);
             Debug.Log($"(ShopManager) Upgrade {upgrade.upgradeName} is already at max level!");
         }
     }

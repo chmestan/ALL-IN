@@ -39,6 +39,8 @@ public abstract class Enemy : EnemyDefaultStateLogic
     [Header("Audio"), Space(3f)]
         public AudioManager audioManager;
         public AudioClip enemyShootAudioClip;
+        [SerializeField] private AudioClip enemyHitAudioClip;
+        [SerializeField] private AudioClip enemyDeathAudioClip;
 
 
     [SerializeField] private bool debug = false;
@@ -156,23 +158,20 @@ public abstract class Enemy : EnemyDefaultStateLogic
             {
                 Die();
             }
+            else 
+            audioManager.PlaySFX(enemyHitAudioClip);
         }
 
         public void Die()
         {
             if (debug) Debug.Log($"(Enemy) {gameObject.name} died.");
             OnDeath.Invoke(); 
+            audioManager.PlaySFX(enemyDeathAudioClip);
 
-            // Change state to DeadState to ensure no harmful behavior
             StateMachine.ChangeState(DeadState);
-
-            // Hide the sprite immediately
             spriteRenderer.enabled = false;
-
-            // Play the poof animation
             poofDeath.Play();
 
-            // Start coroutine to deactivate the enemy after the poof animation
             StartCoroutine(DeactivateAfterPoof());
         }
 

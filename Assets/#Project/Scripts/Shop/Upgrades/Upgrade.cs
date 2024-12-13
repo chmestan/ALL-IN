@@ -17,6 +17,10 @@ public abstract class Upgrade : MonoBehaviour
         [SerializeField] private TextMeshProUGUI levelText;
         [SerializeField] private TextMeshProUGUI priceText;
 
+    [Header("Audio"),Space(3f)]
+        public AudioClip purchasedAudioClip;
+        public AudioClip cantBuyAudioClip;
+
 
     public int CurrentLevel
     {

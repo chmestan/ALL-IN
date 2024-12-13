@@ -133,6 +133,8 @@ MonoBehaviour:
   attackWarning: {fileID: 6779247976813750129}
   audioManager: {fileID: 0}
   enemyShootAudioClip: {fileID: 8300000, guid: 298fb005d220c194aa740e38eaab1cea, type: 3}
+  enemyHitAudioClip: {fileID: 8300000, guid: eba2e33580d059546a75ed5aa81835ca, type: 3}
+  enemyDeathAudioClip: {fileID: 8300000, guid: dfb3200b8fe438848b5c329b6a9201c9, type: 3}
   debug: 0
 --- !u!95 &-2588452473959611637
 Animator:
