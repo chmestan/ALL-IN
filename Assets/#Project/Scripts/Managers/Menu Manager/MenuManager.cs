@@ -16,10 +16,11 @@ public class MenuManager : MonoBehaviour
 
     private IEnumerator FadeInMasterVolume()
     {
-        audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.0001f) * 20);
+        audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.0001f) * 20); 
         yield return new WaitForSeconds(1.0f);
-        audioManager.PlayMusic(menuMusic); 
-        StartCoroutine(audioManager.FadeMasterVolume(1.0f, 2.0f)); 
+
+        audioManager.PlayMusic(menuMusic);
+        audioManager.FadeMasterVolume(1.0f, 2.0f); 
     }
 
 

@@ -46,17 +46,14 @@ public class ChangeScene : MonoBehaviour
     {
         if (debug) Debug.Log("(ChangeScene) Starting scene transition.");
 
-        Coroutine fadeVolume = null;
         if (audioManager != null)
         {
-            fadeVolume = StartCoroutine(audioManager.FadeMasterVolume(0.0001f, delay));
+            audioManager.FadeMasterVolume(0.0001f, delay);
         }
 
         transitionAnim.SetTrigger("SlideLeft");
 
         yield return new WaitForSeconds(delay);
-
-        if (fadeVolume != null) yield return fadeVolume;
 
         if (debug) Debug.Log($"(ChangeScene) Loading scene: {scene}");
         SceneManager.LoadScene(scene);
