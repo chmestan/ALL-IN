@@ -131,6 +131,8 @@ MonoBehaviour:
   poofSpawn: {fileID: 2605346183672394104}
   poofDeath: {fileID: 8452732307667389078}
   attackWarning: {fileID: 6779247976813750129}
+  audioManager: {fileID: 0}
+  enemyShootAudioClip: {fileID: 8300000, guid: 298fb005d220c194aa740e38eaab1cea, type: 3}
   debug: 0
 --- !u!95 &-2588452473959611637
 Animator:

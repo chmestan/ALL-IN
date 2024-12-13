@@ -28,13 +28,18 @@ public abstract class Enemy : EnemyDefaultStateLogic
         private Coroutine flashCoroutine;
     #endregion
     
-    #region Animation & particles
+    [Header("Animator"), Space(3f)]
         private Animator anim;
+
+    [Header("Particles"), Space(3f)]
         public ParticleSystem poofSpawn;
         public ParticleSystem poofDeath;
         public ParticleSystem attackWarning;
 
-    #endregion
+    [Header("Audio"), Space(3f)]
+        public AudioManager audioManager;
+        public AudioClip enemyShootAudioClip;
+
 
     [SerializeField] private bool debug = false;
 
@@ -59,6 +64,11 @@ public abstract class Enemy : EnemyDefaultStateLogic
         DeadState = new EnemyDeadState(this, StateMachine);
         ChaseState = new EnemyChaseState(this, StateMachine);
         AttackState = new EnemyAttackState(this, StateMachine);
+    }
+
+    private void Start()
+    {
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
     }
 
 

@@ -44,6 +44,7 @@ public class EnemyAttackState : EnemyState
             for (int i = 0; i < stats.BulletsPerBurst; i++)
             {
                 ShootBullet();
+                enemy.audioManager.PlaySFX(enemy.enemyShootAudioClip);
                 yield return new WaitForSeconds(stats.TimeBetweenBullets);
             }
 

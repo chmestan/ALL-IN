@@ -7,22 +7,26 @@ public class PlayerHealth : MonoBehaviour
 {
     public int currentHealth;
     private UIDisplayManager hpDisplayManager;
-    [SerializeField] private float invincibilityDuration = 1.5f; 
-    [SerializeField] private float flashInterval = 0.1f;
     private bool isInvincible = false;  
     public bool isDead = false;
+    [Header("Invincibility"), Space(3f)]
+        [SerializeField] private float invincibilityDuration = 1.5f; 
+        [SerializeField] private float flashInterval = 0.1f;
 
-    #region References
+    [Header ("Particles"), Space(3f)]
         private SpriteRenderer spriteRenderer;
         private PlayerMovement playerMovement;
         private Animator anim;
         [SerializeField] private ParticleSystem bloodParticles; 
-    #endregion
 
-    #region Camera Shake
+    [Header("Camera Shake"), Space(3f)]
         public CameraShakeManager cameraShakeManager;
         CinemachineImpulseSource impulseSource;
-    #endregion 
+
+    [Header("Audio"), Space(3f)]
+        private AudioManager audioManager;
+        [SerializeField] AudioClip getHitAudioClip;
+
 
     private void Awake()
     {
@@ -37,6 +41,7 @@ public class PlayerHealth : MonoBehaviour
     private void Start()
     {
         currentHealth = GlobalManager.Instance.playerData.playerMaxHealth;
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
         hpDisplayManager = FindObjectOfType<UIDisplayManager>();
         hpDisplayManager.Initialize(currentHealth);
     }
@@ -48,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Max(0, currentHealth - damage);         
         hpDisplayManager.UpdateHPDisplay(currentHealth);
         bloodParticles.Play();
+        audioManager.PlaySFX(getHitAudioClip);
         impulseSource.GenerateImpulse();
 
         if (currentHealth <= 0)

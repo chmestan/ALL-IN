@@ -22,6 +22,10 @@ public class PlayerShoot : MonoBehaviour
             set { playerMovement.lastDirection = value; }
         }
 
+    [Header("Audio"), Space(3f)]
+        private AudioManager audioManager;
+        [SerializeField] AudioClip shootAudioClip;
+
     [SerializeField, Space(20f)] bool debug = false;
 
     private void Awake()
@@ -38,6 +42,7 @@ public class PlayerShoot : MonoBehaviour
     private void Start()
     {
         shootingDelay = GlobalManager.Instance.playerData.playerShootingFrequency;
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
     }
 
     private void Update()
@@ -74,6 +79,7 @@ public class PlayerShoot : MonoBehaviour
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
         {
             BulletShot(facingDir);
+            audioManager.PlaySFX(shootAudioClip);
             lastShotTime = Time.time;
         }
 

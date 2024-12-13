@@ -29,7 +29,11 @@ public class ArenaState : MonoBehaviour
         [SerializeField] private GameObject waveWonUI;
         [SerializeField] private GameObject waveLostUI;
         [SerializeField] private float timeBeforeConfirm = 1f;
-    
+
+    [Header("Audio"), Space(3f)]
+        private AudioManager audioManager;
+        [SerializeField] AudioClip waveClearedAudioClip;
+
     [Header ("Debug"), Space (3f)]
         [SerializeField] private bool debug = false;
 
@@ -48,6 +52,7 @@ public class ArenaState : MonoBehaviour
         waveManager.arenaState = this;
         playerData.arenaState = this;
         waveManager.arenaState.OnWaveCompleted.AddListener(waveManager.WaveCompletion);
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
         playerData.arenaState.OnWaveLost.AddListener(playerData.ResetGame);
         playerHealth = Player.Instance.GetComponent<PlayerHealth>();
     }
@@ -74,7 +79,6 @@ public class ArenaState : MonoBehaviour
             {
                 OnWaveCompleted.Invoke(); // we tell WaveManager to increment waveCounter
                 StartCoroutine(WaitForConfirm("ShopScene", waveWonUI));
-                // Debug.Log("(ArenaState) Wave completed. Waiting for confirmation");
             }
             else Debug.LogError("(ArenaState) OnWaveCompleted event is null");
 
@@ -92,6 +96,7 @@ public class ArenaState : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeConfirm);
 
         ui.SetActive(true);
+        audioManager.PlaySFX(waveClearedAudioClip);
 
         if (debug) Debug.Log("(ArenaState) Waiting for player confirmation.");
         while (!inputMgr.confirmInput.triggered)
