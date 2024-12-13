@@ -24,13 +24,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
     public IEnumerator FadeMasterVolume(float targetVolume, float duration)
     {
         float currentTime = 0;
 
         audioMixer.GetFloat("MasterVolume", out float currentVolume);
-        currentVolume = Mathf.Pow(10, currentVolume / 20); // Convert from dB to linear 
+        currentVolume = Mathf.Pow(10, currentVolume / 20); // Convert from dB to linear scale
 
         float startVolume = currentVolume;
 
@@ -38,11 +37,11 @@ public class AudioManager : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             float newVolume = Mathf.Lerp(startVolume, targetVolume, currentTime / duration);
-            audioMixer.SetFloat("MasterVolume", Mathf.Log10(newVolume) * 20); // back to decibels
-            yield return null;
+            audioMixer.SetFloat("MasterVolume", Mathf.Log10(newVolume) * 20); 
+            yield return null; 
         }
 
-        audioMixer.SetFloat("MasterVolume", Mathf.Log10(targetVolume) * 20); 
+        audioMixer.SetFloat("MasterVolume", Mathf.Log10(targetVolume) * 20);
     }
 
 }

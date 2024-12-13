@@ -4,9 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    [SerializeField] private bool debug = true;
     private Animator transitionAnim;
+    private AudioManager audioManager;
     private bool isSceneChanging = false; 
+    [SerializeField] private bool debug = true;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class ChangeScene : MonoBehaviour
 
     private void Start()
     {
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
         transitionAnim.SetTrigger("SlideRight");
     }
 
@@ -44,15 +46,23 @@ public class ChangeScene : MonoBehaviour
     {
         if (debug) Debug.Log("(ChangeScene) Starting scene transition.");
 
+        Coroutine fadeVolume = null;
+        if (audioManager != null)
+        {
+            fadeVolume = StartCoroutine(audioManager.FadeMasterVolume(0.0001f, delay));
+        }
+
         transitionAnim.SetTrigger("SlideLeft");
+
         yield return new WaitForSeconds(delay);
+
+        if (fadeVolume != null) yield return fadeVolume;
 
         if (debug) Debug.Log($"(ChangeScene) Loading scene: {scene}");
         SceneManager.LoadScene(scene);
 
         yield return new WaitForSeconds(0.1f);
-
-        isSceneChanging = false; 
+        isSceneChanging = false;
         transitionAnim.SetTrigger("SlideRight");
     }
 }

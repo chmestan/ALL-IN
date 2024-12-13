@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
         audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.0001f) * 20);
         yield return new WaitForSeconds(1.0f);
         audioManager.PlayMusic(menuMusic); 
-        StartCoroutine(audioManager.FadeMasterVolume(1.0f, 5.0f)); 
+        StartCoroutine(audioManager.FadeMasterVolume(1.0f, 2.0f)); 
     }
 
 
