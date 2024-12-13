@@ -11,13 +11,16 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
-        StartCoroutine(PlayMenuMusicWithDelay()); 
+        StartCoroutine(FadeInMasterVolume());
     }
 
-    private IEnumerator PlayMenuMusicWithDelay()
+    private IEnumerator FadeInMasterVolume()
     {
+        audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.0001f) * 20);
         yield return new WaitForSeconds(1.0f);
-        StartCoroutine(audioManager.FadeInMusic(menuMusic, 2.0f)); 
+        audioManager.PlayMusic(menuMusic); 
+        StartCoroutine(audioManager.FadeMasterVolume(1.0f, 5.0f)); 
     }
+
 
 }
