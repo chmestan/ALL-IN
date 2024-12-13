@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuManager : MonoBehaviour
+public class SceneAudio : MonoBehaviour
 {
     [Header("Audio"), Space(3f)]
         private AudioManager audioManager;
-        [SerializeField] AudioClip menuMusic;
+        [SerializeField] AudioClip sceneMusic;
 
     private void Start()
     {
@@ -19,7 +19,7 @@ public class MenuManager : MonoBehaviour
         audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.0001f) * 20); 
         yield return new WaitForSeconds(1.0f);
 
-        audioManager.PlayMusic(menuMusic);
+        audioManager.PlayMusic(sceneMusic);
         audioManager.FadeMasterVolume(1.0f, 2.0f); 
     }
 

@@ -4653,6 +4653,7 @@ GameObject:
   - component: {fileID: 1622880882}
   - component: {fileID: 1622880883}
   - component: {fileID: 1622880884}
+  - component: {fileID: 1622880885}
   m_Layer: 0
   m_Name: ShopManager
   m_TagString: Untagged
@@ -4783,6 +4784,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   descriptionText: {fileID: 2101353348}
+--- !u!114 &1622880885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622880877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e305947cca0fd54c92abd06960142c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneMusic: {fileID: 8300000, guid: 334e34ce75c16c047831864ede6d7aee, type: 3}
 --- !u!114 &1650801583 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
