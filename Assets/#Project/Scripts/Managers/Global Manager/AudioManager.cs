@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -9,13 +10,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource musicSource;
     public AudioSource sfxSource;
 
-    // Play a specific SFX
     public void PlaySFX(AudioClip clip)
     {
         sfxSource.PlayOneShot(clip);
     }
 
-    // Play or change the background music
     public void PlayMusic(AudioClip clip)
     {
         if (musicSource.clip != clip)
@@ -25,13 +24,23 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    // public void SetMusicVolume(float volume)
-    // {
-    //     audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20); 
-    // }
+    public IEnumerator FadeInMusic(AudioClip clip, float duration)
+    {
+        musicSource.clip = clip;
+        musicSource.volume = 0;
+        musicSource.Play();
 
-    // public void SetSFXVolume(float volume)
-    // {
-    //     audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
-    // }
+        float targetVolume = 1.0f; 
+        float currentTime = 0;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(0, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        musicSource.volume = targetVolume;
+    }
+
 }
