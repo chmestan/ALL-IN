@@ -4807,7 +4807,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e305947cca0fd54c92abd06960142c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneMusic: {fileID: 8300000, guid: 334e34ce75c16c047831864ede6d7aee, type: 3}
+  sceneMusic: {fileID: 8300000, guid: 9473962ec4b91cc4bbcfa13c9be11737, type: 3}
 --- !u!114 &1650801583 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
