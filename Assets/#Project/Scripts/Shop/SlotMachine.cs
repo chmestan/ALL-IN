@@ -13,6 +13,7 @@ public class SlotMachine : MonoBehaviour
     
     [Header("Audio"), Space(3f)]
         private AudioManager audioManager;
+        [SerializeField] private AudioClip rollAudioClip;
         [SerializeField] private AudioClip dingAudioClip;
 
     [Header("Debug"), Space(3f)]
@@ -37,6 +38,7 @@ public class SlotMachine : MonoBehaviour
     {
         if (debug) Debug.Log("(SlotMachine) Rolling");
         anim.SetTrigger("Roll");
+        audioManager.PlaySFX(rollAudioClip);
     }
 
     public void RollIsOver()

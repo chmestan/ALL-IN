@@ -46,7 +46,7 @@ public class PauseGame : MonoBehaviour
         if (pauseInput) 
         {
             paused = !paused;
-            audioManager.PlaySFX(pauseAudioClip);
+            audioManager.PlaySFX(pauseAudioClip, 20f);
         }
         // if (debug) Debug.Log($"[PauseGame] Pause state = {paused}");
 

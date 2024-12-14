@@ -496,6 +496,7 @@ MonoBehaviour:
   timeBeforeConfirm: 0.7
   waveClearedAudioClip: {fileID: 8300000, guid: f566af61af56575499488ad708a0e012, type: 3}
   waveLostAudioClip: {fileID: 8300000, guid: d04196f3eb8305f4cad0e72b3e248618, type: 3}
+  inputAudioClip: {fileID: 8300000, guid: 1ebd1d9d92c7ef8479ec13979a0326b0, type: 3}
   debug: 0
 --- !u!114 &227687866
 MonoBehaviour:

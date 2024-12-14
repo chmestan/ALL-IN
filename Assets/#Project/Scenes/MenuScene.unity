@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1a1282064621a418516dacaa207522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudioClip: {fileID: 8300000, guid: 0dee7850c7b69f443b96cf5e3c88a17f, type: 3}
 --- !u!1 &29925734
 GameObject:
   m_ObjectHideFlags: 0
@@ -760,9 +761,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0
-    width: 1
-    height: 1
+    y: -0.0009259259
+    width: 0.7453125
+    height: 0.25
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1106,6 +1107,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneMusic: {fileID: 8300000, guid: ac6139c93b4fb544ca864a399930820d, type: 3}
+  MusicVolumeModifier: 1
+  SFXVolumeModifier: 1
 --- !u!4 &1441909008
 Transform:
   m_ObjectHideFlags: 0

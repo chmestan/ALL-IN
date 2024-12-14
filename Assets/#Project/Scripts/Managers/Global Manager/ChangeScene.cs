@@ -48,7 +48,7 @@ public class ChangeScene : MonoBehaviour
 
         if (audioManager != null)
         {
-            audioManager.FadeMasterVolume(0.0001f, delay);
+            audioManager.FadeMusicGroup(0.0001f, delay);
         }
 
         transitionAnim.SetTrigger("SlideLeft");

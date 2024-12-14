@@ -349,6 +349,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2662059016036026158, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
+      propertyPath: m_SortingOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3684722451207004767, guid: 8a579c22d769f1b49bb116852f7e7506, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4392,6 +4396,7 @@ MonoBehaviour:
       m_Calls: []
   arm: {fileID: 1989756779}
   slotManager: {fileID: 1622880881}
+  rollAudioClip: {fileID: 8300000, guid: b2457470b5ed4d84284d6d52069679c1, type: 3}
   dingAudioClip: {fileID: 8300000, guid: 5838e89b5b1aa974895ef86e122dd909, type: 3}
   debug: 0
 --- !u!1001 &1479363406
@@ -4808,6 +4813,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneMusic: {fileID: 8300000, guid: 9473962ec4b91cc4bbcfa13c9be11737, type: 3}
+  MusicVolumeModifier: 1
+  SFXVolumeModifier: 1
 --- !u!114 &1650801583 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 750771612251374793, guid: b692a602032216f408720f89ab049624, type: 3}
@@ -5925,16 +5932,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7501423950136004630}
-        m_TargetAssemblyTypeName: NextRoundButton, Assembly-CSharp
-        m_MethodName: NextRoundButtonClicked
-        m_Mode: 1
+      - m_Target: {fileID: 7501423950136004629}
+        m_TargetAssemblyTypeName: ChangeSceneButton, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MainScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!95 &1038628097010897973
@@ -6060,6 +6067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a1a1282064621a418516dacaa207522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudioClip: {fileID: 8300000, guid: 1ebd1d9d92c7ef8479ec13979a0326b0, type: 3}
 --- !u!114 &7501423950136004630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6069,9 +6077,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2195773245024217854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d074f1a2d03c7bc4687973431b8aaeba, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a1a1282064621a418516dacaa207522, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickAudioClip: {fileID: 8300000, guid: 1ebd1d9d92c7ef8479ec13979a0326b0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

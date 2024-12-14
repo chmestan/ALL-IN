@@ -34,6 +34,7 @@ public class ArenaState : MonoBehaviour
         private AudioManager audioManager;
         [SerializeField] AudioClip waveClearedAudioClip;
         [SerializeField] AudioClip waveLostAudioClip;
+        [SerializeField] AudioClip inputAudioClip;
         private bool musicFaded = false;
 
     [Header ("Debug"), Space (3f)]
@@ -113,6 +114,7 @@ public class ArenaState : MonoBehaviour
             yield return null;
         }
 
+        audioManager.PlaySFX(inputAudioClip, -20f);
         changeScene.LoadSceneWithTransition(nextScene, 1f);
     }
 
