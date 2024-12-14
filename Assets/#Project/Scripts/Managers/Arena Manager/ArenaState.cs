@@ -33,6 +33,8 @@ public class ArenaState : MonoBehaviour
     [Header("Audio"), Space(3f)]
         private AudioManager audioManager;
         [SerializeField] AudioClip waveClearedAudioClip;
+        [SerializeField] AudioClip waveLostAudioClip;
+        private bool musicFaded = false;
 
     [Header ("Debug"), Space (3f)]
         [SerializeField] private bool debug = false;
@@ -59,25 +61,34 @@ public class ArenaState : MonoBehaviour
 
     private void Update()
     {
-        if (playerHealth.isDead == true)
+        if (playerHealth.currentHealth <= 0 && !musicFaded)
         {
+            audioManager.FadeMusicGroup(0.0001f, 0.5f);
+            audioManager.PlaySFX(waveLostAudioClip); 
+            musicFaded = true;
+        }
+
+        if (playerHealth.isDead == true && state != ArenaStateEnum.Lost)
+        {
+            state = ArenaStateEnum.Lost;
+
             if (OnWaveLost != null)
             { 
-                OnWaveLost.Invoke(); 
-                playerData.arenaState.OnWaveLost.RemoveAllListeners();
+                OnWaveLost.Invoke();
                 StartCoroutine(WaitForConfirm("MenuScene",waveLostUI));
-                // Debug.Log("(ArenaState) Wave lost.");
             }
             else Debug.LogError("(ArenaState) OnWaveLost event is null");
         }
 
-        else if (enemyManager.RemainingEnemies <= 0 && state != ArenaStateEnum.Won)
+        else if (enemyManager.RemainingEnemies <= 0 && state != ArenaStateEnum.Won && state != ArenaStateEnum.Lost)
         {
             state = ArenaStateEnum.Won;
                     
             if (OnWaveCompleted!= null) 
             {
                 OnWaveCompleted.Invoke(); // we tell WaveManager to increment waveCounter
+                audioManager.FadeMusicGroup(0.0001f, 0.5f);
+                audioManager.PlaySFX(waveClearedAudioClip);
                 StartCoroutine(WaitForConfirm("ShopScene", waveWonUI));
             }
             else Debug.LogError("(ArenaState) OnWaveCompleted event is null");
@@ -96,8 +107,6 @@ public class ArenaState : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeConfirm);
 
         ui.SetActive(true);
-        audioManager.FadeMusicGroup(0.0001f, 0.5f);
-        audioManager.PlaySFX(waveClearedAudioClip);
 
         if (debug) Debug.Log("(ArenaState) Waiting for player confirmation.");
         while (!inputMgr.confirmInput.triggered)

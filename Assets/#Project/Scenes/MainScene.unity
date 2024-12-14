@@ -495,6 +495,7 @@ MonoBehaviour:
   waveLostUI: {fileID: 1175208896}
   timeBeforeConfirm: 0.7
   waveClearedAudioClip: {fileID: 8300000, guid: f566af61af56575499488ad708a0e012, type: 3}
+  waveLostAudioClip: {fileID: 8300000, guid: 993fcb842b0b7884a8eeed642af3b36b, type: 3}
   debug: 0
 --- !u!114 &227687866
 MonoBehaviour:
@@ -7147,7 +7148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   shootingDelay: 0.35
-  shootAudioClip: {fileID: 8300000, guid: c465fd864e6fcef46990ac7bc4e49599, type: 3}
+  shootAudioClip: {fileID: 8300000, guid: bec20e9e082194d44991d95f9c08c95e, type: 3}
   debug: 0
 --- !u!114 &1081019528
 MonoBehaviour:

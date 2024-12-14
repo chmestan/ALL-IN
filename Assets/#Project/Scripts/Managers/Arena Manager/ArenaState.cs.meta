@@ -3,7 +3,13 @@ guid: 43a600f21836edf45833df11259e1809
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerData: {instanceID: 0}
+  - playerHealth: {instanceID: 0}
+  - waveWonUI: {instanceID: 0}
+  - waveLostUI: {instanceID: 0}
+  - waveClearedAudioClip: {instanceID: 0}
+  - waveLostAudioClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
