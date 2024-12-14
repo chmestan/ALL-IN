@@ -13,6 +13,10 @@ public class SlotMachineArm : MonoBehaviour
         [SerializeField] private SlotManager slotManager;
         [SerializeField] Button nextRoundButton;
 
+    [Header("Audio"), Space(3f)]
+        private AudioManager audioManager;
+        [SerializeField] private AudioClip leverAudioClip;
+
     [Header ("Debug"), Space (3f)]
         [SerializeField] private bool debug = false;
 
@@ -21,10 +25,15 @@ public class SlotMachineArm : MonoBehaviour
         anim = GetComponent<Animator>();
         button = GetComponent<Button>();
     }
+    private void Start()
+    {
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
+    }
 
     public void PullAnimation()
     {
         button.interactable = false;
+        audioManager.PlaySFX(leverAudioClip);
         nextRoundButton.interactable = false;
         anim.SetTrigger("Pull");
         slotManager.TriggerFadeOut();
