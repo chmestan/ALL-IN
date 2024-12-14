@@ -11,17 +11,18 @@ public class SceneAudio : MonoBehaviour
     private void Start()
     {
         audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
-        StartCoroutine(FadeInMasterVolume());
+        audioManager.StopMusic();
+        audioManager.audioMixer.SetFloat("MusicVolume", Mathf.Log10(0.0001f) * 20); 
+        audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(1f) * 20); 
+        StartCoroutine(FadeInMusic());
     }
 
-    private IEnumerator FadeInMasterVolume()
+    private IEnumerator FadeInMusic()
     {
-        audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(0.0001f) * 20); 
-        audioManager.audioMixer.SetFloat("MusicVolume", Mathf.Log10(1f) * 20); 
         yield return new WaitForSeconds(1.0f);
 
         audioManager.PlayMusic(sceneMusic);
-        audioManager.FadeMasterVolume(1.0f, 2.0f); 
+        audioManager.FadeMusicGroup(1.0f, 2.0f); 
     }
 
 

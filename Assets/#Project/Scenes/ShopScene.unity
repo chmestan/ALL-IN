@@ -4391,8 +4391,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   arm: {fileID: 1989756779}
-  debug: 0
   slotManager: {fileID: 1622880881}
+  dingAudioClip: {fileID: 8300000, guid: 5838e89b5b1aa974895ef86e122dd909, type: 3}
+  debug: 0
 --- !u!1001 &1479363406
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5646,6 +5647,7 @@ MonoBehaviour:
   slotMachine: {fileID: 1474531807}
   slotManager: {fileID: 1622880881}
   nextRoundButton: {fileID: 434721426629794390}
+  leverAudioClip: {fileID: 8300000, guid: 584ab6db5c73d98448ce48d6d6cf6da3, type: 3}
   debug: 0
 --- !u!114 &1989756780
 MonoBehaviour:

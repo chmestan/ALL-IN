@@ -33,7 +33,7 @@ public class SlotMachineArm : MonoBehaviour
     public void PullAnimation()
     {
         button.interactable = false;
-        audioManager.PlaySFX(leverAudioClip);
+        StartCoroutine(PlaySFXWithDelay(.2f));
         nextRoundButton.interactable = false;
         anim.SetTrigger("Pull");
         slotManager.TriggerFadeOut();
@@ -51,4 +51,12 @@ public class SlotMachineArm : MonoBehaviour
         button.interactable = true;
         nextRoundButton.interactable = true;
     }
+
+    private IEnumerator PlaySFXWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioManager.PlaySFX(leverAudioClip);
+    }
+
+
 }
