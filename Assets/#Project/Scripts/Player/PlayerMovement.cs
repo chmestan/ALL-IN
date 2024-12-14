@@ -44,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
     [Header ("Technical"), Space (10f)]
         [SerializeField] float diagonalBufferTime = 0.1f;
         private float lastDirectionUpdateTime;
+    
+    [Header("Audio"),Space(3f)]
+        private AudioManager audioManager;
+        [SerializeField] private AudioClip dashAudioClip;
+        [SerializeField] private float dashVolModifier = -10f;
 
     [Header("Juice"), Space(10f)]
         private Transform spriteTransform;
@@ -70,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         dashTrail.emitting = false;
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
     }
 
     private void FixedUpdate()
@@ -153,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
 
         isDashing = true;
         canDash = false;
+        audioManager.PlaySFX(dashAudioClip, dashVolModifier);
 
         dashDirection = moveAmount.normalized;
 

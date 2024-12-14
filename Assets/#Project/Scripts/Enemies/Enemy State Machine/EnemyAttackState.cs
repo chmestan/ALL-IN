@@ -44,7 +44,7 @@ public class EnemyAttackState : EnemyState
             for (int i = 0; i < stats.BulletsPerBurst; i++)
             {
                 ShootBullet();
-                enemy.audioManager.PlaySFX(enemy.enemyShootAudioClip);
+                PlayRandomEnemyShootSound();                
                 yield return new WaitForSeconds(stats.TimeBetweenBullets);
             }
 
@@ -79,4 +79,18 @@ public class EnemyAttackState : EnemyState
             }
         }
     }
+
+    private void PlayRandomEnemyShootSound()
+    {
+        if (enemy.enemyShootAudioClips != null && enemy.enemyShootAudioClips.Count > 0)
+        {
+            int randomIndex = Random.Range(0, enemy.enemyShootAudioClips.Count); 
+            AudioClip randomClip = enemy.enemyShootAudioClips[randomIndex]; 
+
+            // enemy.audioManager.sfxSource.pitch = Random.Range(0.5f, 0.8f);
+            enemy.audioManager.PlaySFX(randomClip, enemy.enemyShootVolModifierdB);
+            // enemy.audioManager.sfxSource.pitch = 1.0f;
+        }
+    }
+
 }

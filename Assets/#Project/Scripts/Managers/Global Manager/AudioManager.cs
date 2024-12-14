@@ -12,9 +12,10 @@ public class AudioManager : MonoBehaviour
 
     private Coroutine activeFadeCoroutine;
 
-    public void PlaySFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip, float volume = 0f)
     {
-        sfxSource.PlayOneShot(clip);
+        float linearVolume = Mathf.Pow(10, volume / 20f);
+        sfxSource.PlayOneShot(clip, Mathf.Clamp01(linearVolume));
     }
 
     public void PlayMusic(AudioClip clip)
@@ -22,6 +23,7 @@ public class AudioManager : MonoBehaviour
         if (musicSource.clip != clip)
         {
             musicSource.clip = clip;
+            musicSource.loop = true;
             musicSource.Play();
         }
     }

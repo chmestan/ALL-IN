@@ -64,7 +64,6 @@ public class ArenaState : MonoBehaviour
         if (playerHealth.currentHealth <= 0 && !musicFaded)
         {
             audioManager.FadeMusicGroup(0.0001f, 0.5f);
-            audioManager.PlaySFX(waveLostAudioClip); 
             musicFaded = true;
         }
 
@@ -75,7 +74,7 @@ public class ArenaState : MonoBehaviour
             if (OnWaveLost != null)
             { 
                 OnWaveLost.Invoke();
-                StartCoroutine(WaitForConfirm("MenuScene",waveLostUI));
+                StartCoroutine(WaitForConfirm("MenuScene",waveLostUI, waveLostAudioClip, -20f));
             }
             else Debug.LogError("(ArenaState) OnWaveLost event is null");
         }
@@ -87,9 +86,7 @@ public class ArenaState : MonoBehaviour
             if (OnWaveCompleted!= null) 
             {
                 OnWaveCompleted.Invoke(); // we tell WaveManager to increment waveCounter
-                audioManager.FadeMusicGroup(0.0001f, 0.5f);
-                audioManager.PlaySFX(waveClearedAudioClip);
-                StartCoroutine(WaitForConfirm("ShopScene", waveWonUI));
+                StartCoroutine(WaitForConfirm("ShopScene", waveWonUI, waveClearedAudioClip, 0f));
             }
             else Debug.LogError("(ArenaState) OnWaveCompleted event is null");
 
@@ -102,11 +99,13 @@ public class ArenaState : MonoBehaviour
         }
     }
 
-    private IEnumerator WaitForConfirm(string nextScene, GameObject ui)
+    private IEnumerator WaitForConfirm(string nextScene, GameObject ui, AudioClip audioClip, float volume)
     {
         yield return new WaitForSeconds(timeBeforeConfirm);
 
         ui.SetActive(true);
+        if (!musicFaded) audioManager.FadeMusicGroup(0.0001f, 0.5f);
+        audioManager.PlaySFX(audioClip, volume); 
 
         if (debug) Debug.Log("(ArenaState) Waiting for player confirmation.");
         while (!inputMgr.confirmInput.triggered)

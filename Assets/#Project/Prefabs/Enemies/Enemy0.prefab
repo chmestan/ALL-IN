@@ -144,9 +144,13 @@ MonoBehaviour:
   poofDeath: {fileID: 1582479174015971284}
   attackWarning: {fileID: 0}
   audioManager: {fileID: 0}
-  enemyShootAudioClip: {fileID: 8300000, guid: 37d4517112b0b2948a2360cc54d37777, type: 3}
-  enemyHitAudioClip: {fileID: 8300000, guid: 8d4a64b55fc58a648a026afaa2519064, type: 3}
+  enemyShootAudioClips:
+  - {fileID: 8300000, guid: fe84d891dec9b004a8b73633a669cb1c, type: 3}
+  enemyShootVolModifierdB: -20
+  enemyHitAudioClip: {fileID: 8300000, guid: de501905d62e1294d94a5018be994432, type: 3}
+  enemyHitVolModifierdB: 0
   enemyDeathAudioClip: {fileID: 8300000, guid: 686a54209424c8449b50bb7de62b5946, type: 3}
+  enemyDeathVolModifierdB: 0
   debug: 0
 --- !u!58 &8534657826135301912
 CircleCollider2D:

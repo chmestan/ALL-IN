@@ -26,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
     [Header("Audio"), Space(3f)]
         private AudioManager audioManager;
         [SerializeField] AudioClip getHitAudioClip;
+        [SerializeField] AudioClip deathAudioClip;
 
 
     private void Awake()
@@ -59,6 +60,7 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             anim.SetTrigger("Death");
+            audioManager.PlaySFX(deathAudioClip);
             DisableEnemyAgents();
             isInvincible = true;
             spriteRenderer.sortingOrder = 3;

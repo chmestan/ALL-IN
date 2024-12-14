@@ -38,9 +38,12 @@ public abstract class Enemy : EnemyDefaultStateLogic
 
     [Header("Audio"), Space(3f)]
         public AudioManager audioManager;
-        public AudioClip enemyShootAudioClip;
+        public List<AudioClip> enemyShootAudioClips;
+        public float enemyShootVolModifierdB = 0f;
         [SerializeField] private AudioClip enemyHitAudioClip;
+        [SerializeField] private float enemyHitVolModifierdB = 0f;
         [SerializeField] private AudioClip enemyDeathAudioClip;
+        [SerializeField] private float enemyDeathVolModifierdB = 0f;
 
 
     [SerializeField] private bool debug = false;
@@ -159,14 +162,14 @@ public abstract class Enemy : EnemyDefaultStateLogic
                 Die();
             }
             else 
-            audioManager.PlaySFX(enemyHitAudioClip);
+            audioManager.PlaySFX(enemyHitAudioClip, enemyHitVolModifierdB);
         }
 
         public void Die()
         {
             if (debug) Debug.Log($"(Enemy) {gameObject.name} died.");
             OnDeath.Invoke(); 
-            audioManager.PlaySFX(enemyDeathAudioClip);
+            audioManager.PlaySFX(enemyDeathAudioClip, enemyDeathVolModifierdB);
 
             StateMachine.ChangeState(DeadState);
             spriteRenderer.enabled = false;

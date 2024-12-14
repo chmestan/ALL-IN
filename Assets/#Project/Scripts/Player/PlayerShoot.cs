@@ -24,7 +24,8 @@ public class PlayerShoot : MonoBehaviour
 
     [Header("Audio"), Space(3f)]
         private AudioManager audioManager;
-        [SerializeField] AudioClip shootAudioClip;
+        [SerializeField] List<AudioClip> shootAudioClips; 
+        [SerializeField] private float shootVolModifierdB = 0f;
 
     [SerializeField, Space(20f)] bool debug = false;
 
@@ -79,7 +80,7 @@ public class PlayerShoot : MonoBehaviour
         if (shootingInput && Time.time >= lastShotTime + shootingDelay)
         {
             BulletShot(facingDir);
-            audioManager.PlaySFX(shootAudioClip);
+            PlayRandomShootSound();
             lastShotTime = Time.time;
         }
 
@@ -105,6 +106,18 @@ public class PlayerShoot : MonoBehaviour
         if (debug) Debug.Log($"[BulletShot] Direction: {direction}, Magnitude: {direction.magnitude}");
 
     }
+
+    private void PlayRandomShootSound()
+    {
+        if (shootAudioClips != null && shootAudioClips.Count > 0)
+        {
+            int randomIndex = Random.Range(0, shootAudioClips.Count); 
+            AudioClip randomClip = shootAudioClips[randomIndex]; 
+
+            audioManager.PlaySFX(randomClip, shootVolModifierdB);
+        }
+    }
+
 
     private void AnimPlayer()
     {
