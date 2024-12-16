@@ -468,7 +468,7 @@ MonoBehaviour:
   killedEnemies: 0
   remainingEnemies: 0
   delayTo5Enemies: 1
-  delayFrom5Enemies: 3
+  delayFrom5Enemies: 2
 --- !u!114 &227687865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7308,6 +7308,7 @@ MonoBehaviour:
   cameraShakeManager: {fileID: 227687868}
   getHitAudioClip: {fileID: 8300000, guid: c51947a355d320e40bd111bf65ea2e8c, type: 3}
   deathAudioClip: {fileID: 8300000, guid: 993fcb842b0b7884a8eeed642af3b36b, type: 3}
+  debug: 0
 --- !u!114 &1081019534
 MonoBehaviour:
   m_ObjectHideFlags: 0

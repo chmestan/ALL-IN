@@ -4,6 +4,7 @@ using UnityEngine;
 public class EnemyStats : ScriptableObject
 {
     [Header ("HEALTH")]
+    [SerializeField] private int startingHealth;
     [SerializeField] private int _MaxHealth = 10;
 
     [Header ("SPEED"), Space (3f)]
@@ -13,9 +14,10 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private float _RoamingDistance = 3f;
 
     [Header ("DAMAGE STATS"), Space (3f)]
+    [SerializeField] private int startingBulletDmg;
     [SerializeField] private int _BulletDamage = 5;
+    [SerializeField] private int startingCollisionDmg;
     [SerializeField] private int _CollisionDamage = 10;
-    // [SerializeField] private float _CollisionDamageTick = 0.5f;
 
     [Header ("ATTACK STATS"), Space (3f)]
     [SerializeField] private int _BulletsPerBurst = 0;
@@ -28,6 +30,16 @@ public class EnemyStats : ScriptableObject
     [SerializeField] private int _MaxBursts = 3; // max included
     [SerializeField] private int _MinRoams = 1;
     [SerializeField] private int _MaxRoams = 3; // max included
+
+    public void AdjustStatsForWave()
+    {
+        int waveNumber = GlobalManager.Instance.waveManager.WaveCount;
+        _MaxHealth = startingHealth + Mathf.CeilToInt(waveNumber/5); // after 5 waves, increase by 1
+        // _MoveSpeed += waveNumber * 0.01f; 
+        _BulletDamage = startingBulletDmg + Mathf.CeilToInt(waveNumber/5); // after 5 waves, increase by 1
+        _CollisionDamage = startingBulletDmg + Mathf.CeilToInt(waveNumber/5)*2; // after 5 waves, increase by 2
+        // _BulletsPerBurst = Mathf.Min(10, _BulletsPerBurst + (waveNumber / 2)); 
+    }
 
     #region HEALTH
     public int MaxHealth // read only atm

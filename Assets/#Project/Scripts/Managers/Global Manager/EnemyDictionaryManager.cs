@@ -19,10 +19,10 @@ public static class EnemyDictionaryManager
         return enemiesToSpawn;
     }
 
-    private static int GetNumberOfEnemies(int waveNb) // Example of scaling logic
+    private static int GetNumberOfEnemies(int waveNb)
     {
         Debug.Log($"WAVENB = {waveNb}");
-        return (waveNb + 1) * 2; 
+        return waveNb* 4; 
     }
 
     private static void GenerateListOfEnemies(int nbAvailableTypes, int nbEnemiesToGenerate)

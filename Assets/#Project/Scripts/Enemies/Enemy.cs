@@ -83,6 +83,7 @@ public abstract class Enemy : EnemyDefaultStateLogic
         spriteRenderer.enabled = true;
         GetComponent<Collider2D>().enabled = true;
 
+        stats.AdjustStatsForWave();
         StateMachine.Initialize(SpawnState);    
     }
 

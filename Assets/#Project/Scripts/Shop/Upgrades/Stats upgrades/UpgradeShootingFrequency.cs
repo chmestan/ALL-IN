@@ -7,7 +7,7 @@ public class UpgradeShootingFrequency : StatUpgrade<float>
     {
         valuesByLevel = new Dictionary<int, float>
         {
-            { 0, 0.7f},
+            { 0, 0.7f },
             { 1, 0.6f },
             { 2, 0.5f }
         };

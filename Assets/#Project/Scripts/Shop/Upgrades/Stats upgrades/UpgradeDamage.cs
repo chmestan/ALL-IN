@@ -11,7 +11,8 @@ public class UpgradeDamage : StatUpgrade<int>
             { 0, 5 },
             { 1, 7 },
             { 2, 10 },
-            { 3, 15 }
+            { 3, 13 },
+            { 4, 15 }
         };
         base.Awake();
     }

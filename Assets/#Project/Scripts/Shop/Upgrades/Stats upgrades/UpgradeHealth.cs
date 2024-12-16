@@ -10,9 +10,11 @@ public class UpgradeHealth : StatUpgrade<int>
         valuesByLevel = new Dictionary<int, int>
         {
             { 0, 10 },
-            { 1, 15 },
-            { 2, 20 },
-            { 3, 25 }
+            { 1, 13 },
+            { 2, 16 },
+            { 3, 20 },
+            { 4, 25 },
+            { 5, 30 }
         };
         base.Awake();
     }

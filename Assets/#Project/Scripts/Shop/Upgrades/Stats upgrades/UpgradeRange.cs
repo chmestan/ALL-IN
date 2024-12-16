@@ -9,9 +9,11 @@ public class UpgradeRange : StatUpgrade<int>
         valuesByLevel = new Dictionary<int, int>
         {
             { 0, 7 },
-            { 1, 10 },
-            { 2, 13 },
-            { 3, 15 }
+            { 1, 8 },
+            { 2, 9 },
+            { 3, 10 },
+            { 4, 12 },
+            { 5, 15 }
         };
         base.Awake();
     }

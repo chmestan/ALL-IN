@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e30cca3920fc24da8a2d04aa9c7dc0, type: 3}
   m_Name: Enemy0Stats
   m_EditorClassIdentifier: 
+  startingHealth: 20
   _MaxHealth: 20
   _MoveSpeed: 5
   _RoamingDistance: 0
+  startingBulletDmg: 0
   _BulletDamage: 0
-  _CollisionDamage: 12
+  startingCollisionDmg: 12
+  _CollisionDamage: 0
   _BulletsPerBurst: 0
   _TimeBetweenBullets: 0
   _TimeBetweenBursts: 0
