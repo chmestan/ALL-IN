@@ -13,6 +13,7 @@ public class MenuMusic : MonoBehaviour
     {
         audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
         musicSource = audioManager.musicSource; 
+        audioManager.StopMusic();
         audioManager.audioMixer.SetFloat("MasterVolume", Mathf.Log10(1f) * 20); 
         audioManager.audioMixer.SetFloat("MusicVolume", Mathf.Log10(1f) * 20); 
         audioManager.audioMixer.SetFloat("SFXVolume", Mathf.Log10(1f) * 20); 

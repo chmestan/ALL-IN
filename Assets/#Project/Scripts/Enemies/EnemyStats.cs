@@ -37,7 +37,7 @@ public class EnemyStats : ScriptableObject
         _MaxHealth = startingHealth + Mathf.CeilToInt(waveNumber/5); // after 5 waves, increase by 1
         // _MoveSpeed += waveNumber * 0.01f; 
         _BulletDamage = startingBulletDmg + Mathf.CeilToInt(waveNumber/5); // after 5 waves, increase by 1
-        _CollisionDamage = startingBulletDmg + Mathf.CeilToInt(waveNumber/5)*2; // after 5 waves, increase by 2
+        _CollisionDamage = startingCollisionDmg + Mathf.CeilToInt(waveNumber/5)*2; // after 5 waves, increase by 2
         // _BulletsPerBurst = Mathf.Min(10, _BulletsPerBurst + (waveNumber / 2)); 
     }
 
