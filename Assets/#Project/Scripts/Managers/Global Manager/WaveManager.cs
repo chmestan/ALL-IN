@@ -4,24 +4,22 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [Header ("All enemies"), Space (3f)]
-    [SerializeField] private List<Enemy> enemyTypes; // can I get all enemies automatically added from folder?
-
-    private Dictionary<Enemy, int> enemiesToSpawn;
+        [SerializeField] private List<Enemy> enemyTypes; // can I get all enemies automatically added from folder?
+        private Dictionary<Enemy, int> enemiesToSpawn;
 
     [Header ("Wave Progress"), Space (3f)]
-    [SerializeField] private int waveCount = 1;
+        [SerializeField] private int waveCount = 1;
 
-    [Header ("Money Reward"), Space (3f)]
+    [Header ("References"), Space (3f)]
+        public ArenaState arenaState;  
+        public EnemyManager enemyManager;
+        public PlayerData playerData;
 
     private int prize = 100;
     public int Prize 
     { get => prize;
       set => prize = value;
     }
-    
-    public ArenaState arenaState;  
-    public EnemyManager enemyManager;
-    public PlayerData playerData;
 
     #region Properties
     public List<Enemy> EnemyTypes
@@ -32,6 +30,9 @@ public class WaveManager : MonoBehaviour
     { get => waveCount;
       set => waveCount = value;}
     #endregion
+
+    [Header("Debug"), Space(3f)]
+        [SerializeField] private bool debug = false;
 
     private void Start()
     {
@@ -54,7 +55,7 @@ public class WaveManager : MonoBehaviour
     public void IncrementWaveCount()
     {
         waveCount++;
-        Debug.Log($"(WaveManager) Wave Count incremented: {waveCount}");
+        if (debug) Debug.Log($"(WaveManager) Wave Count incremented: {waveCount}");
     }
 
     public void MoneyReward()
@@ -71,7 +72,7 @@ public class WaveManager : MonoBehaviour
     public void UpdatePrize(int extraPrize)
     {
         prize += extraPrize;
-        Debug.Log($"Updated prize: {prize}");
+        if (debug) Debug.Log($"Updated prize: {prize}");
     }
 
 }

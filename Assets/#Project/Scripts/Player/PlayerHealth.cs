@@ -28,6 +28,8 @@ public class PlayerHealth : MonoBehaviour
         [SerializeField] AudioClip getHitAudioClip;
         [SerializeField] AudioClip deathAudioClip;
 
+    [Header("Debug"), Space(3f)]
+        [SerializeField] private bool debug = false;
 
     private void Awake()
     {
@@ -87,12 +89,12 @@ public class PlayerHealth : MonoBehaviour
     private IEnumerator InvincibilityCoroutine()
     {
         isInvincible = true;
-        Debug.Log("(PlayerHealth) Player is invincible");
+        if (debug) Debug.Log("(PlayerHealth) Player is invincible");
 
         yield return StartCoroutine(FlashWhileInvincible());
 
         isInvincible = false;
-        Debug.Log("(PlayerHealth) Player is no longer invincible.");
+        if (debug) Debug.Log("(PlayerHealth) Player is no longer invincible.");
     }
 
     private IEnumerator FlashWhileInvincible()

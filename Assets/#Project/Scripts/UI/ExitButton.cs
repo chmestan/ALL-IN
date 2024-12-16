@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class ExitButton : MonoBehaviour
 {
-    public void ExitGame()
+private AudioManager audioManager;
+    [SerializeField] private AudioClip clickedAudioClip;
+
+    private void Start()
+    {
+        audioManager = GlobalManager.Instance.GetComponentInChildren<AudioManager>();
+    }
+
+    public void OnClick()
+    {
+        audioManager.PlaySFX(clickedAudioClip);
+        ExitGame();
+    }
+
+    private void ExitGame()
     {
         Debug.Log("(ExitButton) Game is exiting");
         Application.Quit();
