@@ -506,9 +506,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.097222224
-    width: 0.33333334
-    height: 0.25
+    y: 0
+    width: 1
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -1920,7 +1920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0000038146973
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2580,11 +2580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.0013962
+      value: -0.0014038086
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.38895035
+      value: -0.38894653
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3063,7 +3063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000030518
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3542,11 +3542,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.31825
+      value: -0.31825256
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.38895035
+      value: -0.38894653
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3958,11 +3958,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.2392273
+      value: 0.23925781
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.38895035
+      value: -0.38894653
       objectReference: {fileID: 0}
     - target: {fileID: 3481620630180052924, guid: b692a602032216f408720f89ab049624, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6291,7 +6291,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2101353347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6331,7 +6331,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: gdg
+  m_text: x
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3f7f70935df2e04285d171e167d9b06, type: 2}
   m_sharedMaterial: {fileID: 1888118813652915074, guid: f3f7f70935df2e04285d171e167d9b06, type: 2}
