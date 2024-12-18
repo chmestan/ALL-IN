@@ -1138,7 +1138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78def193ef87aa94a8a8c8211509bede, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introClip: {fileID: 8300000, guid: 9c330af0bfc8ac54a9357a2700870a57, type: 3}
+  introClip: {fileID: 8300000, guid: 6434fee5c92660c4c901731227f8ae09, type: 3}
   loopClip: {fileID: 8300000, guid: a46fa28bdf030ea4c95cc9b0ad17b83c, type: 3}
 --- !u!1 &1640318017
 GameObject:
