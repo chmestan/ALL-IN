@@ -9,12 +9,12 @@ public class UpgradeHealth : StatUpgrade<int>
     {
         valuesByLevel = new Dictionary<int, int>
         {
-            { 0, 10 },
-            { 1, 13 },
-            { 2, 16 },
-            { 3, 20 },
-            { 4, 25 },
-            { 5, 30 }
+            { 0, 30 },
+            { 1, 35 },
+            { 2, 40 },
+            { 3, 45 },
+            { 4, 50 },
+            { 5, 55 }
         };
         base.Awake();
     }

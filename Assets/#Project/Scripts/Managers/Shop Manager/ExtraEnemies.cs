@@ -54,7 +54,7 @@ public class ExtraEnemies : MonoBehaviour
             else
             {
                 rolledResults.Add((enemyType, 0)); // Ensure there are 3 entries even if count is 0
-                bonusPrize += 5;
+                bonusPrize += 50;
             }      
             Debug.Log($"Extra enemies added: {randomCount}");
             
